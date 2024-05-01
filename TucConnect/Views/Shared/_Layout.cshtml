@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Tuc Conectado</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyBlog.styles.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/f03bd3c969.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    @*Se implementaran las vistas Razor de C#*@
+    @*Llamar a la vista principal*@
+    @await Html.PartialAsync("~/Views/Shared/Partials/_Header.cshtml")
+
+    <div class="container py-5 d-flex flex-column min-vh-100">
+        <main role="main">
+            <main>
+                @RenderBody()
+            </main>
+        </main>
+    </div>
+
+    <footer class="bg-dark text-light py-4 sticky-bottom mt-auto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h5 class="mb-3">Redes Sociales</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="text-light"><i class="fab fa-facebook me-2"></i>Facebook</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-twitter me-2"></i>Twitter</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-instagram me-2"></i>Instagram</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h5 class="mb-3">Recursos</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="text-light"></a>Politicas de privacidad</li>
+                        <li><a href="#" class="text-light"></a>Términos y condiciones</li>
+                        <li><a href="#" class="text-light"></a>Contacto</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h5 class="mb-3">Más información</h5>
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Introduzca su correo:" />
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <hr class="my-4" />
+            <p class="text-center small mb-0">&copy;"2024 -Tucumán Conectado. Todos los derechos reservados."</p>
+
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

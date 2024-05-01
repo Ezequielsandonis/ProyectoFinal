@@ -1,0 +1,137 @@
+﻿@*referencias*@
+@using System.Security.Claims;
+@using Microsoft.AspNetCore.Mvc;
+
+
+
+<header>
+
+    @* BARRA DE  NAVEGACION-START *@
+    <nav class="navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Tuc Conectado</a>
+            @* categorias *@
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Home")">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Noticias"})">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Trabajo"})">Trabajos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Productos"})">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Tutoriales"})">Tutoriales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Recursos"})">Recursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Servicios"})">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Otro"})">Otros</a>
+                    </li>
+                </ul>
+
+
+
+                <div class="d-flex mx-auto">
+                    <!-- Barra de búsqueda -->
+                    <form class="d-flex" method="get" asp-controller="Home" asp-action="Index">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" />
+                        <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                    </form>
+
+                    <!-- Barra de búsqueda por zona -->
+                    <div id="navbarSupportedContent" class="ms-auto">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <!-- Navbar Collapse -->
+                        <ul class="navbar-nav">
+                            <!-- Dropdown Menu -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Zona
+                                </a>
+                                <!-- Dropdown Menu Content -->
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="@Url.Action("Index" , "Home", new{ zona="Centro"})">Centro</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="YerbaBuena"})">Yerba Buena</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="SM"})">San Miguel</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="TafiViejo"})">Tafi Viejo</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="ZonaSur"})">Sur</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{zona="Otros"})">Otro</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                @* listado de opciones *@
+                <ul class="navbar-nav ms-auto">
+                    @* Si el usuario no esta autenticado(activado) *@
+                    @if (!(User?.Identity?.IsAuthenticated ?? false))
+                    {
+                        @* mostrar opcion de registro e inicio de sesion *@
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Registrar" asp-controller="Cuenta">Registrarse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Login" asp-controller="Cuenta">Iniciar Sesión</a>
+                        </li>
+                    }
+                    else
+                    {
+                        @* Opciones disponibles solo para usuarios autenticados *@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="UserDropdown" data-bs-toggle="dropdown">
+                                @* Cargar nombre del usuario *@
+                                @User.FindFirstValue(ClaimTypes.NameIdentifier)
+                            </a>
+                            @* menu opciones *@
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" asp-action="Perfil" asp-controller="Usuario">Mi perfil</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-action="MisPost" asp-controller="Usuario">Mis publicaciones</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-action="Create" asp-controller="Post">Crear Post</a>
+                                </li>
+                                @* Opciones solo para administradores *@
+                                @if (User.IsInRole("Administrador"))
+                                {
+
+                                    <li>
+                                        <a class="dropdown-item" asp-action="Index" asp-controller="AdminUsuario">Administrar Usuarios</a>
+                                    </li>
+                                }
+
+                                <li>
+                                    <a class="dropdown-item" asp-action="CerrarSesion" asp-controller="Cuenta">Cerrar Sesión</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @* BARRA DE  NAVEGACION-END *@
+
+
+    @* BARRA DE  NAVEGACION *@
+</header>
