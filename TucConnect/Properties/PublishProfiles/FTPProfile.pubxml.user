@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAqDUn0LVW7kSARinZNNzRggAAAAACAAAAAAAQZgAAAAEAACAAAAANqnSo9z52XKYat5GWrRHNTjOGACRJY8gTq3+9za5gOQAAAAAOgAAAAAIAACAAAABWdZXmGPww14xS1yj+jh6Dxt5ct9yJCqNxBg5udHggvSAAAADGp3kFFBTOUjkuHIy07NOITSt0hUQ7obKSv9BqmtFkwkAAAABKYMsfXFhg6TdBsVod/Z6Zg6cJx6uGrQUZL86sobvH8KeXqEyrQjKdW5iW6yZy/muFpgmxi4Bk1SehTm23+D8m</EncryptedPassword>
+    <_PublishTargetUrl>ftp://198.37.116.25/www.TucConnect.somee.com</_PublishTargetUrl>
+    <History>False|2024-05-08T22:50:24.7971923Z;False|2024-05-08T19:25:00.7205352-03:00;False|2024-05-06T19:17:16.3470838-03:00;True|2024-05-01T18:10:53.4016293-03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="conexion">
+      <Value>server=MyBlogddb.mssql.somee.com%3b database=MyBlogddb%3b user id=Ezequielsandonis_SQLLogin_2%3bpwd=x6cp7a1qgb%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>05/01/2024 16:51:04</publishTime>
+    </File>
+    <File Include="appsettings.production.json">
+      <publishTime>05/08/2024 19:29:37</publishTime>
+    </File>
+    <File Include="BCrypt.Net-Next.dll">
+      <publishTime>03/03/2022 13:10:20</publishTime>
+    </File>
+    <File Include="JetBrains.Annotations.dll">
+      <publishTime>11/07/2022 16:37:26</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll">
+      <publishTime>10/26/2023 20:34:06</publishTime>
+    </File>
+    <File Include="runtimes/win-arm64/native/sni.dll">
+      <publishTime>07/12/2017 08:24:24</publishTime>
+    </File>
+    <File Include="runtimes/win-x64/native/sni.dll">
+      <publishTime>07/12/2017 08:24:22</publishTime>
+    </File>
+    <File Include="runtimes/win-x86/native/sni.dll">
+      <publishTime>07/12/2017 08:24:22</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll">
+      <publishTime>10/26/2023 20:34:10</publishTime>
+    </File>
+    <File Include="System.Data.SqlClient.dll">
+      <publishTime>10/26/2023 20:27:26</publishTime>
+    </File>
+    <File Include="TucConnect.deps.json">
+      <publishTime>05/08/2024 19:29:36</publishTime>
+    </File>
+    <File Include="TucConnect.dll">
+      <publishTime>05/08/2024 19:29:36</publishTime>
+    </File>
+    <File Include="TucConnect.exe">
+      <publishTime>05/08/2024 19:29:36</publishTime>
+    </File>
+    <File Include="TucConnect.pdb">
+      <publishTime>05/08/2024 19:29:36</publishTime>
+    </File>
+    <File Include="TucConnect.runtimeconfig.json">
+      <publishTime>05/01/2024 17:54:33</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>05/08/2024 19:29:36</publishTime>
+    </File>
+    <File Include="wwwroot/css/site.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/favicon.ico">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/js/site.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/LICENSE">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.min.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.min.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/LICENSE.md">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.min.js">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.min.map">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/LICENSE.txt">
+      <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/icons/default/icons.min.js">
+      <publishTime>03/07/2024 20:55:16</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/langs/README.md">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/license.txt">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/models/dom/model.min.js">
+      <publishTime>03/07/2024 20:55:16</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/accordion/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/advlist/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/anchor/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/autolink/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/autoresize/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/autosave/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/charmap/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/code/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/codesample/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/directionality/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/emoticons/js/emojiimages.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/emoticons/js/emojiimages.min.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/emoticons/js/emojis.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/emoticons/js/emojis.min.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/emoticons/plugin.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/fullscreen/plugin.min.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/ar.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/bg_BG.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/ca.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/cs.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/da.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/de.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/el.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/en.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/es.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/eu.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/fa.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/fi.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/fr_FR.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/he_IL.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/hi.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/hr.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/hu_HU.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/id.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/it.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/ja.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/kk.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/ko_KR.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/ms.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/nb_NO.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/nl.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/pl.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/pt_BR.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/pt_PT.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/ro.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/ru.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/sk.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/sl_SI.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/sv_SE.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/th_TH.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/tr.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/uk.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/vi.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/zh_CN.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/zh_TW.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/help/plugin.min.js">
+      <publishTime>03/07/2024 20:55:12</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/image/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/importcss/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/insertdatetime/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/link/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/lists/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/media/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/nonbreaking/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/pagebreak/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/preview/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/quickbars/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/save/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/searchreplace/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/table/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/template/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/visualblocks/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/visualchars/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/plugins/wordcount/plugin.min.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/dark/content.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/dark/content.min.css">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/default/content.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/default/content.min.css">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/document/content.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/document/content.min.css">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/tinymce-5-dark/content.js">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/tinymce-5-dark/content.min.css">
+      <publishTime>03/07/2024 20:55:13</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/tinymce-5/content.js">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/tinymce-5/content.min.css">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/writer/content.js">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/content/writer/content.min.css">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide-dark/content.inline.js">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide-dark/content.inline.min.css">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide-dark/content.js">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide-dark/content.min.css">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide-dark/skin.js">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide-dark/skin.min.css">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide-dark/skin.shadowdom.js">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide-dark/skin.shadowdom.min.css">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide/content.inline.js">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide/content.inline.min.css">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide/content.js">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide/content.min.css">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide/skin.js">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide/skin.min.css">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide/skin.shadowdom.js">
+      <publishTime>03/07/2024 20:55:14</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/oxide/skin.shadowdom.min.css">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5-dark/content.inline.js">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5-dark/content.inline.min.css">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5-dark/content.js">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5-dark/content.min.css">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5-dark/skin.js">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5-dark/skin.min.css">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5-dark/skin.shadowdom.js">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5-dark/skin.shadowdom.min.css">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5/content.inline.js">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5/content.inline.min.css">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5/content.js">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5/content.min.css">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5/skin.js">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5/skin.min.css">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5/skin.shadowdom.js">
+      <publishTime>03/07/2024 20:55:15</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/skins/ui/tinymce-5/skin.shadowdom.min.css">
+      <publishTime>03/07/2024 20:55:16</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/themes/silver/theme.min.js">
+      <publishTime>03/07/2024 20:55:16</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/tinymce.d.ts">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/tinymce/tinymce.min.js">
+      <publishTime>03/07/2024 20:55:11</publishTime>
+    </File>
+    <File Include="wwwroot/TucConnect.styles.css">
+      <publishTime>05/01/2024 17:54:33</publishTime>
+    </File>
+    <File Include="X.PagedList.dll">
+      <publishTime>03/12/2023 18:25:02</publishTime>
+    </File>
+    <File Include="X.PagedList.Mvc.Core.dll">
+      <publishTime>03/12/2023 18:26:28</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
