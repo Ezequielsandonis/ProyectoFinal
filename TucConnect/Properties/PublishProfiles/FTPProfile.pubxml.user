@@ -7,14 +7,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAqDUn0LVW7kSARinZNNzRggAAAAACAAAAAAAQZgAAAAEAACAAAAANqnSo9z52XKYat5GWrRHNTjOGACRJY8gTq3+9za5gOQAAAAAOgAAAAAIAACAAAABWdZXmGPww14xS1yj+jh6Dxt5ct9yJCqNxBg5udHggvSAAAADGp3kFFBTOUjkuHIy07NOITSt0hUQ7obKSv9BqmtFkwkAAAABKYMsfXFhg6TdBsVod/Z6Zg6cJx6uGrQUZL86sobvH8KeXqEyrQjKdW5iW6yZy/muFpgmxi4Bk1SehTm23+D8m</EncryptedPassword>
     <_PublishTargetUrl>ftp://198.37.116.25/www.TucConnect.somee.com</_PublishTargetUrl>
-    <History>False|2024-05-08T22:50:24.7971923Z;False|2024-05-08T19:25:00.7205352-03:00;False|2024-05-06T19:17:16.3470838-03:00;True|2024-05-01T18:10:53.4016293-03:00;</History>
+    <History>True|2024-05-09T01:28:20.8220994Z;False|2024-05-08T22:09:43.7020630-03:00;False|2024-05-08T21:48:15.4293068-03:00;False|2024-05-08T20:54:55.5760929-03:00;False|2024-05-08T20:28:10.9806520-03:00;False|2024-05-08T20:17:59.1515088-03:00;False|2024-05-08T19:50:24.7971923-03:00;False|2024-05-08T19:25:00.7205352-03:00;False|2024-05-06T19:17:16.3470838-03:00;True|2024-05-01T18:10:53.4016293-03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
-  <ItemGroup>
-    <DestinationConnectionStrings Include="conexion">
-      <Value>server=MyBlogddb.mssql.somee.com%3b database=MyBlogddb%3b user id=Ezequielsandonis_SQLLogin_2%3bpwd=x6cp7a1qgb%3b</Value>
-    </DestinationConnectionStrings>
-  </ItemGroup>
   <ItemGroup>
     <File Include="appsettings.Development.json">
       <publishTime>05/01/2024 16:41:15</publishTime>
@@ -23,7 +18,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/01/2024 16:51:04</publishTime>
     </File>
     <File Include="appsettings.production.json">
-      <publishTime>05/08/2024 19:29:37</publishTime>
+      <publishTime>05/08/2024 21:27:42</publishTime>
     </File>
     <File Include="BCrypt.Net-Next.dll">
       <publishTime>03/03/2022 13:10:20</publishTime>
@@ -50,22 +45,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/26/2023 20:27:26</publishTime>
     </File>
     <File Include="TucConnect.deps.json">
-      <publishTime>05/08/2024 19:29:36</publishTime>
+      <publishTime>05/08/2024 21:27:37</publishTime>
     </File>
     <File Include="TucConnect.dll">
-      <publishTime>05/08/2024 19:29:36</publishTime>
+      <publishTime>05/08/2024 21:27:36</publishTime>
     </File>
     <File Include="TucConnect.exe">
-      <publishTime>05/08/2024 19:29:36</publishTime>
+      <publishTime>05/08/2024 21:27:37</publishTime>
     </File>
     <File Include="TucConnect.pdb">
-      <publishTime>05/08/2024 19:29:36</publishTime>
+      <publishTime>05/08/2024 21:27:36</publishTime>
     </File>
     <File Include="TucConnect.runtimeconfig.json">
       <publishTime>05/01/2024 17:54:33</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>05/08/2024 19:29:36</publishTime>
+      <publishTime>05/08/2024 21:27:42</publishTime>
     </File>
     <File Include="wwwroot/css/site.css">
       <publishTime>05/01/2024 16:41:15</publishTime>
@@ -308,7 +303,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/07/2024 20:55:12</publishTime>
     </File>
     <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/ar.js">
-      <publishTime>03/07/2024 20:55:12</publishTime>
+      <publishTime>07/03/2024 20:55:12</publishTime>
     </File>
     <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/bg_BG.js">
       <publishTime>03/07/2024 20:55:12</publishTime>
@@ -628,5 +623,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="X.PagedList.Mvc.Core.dll">
       <publishTime>03/12/2023 18:26:28</publishTime>
     </File>
+  </ItemGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="conexion">
+      <Value>server=MyBlogddb.mssql.somee.com%3b database=MyBlogddb%3b user id=Ezequielsandonis_SQLLogin_2%3bpwd=x6cp7a1qgb%3b</Value>
+    </DestinationConnectionStrings>
   </ItemGroup>
 </Project>

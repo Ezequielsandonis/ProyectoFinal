@@ -1,0 +1,104 @@
+﻿@using TucConnect.Data;
+@using TucConnect.Data.Enums;
+@model Post;
+@{
+    ViewData["tittle"]= "Actualizar publicacion";
+}
+
+@*validar que no haya errores*@
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-info" role="alert">
+        @ViewBag.Error
+    </div>
+}
+
+<h2 class="md-4">Editar publicación</h2>
+ 
+@*EDITAR  PUBLICACION-START*@
+<form asp-action="Update" method="post">
+
+    <input asp-for="PostId" type="hidden" />
+
+    <div class="form-group mb-4">
+        <label for="title-input">Titulo</label>
+        <input id="title-input" asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="category-input">Categoria:</label>
+        <select id="category-input" asp-for="Categoria" class="form-control">
+            @*Recorrer nuestras categoriasenum para mostrarlas*@
+            @foreach (var categoria in CategoriaEnum.GetValues(typeof(CategoriaEnum)))
+            {
+                <option value="@categoria"> @categoria.ToString()/</option>
+            }
+        </select>
+        <span asp-validation-for="Categoria" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group mb-4">
+        <label for="zone-input">Zona :</label>
+        <select id="zone-input" asp-for="Zona" class="form-control">
+            @*Recorrer nuestras zonaEnum para mostrarlas*@
+            @foreach (var zona in ZonaEnum.GetValues(typeof(ZonaEnum)))
+            {
+                <option value="@zona">@zona.ToString()</option>
+            }
+        </select>
+        <span asp-validation-for="Zona" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group mb-5">
+        <label for="content-input">Contenido</label>
+
+
+        @*editor de texto:*@
+        @if (Model != null)
+        {
+            @*si es distinto a nulo se carga el contenido*@
+            <textarea id="content-editor" name="Contenido" class="form-control">@Html.Raw(Model.Contenido)</textarea>
+        }
+        else
+        {
+            @*si no se deja en blanco*@
+            <textarea id="content-editor" name="Contenido" class="form-control"></textarea>
+        }
+        <span asp-validation-for="Contenido" class="text-danger"></span>
+
+
+
+    </div>
+
+    <div class="d-grid gap-2 col-md-2 mx-auto">
+        <button type="submit" class="btn btn-warning btn-lg">Actualizar Publicación</button>
+    </div>
+</form>
+@*EDITAR  PUBLICACION-END*@
+
+@*script para implementacion de la biblioteca tinymce como editor de texto*@
+@section Scripts
+{
+    @*Api-key*@
+    <script src="~/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#content-editor',
+            height: 500,
+            language: 'es',
+            plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo | blocks | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+        });
+    </script>
+}

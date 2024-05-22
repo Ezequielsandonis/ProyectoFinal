@@ -32,17 +32,45 @@ namespace TucConnect.Data.Servicios
 
 
 
-        //POST POR ID
+        //POST POR ID---s3
         public Post ObtenerPostPorId(int id)
         {
             var post = new Post(); //inicializar el modelo
+            using (var connection = new SqlConnection(_contexto.Conexion))
+            {
+                connection.Open(); //abrir conexion
+                using (var command = new SqlCommand("ObtenerPostPorId", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@PostId", id);
+                    using (var reader = command.ExecuteReader()) // recorrer el reader y ejecutarlo para llenarlo
+                    {
+                        if (reader.Read()) //validar que el reader "lea"
+                        {
+                            post = new Post //crear objeto de tipo post  con los datos necesarios 
+                            {
+                                PostId = (int)reader["PostId"], //convertir a tipo int 
+                                Titulo = (string)reader["Titulo"],//convertir a tipo string 
+                                Contenido = (string)reader["Contenido"],
+                                Categoria = (CategoriaEnum)Enum.Parse(typeof(CategoriaEnum), (string)reader["Categoria"]),
+                                Zona = (ZonaEnum)Enum.Parse(typeof(ZonaEnum), (string)reader["Zona"]),
+                                FechaCreacion = (DateTime)reader["FechaCreacion"],
+                                UsuarioId = (int)reader["UsuarioId"], //convertir a tipo int 
 
+                            };
+
+                        }
+
+                        reader.Close();
+                    }
+                }
+            }
             return post;
         }
 
 
 
-        //OBTENER POST  
+        //OBTENER POST  --s2
 
         public List<Post> ObtenerPosts() //metodo de tipo lista
         {
@@ -82,10 +110,30 @@ namespace TucConnect.Data.Servicios
 
 
         // OBTENER NOMBRE DEL CREADOR DEL POST
+       
 
         public string ObtenerNombreUsuarioPorPostId(int postId)
         {
             string nombreUsuario = null;
+
+            using (var connection = new SqlConnection(_contexto.Conexion))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("ObtenerNombreUsuarioPorPostId", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@PostId", postId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            nombreUsuario = reader["NombreUsuario"].ToString();
+                        }
+                    }
+                }
+            }
 
             return nombreUsuario;
         }
@@ -100,6 +148,32 @@ namespace TucConnect.Data.Servicios
         {
             var posts = new List<Post>();
 
+            using (var connection = new SqlConnection(_contexto.Conexion))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("ListarPostPorUsuarioId", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UsuarioId", userId);
+                    using (var reader = cmd.ExecuteReader()) // ejecutar
+                    {
+                        while (reader.Read()) // mientras el reader, lea
+                        {
+                            var post = new Post // crear objeto de tipo post con los datos necesarios
+                            {
+                                PostId = (int)reader["PostId"], // convertir a tipo int
+                                Titulo = (string)reader["Titulo"], // convertir a tipo string
+                                Contenido = (string)reader["Contenido"],
+                                Categoria = (CategoriaEnum)Enum.Parse(typeof(CategoriaEnum), (string)reader["Categoria"]),
+                                Zona = (ZonaEnum)Enum.Parse(typeof(ZonaEnum), (string)reader["Zona"]),
+                                FechaCreacion = (DateTime)reader["FechaCreacion"],
+                                UsuarioId = (int)reader["UsuarioId"], // convertir a tipo int
+                            };
+                            posts.Add(post); // agregarlos a la lista
+                        }
+                    }
+                }
+            }
             return posts;
         }
 
@@ -113,7 +187,32 @@ namespace TucConnect.Data.Servicios
         {
 
             var posts = new List<Post>();
-
+            using (var connection = new SqlConnection(_contexto.Conexion))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("ObtenerPostPorCategoria", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Categoria", categoria.ToString()); //agregar parametro
+                    using (var reader = cmd.ExecuteReader())//ejecutar 
+                    {
+                        while (reader.Read())
+                        {
+                            var post = new Post //crear objeto de tipo post  con los datos necesarios 
+                            {
+                                PostId = (int)reader["PostId"], //convertir a tipo int 
+                                Titulo = (string)reader["Titulo"],//convertir a tipo string 
+                                Contenido = (string)reader["Contenido"],
+                                Categoria = (CategoriaEnum)Enum.Parse(typeof(CategoriaEnum), (string)reader["Categoria"]),
+                                Zona = (ZonaEnum)Enum.Parse(typeof(ZonaEnum), (string)reader["Zona"]),
+                                FechaCreacion = (DateTime)reader["FechaCreacion"],
+                                UsuarioId = (int)reader["UsuarioId"], //convertir a tipo int 
+                            };
+                            posts.Add(post);
+                        }
+                    }
+                }
+            }
             return posts;
         }
 
@@ -123,6 +222,33 @@ namespace TucConnect.Data.Servicios
         {
 
             var posts = new List<Post>();
+            using (var connection = new SqlConnection(_contexto.Conexion))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("ObtenerPostPorTitulo", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Titulo", titulo); //agregar parametro
+                    using (var reader = cmd.ExecuteReader())//ejecutar 
+                    {
+                        while (reader.Read())
+                        {
+                            posts.Add(new Post //crear objeto/lista de tipo post  con los datos necesarios y agregarlos
+                            {
+                                PostId = (int)reader["PostId"], //convertir a tipo int 
+                                Titulo = (string)reader["Titulo"],//convertir a tipo string 
+                                Contenido = (string)reader["Contenido"],
+                                Categoria = (CategoriaEnum)Enum.Parse(typeof(CategoriaEnum), (string)reader["Categoria"]),
+                                Zona = (ZonaEnum)Enum.Parse(typeof(ZonaEnum), (string)reader["Zona"]),
+                                FechaCreacion = (DateTime)reader["FechaCreacion"],
+                                UsuarioId = (int)reader["UsuarioId"], //convertir a tipo int 
+                            });
+
+                        }
+                    }
+                }
+            }
+
 
             return posts;
         }
@@ -130,13 +256,36 @@ namespace TucConnect.Data.Servicios
 
         //POST POR  ZONA
 
-
-
         public List<Post> ObtenerPostsPorZona(ZonaEnum zona) //metodo de tipo lista
         {
 
             var posts = new List<Post>();
-
+            using (var connection = new SqlConnection(_contexto.Conexion))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("ObtenerPostPorZona", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Zona", zona.ToString()); //agregar parametro
+                    using (var reader = cmd.ExecuteReader())//ejecutar 
+                    {
+                        while (reader.Read())
+                        {
+                            var post = new Post //crear objeto de tipo post  con los datos necesarios 
+                            {
+                                PostId = (int)reader["PostId"], //convertir a tipo int 
+                                Titulo = (string)reader["Titulo"],//convertir a tipo string 
+                                Contenido = (string)reader["Contenido"],
+                                Categoria = (CategoriaEnum)Enum.Parse(typeof(CategoriaEnum), (string)reader["Categoria"]),
+                                FechaCreacion = (DateTime)reader["FechaCreacion"],
+                                Zona = (ZonaEnum)Enum.Parse(typeof(ZonaEnum), (string)reader["Zona"]),
+                                UsuarioId = (int)reader["UsuarioId"], //convertir a tipo int 
+                            };
+                            posts.Add(post);
+                        }
+                    }
+                }
+            }
             using (var connection = new SqlConnection(_contexto.Conexion))
 
             return posts;
@@ -144,19 +293,12 @@ namespace TucConnect.Data.Servicios
 
 
 
-        // COMENTARIOS POR ID  
+        // COMENTARIOS POR ID  s4 
 
-        public List<Comentario> ObtenerComentariosPorPostId(int id)
-        {
-            var comments = new List<Comentario>();
-
-            return comments;
-        }
-
-        // COMENTARIOS HIJOS
+        // COMENTARIOS HIJOS s4
 
 
-        //COMENTARIOS NIETOS
+        //COMENTARIOS NIETOS s4
 
 
 

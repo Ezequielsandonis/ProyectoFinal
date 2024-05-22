@@ -1,14 +1,16 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
-
 using TucConnect.Data;
+using TucConnect.Data.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton(new Contexto(builder.Configuration.GetConnectionString("conexion")));
+//SENDBIRD
+builder.Services.AddSingleton<ISendbirdService, SendbirdService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
 {
     option.LoginPath = "/Cuenta/Login";
@@ -52,7 +54,6 @@ app.Run();
 
 
 
-//RECORDAR INSTALAR BIBLIOTECA DE SSIGNALR DEL LADO DEL CLIENTE
-//@microsoft/signalr@latest
+
 
 //contraseña de soome d$cxmv4TKBjf7#+

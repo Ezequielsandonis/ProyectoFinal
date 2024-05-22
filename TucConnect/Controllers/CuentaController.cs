@@ -8,6 +8,7 @@ using System.Data;
 using System.Security.Claims;
 using TucConnect.Models.ViewModels;
 using TucConnect.Models;
+using System.Diagnostics.Eventing.Reader;
 
 namespace TucConnect.Controllers
 {
@@ -177,7 +178,7 @@ namespace TucConnect.Controllers
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         //parametros
-                        cmd.Parameters.AddWithValue("@Correo", model.Correo); //enviamos correo
+                        cmd.Parameters.AddWithValue("@Correo", model.Correo); 
                         con.Open(); //abrir conexion
                         try
                         {
@@ -189,6 +190,7 @@ namespace TucConnect.Controllers
                                     bool passwordMatch = BCrypt.Net.BCrypt.Verify(model.Contrasenia, dr["Contrasenia"].ToString());
                                     if (passwordMatch)
                                     {
+
                                         DateTime fechaexpiracion = DateTime.UtcNow;
                                         //validar
                                         if (!(bool)dr["Estado"] && dr["FechaExpiracion"].ToString() != fechaexpiracion.ToString())
@@ -238,9 +240,19 @@ namespace TucConnect.Controllers
                                             }
                                         }
                                     }
+
+                                    else
+                                    {
+                                        // Contraseña incorrecta
+                                        ViewBag.Error = "Contraseña incorrecta";
+                                    }
+                                  
                                 }
-                                else
-                                    ViewBag.Error = "Correo no registrado";
+                                //correo incorrecto
+                                else { ViewBag.Error = "Correo no registrado"; }
+                                
+                           
+
                                 dr.Close(); //cerrar datareader
                             }
                         }
