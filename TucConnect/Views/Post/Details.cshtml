@@ -1,0 +1,306 @@
+﻿@using TucConnect.Models.ViewModels;
+@using TucConnect.Models;
+@model PostDetallesViewModel;
+
+@*validar que no haya errores*@
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-info" role="alert">
+        @ViewBag.Error
+    </div>
+}
+
+@*Validar que exista post y un usuario*@
+@if (Model.Post != null && User.Identity != null)
+{
+    ViewData["Title"] = Model.Post.Titulo;
+
+  
+
+    <h1>@Model.Post.Titulo</h1>
+    <p class="text-muted">@Model.Post.Categoria.ToString()</p>
+    <p class="text-muted">@Model.Post.Zona.ToString()</p>
+    <p>Anunciante: <strong>@Model.UsuarioCreador</strong></p>
+    <a href="#">Enviar mensaje directo</a>
+    <p class="text-muted">@Model.Post.FechaCreacion.ToShortDateString()</p>
+
+
+    @*¿el usuario es administrador o dueño de un post?*@
+    @if (User.IsInRole("Administrador") || User.Identity.IsAuthenticated && Model.Post.UsuarioId == Convert.ToInt32(User.FindFirst("UsuarioId").Value))
+    {
+
+        @*OP ADMINISTRADOR-START*@
+        <form asp-action="Delete" asp-route-id="@Model.Post.PostId" method="post">
+            <a asp-action="Update" asp-route-id="@Model.Post.PostId" class="btn btn-warning">
+                <i class="fa-regular fa-edit"></i>
+            </a>
+            @*abrir el modal para eliminar post*@
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal">
+                <i class="far fa-trash-alt"></i>
+            </button>
+
+
+            @*Modal-start*@
+            <div class="modal fade" id="confirm-delete-modal" tabindex="-1" aria-labelledby="confirm-delete-modal-label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirm-delete-modal-title">Confirmar eliminación</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Seguro desea eliminar la publicacción?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            @*boton tipo submit para ejecutar form.*@
+                            <button type="submit" class="btn btn-danger">Eliminar publicación</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*Modal-end*@
+    
+        </form>
+        @*OP ADMINISTRADOR-END*@
+    }
+    @*Usuario-no-administrador*@
+    <hr />
+
+  @*contenedor-contenidos*@
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-8">
+                @*CONTENIDO-START(uso de la biblioteca tinymce)*@
+                <div>@Html.Raw(Model.Post.Contenido)</div>
+                @*CONTENIDO-END*@
+
+                <hr />
+
+                @*COMENTARIOS-START*@
+                <div class="container">
+                    <div class="container mt-5">
+
+                        <h2 class="mb-4">Comentarios</h2>
+                        <div class="card-mb-4">
+
+                            @*agregar_nuevo_comentario-start*@
+                            <div class="card-body">
+                                <h5 class="card-title">Agregar comentario</h5>
+                                <form asp-action="AgregarComentario" asp-controller="Post">
+                                    <div class="form-group">
+                                        <textarea id="comentario" name="comentario" class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <input type="hidden" name="postId" value="@Model.Post.PostId"/>
+                                    @*Validar que solo los usuarios autenticados puedan comentar*@
+                                    @if (!User.Identity.IsAuthenticated)
+                                    {
+                                        <p class="alert alert-warning">Para agregar comentarios, Inicia sesión</p>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-primary mt-2">Comentar</button>
+                                    }
+                                </form>
+                            </div>
+                            @*agregar_nuevo_comentario-end*@
+
+                        </div>
+
+                        @*COMENTARIOS PRINCIPALES-START*@
+                        @*validar que existan comentarios para mostrar*@
+                        @if (Model.ComentariosPrincipales != null && Model.ComentariosPrincipales.Count>0)
+                        {
+                            <ul class="list-unstyled">
+                                @foreach (var comment in Model.ComentariosPrincipales)
+                                {
+                                    <li class="mb-4">
+                                        <div class="card">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">@comment.NombreUsuario
+                                                <small class="text-muted text-sm-end small">@comment.FechaCreacion</small>
+                                                </h5>
+                                                <p class="card-text">@comment.Contenido</p>
+
+
+
+                                                @*modal-para-responder-START*@
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#commentModal_@comment.ComentarioId">Responder</a>
+                                              
+                                                <div class="modal fade" id="commentModal_@comment.ComentarioId" tabindex="-1" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5">Responder</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                                                            </div>
+
+                                                            @*¿el usuario estta autenticado?*@
+                                                            @if (!User.Identity.IsAuthenticated)
+                                                            {
+                                                                @*No está*@
+                                                                <p class="alert alert-warning">Para responder, inicia sesión primero</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                @*Si está*@
+                                                                <form method="post" asp-action="AgregarComentario" class="mt-4">
+                                                                    <div class="modal-body">
+                                                                        <input type="hidden" name="postId" value="@Model.Post.PostId" />
+                                                                        <input type="hidden" name="comentarioPadreId" value="@comment.ComentarioId" />
+
+                                                                        <div class="form-group">
+                                                                            <label for="comentario">Comentario:</label>
+                                                                            <textarea name="comentario" id="comentario" class="form-control"></textarea>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                                        <button type="submit" class="btn btn-primary">Enviar respuesta</button>
+                                                                    </div>
+
+                                                                </form>
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @*modal-para-responder-END*@
+
+
+                                                @*COMENTARIOS HIJOS-START*@
+                                                @if (comment.ComentariosHijos != null && comment.ComentariosHijos.Count > 0)
+                                                {
+                                                    <ul class="list-unstyled mt-4 mb-0">
+                                                        @foreach (var childcomment in comment.ComentariosHijos)
+                                                        {
+                                                            <li class="mb-4">
+                                                                <div class="card">
+
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">
+                                                                            @childcomment.NombreUsuario
+                                                                            <small class="text-muted text-sm-end small">@childcomment.FechaCreacion</small>
+                                                                        </h5>
+                                                                        <p class="card-text">@childcomment.Contenido</p>
+
+
+
+                                                                        @*modal-para-responder-START*@
+                                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#commentModal2_@childcomment.ComentarioId">Responder</a>
+
+                                                                        <div class="modal fade" id="commentModal2_@childcomment.ComentarioId" tabindex="-1" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+
+                                                                                    <div class="modal-header">
+                                                                                        <h1 class="modal-title fs-5">Responder</h1>
+                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                                                                                    </div>
+
+                                                                                    @*¿el usuario estta autenticado?*@
+                                                                                    @if (!User.Identity.IsAuthenticated)
+                                                                                    {
+                                                                                        @*No está*@
+                                                                                        <p class="alert alert-warning">Para responder, inicia sesión primero</p>
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        @*Si está*@
+                                                                                        <form method="post" asp-action="AgregarComentario" class="mt-4">
+                                                                                            <div class="modal-body">
+                                                                                                <input type="hidden" name="postId" value="@Model.Post.PostId" />
+                                                                                                <input type="hidden" name="comentarioPadreId" value="@childcomment.ComentarioId" />
+
+                                                                                                <div class="form-group">
+                                                                                                    <label for="comentario">Comentario:</label>
+                                                                                                    <textarea name="comentario" id="comentario" class="form-control"></textarea>
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                            <div class="modal-footer">
+                                                                                                <button type="button" class="btn btn-secondary">Cerrar</button>
+                                                                                                <button type="submit" class="btn btn-primary">Enviar respuesta</button>
+                                                                                            </div>
+
+                                                                                        </form>
+                                                                                    }
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        @*modal-para-responder-END*@
+
+
+
+
+                                                                        @*COMENTARIOS NIETOS-START(vista parcial)*@
+
+                                                                        @await Html.PartialAsync("~/Views/Shared/Partials/_GrandChildComment.cshtml", childcomment.ComentariosHijos )
+
+                                                                        @*COMENTARIOS NIETOS-END*@
+
+
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                               @*COMENTARIOS HIJOS-END*@
+
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            @*Si no existen comentarios:*@
+                            <p>Sin comentarios</p>
+                        }
+                        @*COMENTARIOS PRINCIPALES-END*@
+
+                    </div>
+                </div>
+                @*COMENTARIOS-END*@
+            </div>
+
+            @*POST RECIENTES-START*@
+            <div class="col-md-4 mb-5">
+
+                @*mostrar arriba a la derecha*@
+                <div class="position-sticky sticky-top" style="top:2rem">
+                    <h4 class="mb-3">Ultimos posteos</h4>
+
+                    <div class="list-group mb-3">
+                        @*¿hay 10 post?*@
+                        @if (Model.PostRecientes != null)
+                        {
+                            foreach (var post in Model.PostRecientes)
+                            {
+                                @*mostrar*@
+                                <a class="list-group-item list-group-item-action" href="@Url.Action("Details", "Post" , new{id=post.PostId})">@post.Titulo</a>
+                            }
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+            @*POST RECIENTES-END*@
+
+
+        </div>
+    </div>
+
+}

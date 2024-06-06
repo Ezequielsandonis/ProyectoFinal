@@ -7,6 +7,8 @@ C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\ne
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\PubTmp\Out\TucConnect.pdb
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\PubTmp\Out\BCrypt.Net-Next.dll
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\PubTmp\Out\JetBrains.Annotations.dll
+C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
+C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\PubTmp\Out\Sendbird.dll
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\PubTmp\Out\System.Data.SqlClient.dll
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\PubTmp\Out\X.PagedList.dll
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\PubTmp\Out\X.PagedList.Mvc.Core.dll

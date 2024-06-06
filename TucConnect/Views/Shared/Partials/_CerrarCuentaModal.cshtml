@@ -1,0 +1,22 @@
+﻿
+
+<div class="modal fade" id="cerrarCuentaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        @*form para borrar la cuenta*@
+        <form method="post" asp-action="EliminarCuenta" asp-controller="Usuario">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cerrar Cuenta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Seguro desea eliminar la cuenta de forma permanente?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="submit">Eliminar cuenta</button>
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

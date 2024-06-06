@@ -1,0 +1,90 @@
+﻿@using TucConnect.Controllers;
+@model Usuario
+@{
+    ViewData["title"] = "Mi perfil";
+}
+
+@*validar que no haya errores*@
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-info" role="alert">
+        @ViewBag.Error
+    </div>
+}
+
+@*contenedor principal*@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2><i class="fas fa-user"></i>Mi perfil</h2>
+        </div>
+
+        @*MOSTRAR USUARIO-START*@
+        <div class="row">
+            <div class="col-md-8">
+
+                <div class="card">
+                    @*infoUsuario-titulo*@
+                    <div class="card-header">
+                        <h5 class="card-title"><i class="fas fa-user-circle"></i>Información del perfil</h5>
+                    </div>
+                    @*infoUsuario-body*@
+                    <div class="card-body">
+                        <p>Bienvenido/a, @Model.Nombre</p>
+                        @*form( para actualizar el perfil)*@
+                        <form asp-action="ActualizarPerfil" asp-controller="Usuario" method="post">
+                            <input type="text" id="UsuarioId" value="@Model.UsuarioId" name="UsuarioId" hidden />
+
+                            <div class="form-group">
+                                <label for="Nombre">Nombre:</label>
+                                <input type="text" id="Nombre" name="Nombre" class="form-control" value="@Model.Nombre" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="Apellido">Apellido:</label>
+                                <input type="text" id="Apellido" name="Apellido" class="form-control" value="@Model.Apellido" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="Correo">Correo:</label>
+                                <input type="email" id="Correo" name="Correo" class="form-control" value="@Model.Correo" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label for="NombreUsuario">Nombre de usuario:</label>
+                                <input type="text" id="NombreUsuario" name="NombreUsuario" class="form-control" value="@Model.NombreUsuario" disabled />
+                            </div>
+
+                            <hr /> <br />
+
+                            <button type="submit" class="btn btn-warning"><i class="fas fade-save"></i>Guardar los cambios</button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            @*EliminarCuenta-start*@
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Acciones peligrosas</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-danger">Atención se eliminaran todos sus datos de la plataforma.</p>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cerrarCuentaModal">Eliminar cuenta</button>
+                    </div>
+                </div>
+            </div>
+            @*EliminarCuenta-end*@
+
+
+        </div>
+        @*MOSTRAR USUARIO-END*@
+
+    </div>
+</div>
+
+                    @*MODAL PARA ELIMINAR LA CUENTA*@
+                    @*llamada a  la vista*@
+                    @await Html.PartialAsync("~/Views/Shared/Partials/_CerrarCuentaModal.cshtml" )

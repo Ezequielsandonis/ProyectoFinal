@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Comentario>
+
+@*VISTA PARCIAL PARA COMENTARIOS NIETOS*@
+
+@*validar el modelo*@
+ @if (Model!=null && Model.Count()>0)
+{
+    @*mostrar en en estructura de arbol*@
+    <ul class="list-unstyled mt-4 mb-0">
+
+        @foreach (var grandchildcomment in Model)
+        {
+            <li class="mb-4">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h5 class="card-title">
+
+                            @grandchildcomment.NombreUsuario
+
+                            <small class="text-muted text-sm-end small">@grandchildcomment.FechaCreacion</small>
+
+                        </h5>
+
+                        <p class="card-text">@grandchildcomment.Contenido</p>
+
+                    </div>
+                </div>
+            </li>
+        }
+        
+    </ul>
+
+ }
+

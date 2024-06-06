@@ -1,0 +1,86 @@
+﻿
+@{
+}
+
+@using TucConnect.Controllers;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@using TucConnect.Data.Enums;
+@*modelo paginado*@
+@model IPagedList<Post>
+
+
+@{
+    ViewData["Title"] = "Mis Post";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="display-4 mb-4">Tucuman Conectado</h1>
+            <p class="lead"> Tus publicaciones:.</p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    @*MOSTRAR TARJETAS DE LOS POST-START*@
+    <div class="row">
+        @*validar que no haya errores*@
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-info" role="alert">
+                @ViewBag.Error
+            </div>
+        }
+
+        @*Crear multiples tarjetas con un bucle*@
+        @foreach (var post in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body">
+                        <h2 class="card-title">@post.Titulo</h2>
+                        <h4 class="card-subtitle">En:-@post.Zona-</h4>
+
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">@post.FechaCreacion.ToShortDateString()</small>
+                        <div class="float-right">
+                            <a asp-route-id="@post.PostId" asp-action="Details" asp-controller="Post"
+                               class="btn btn-sm btn-primary">Abrir publicación</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    @*MOSTRAR TARJETAS DE LOS POST-END*@
+
+
+
+    @*PAGINACION-START*@
+    <div class="row">
+        @*programar para usar el X.PagedList -generado automaticamente-*@
+        <div class="col-md-12">
+            @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }), new PagedListRenderOptions()
+       {
+           LiElementClasses = new string[] { "page-item" },
+           PageClasses = new string[] { "page-link" },
+           ContainerDivClasses = new string[] { "pagination justify-content-center" },
+           UlElementClasses = new string[] { "pagination" }
+       })
+        </div>
+    </div>
+    @*PAGINACION-END*@
+
+</div>
+
+

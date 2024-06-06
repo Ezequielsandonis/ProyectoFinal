@@ -7,6 +7,7 @@ using Sendbird.Entities;
 using System.Data.SqlClient;
 using System.Data;
 using TucConnect.Models;
+using TucConnect.Models.ViewModels;
 
 namespace TucConnect.Controllers
 {
@@ -39,6 +40,9 @@ namespace TucConnect.Controllers
         [Authorize]
         public IActionResult Create(Post post)
         {
+
+       
+
             // control de errores
             try
             {
@@ -180,9 +184,98 @@ namespace TucConnect.Controllers
 
 
         //DETALLES
+        //get 
+        public IActionResult Details(int id)
+        {
+            //control de errores
+            try
+            {
+                //Datos necesarios 
+                var post = _postServicio.ObtenerPostPorId(id);
+                var comentarios = _postServicio.ObtenerComentariosPorPostId(id);
+                var usuarioCreador = _postServicio.ObtenerNombreUsuarioPorPostId(id);
+                comentarios = _postServicio.ObtenerComentariosHijos(comentarios);
+                comentarios = _postServicio.ObtenerComentariosNietos(comentarios);
+
+                var model = new PostDetallesViewModel // parametros del ViewModel
+                {
+                    Post = post,
+
+                    //obtener el nombre del creador del post
+                    UsuarioCreador = usuarioCreador,
+
+                    ComentariosPrincipales = comentarios.Where(c => c.ComentarioPadreId == null && c.ComentarioAbueloId == null).ToList(),
+                    //se llena la lista solo de comentarios principales
+                    ComentariosHijos = comentarios.Where(c => c.ComentarioPadreId != null && c.ComentarioAbueloId == null).ToList(),
+                    //se llena la lista solo de comentarios hijos
+                    ComentariosNietos = comentarios.Where(c => c.ComentarioPadreId != null).ToList(),
+                    //se llena la lista solo de comentarios nietos
+
+                    PostRecientes = _postServicio.ObtenerPosts().Take(10).ToList()
+                    //Se llena la lista con los 10 post mas recientes
+                };
+
+                return View(model); // se retorna una publicacion en especifico, un modelo 
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.Error = ex.Message;
+                return View();
+            }
+
+        }
 
 
         //PUBLICAR COMENTARIO
+
+        //METODO PARA PUBLICAR COMENTARIO
+        [HttpPost]
+        public IActionResult AgregarComentario(int postId, string comentario, int? comentarioPadreId)
+        {
+            try
+            //Validar que el comentario no este vacio
+            {
+                if (string.IsNullOrWhiteSpace(comentario))
+                {
+                    ViewBag.Error = "El comentario esta vacio";
+                    return RedirectToAction("Details", "Post", new { id = postId });
+                }
+
+                //validar usuario autenticado
+                int? userId = null;
+                var userIdclaim = User.FindFirst("UsuarioId");
+                if (userIdclaim != null && int.TryParse(userIdclaim.Value, out int parseUserId)) // validar que no sea nulo y que sea un valor entero
+
+                    userId = parseUserId;
+
+                DateTime fechaPublicacion = DateTime.UtcNow;
+
+                using (SqlConnection con = new(_contexto.Conexion))
+                {
+                    //procedimiento almacenado para guardar en la db
+                    using (SqlCommand cmd = new("AgregarComentario", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@Contenido", SqlDbType.VarChar).Value = comentario;//insertar los parametros del procedimiento
+                        cmd.Parameters.Add("@FechaCreacion", SqlDbType.DateTime2).Value = fechaPublicacion;
+                        cmd.Parameters.Add("@PostId", SqlDbType.Int).Value = postId;
+                        cmd.Parameters.Add("@UsuarioId", SqlDbType.Int).Value = userId;
+                        cmd.Parameters.Add("@ComentarioPadreId", SqlDbType.Int).Value = comentarioPadreId ?? (object)DBNull.Value; // validar que no sea nulo convirtiendolo a objeto 
+                        con.Open();
+                        cmd.ExecuteNonQuery(); // ejecutar el procedimiento 
+                        con.Close();
+                    }
+
+                    return RedirectToAction("Details", "Post", new { id = postId }); //retornar a la vista
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = e.Message;
+                return RedirectToAction("Details", "Post", new { id = postId });
+            }
+        }
 
     }
 }

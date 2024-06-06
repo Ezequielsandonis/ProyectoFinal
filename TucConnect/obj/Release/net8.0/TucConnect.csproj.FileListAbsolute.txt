@@ -42,3 +42,5 @@ C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\ne
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\TucConnect.pdb
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\TucConnect.genruntimeconfig.cache
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Release\net8.0\ref\TucConnect.dll
+C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Release\net8.0\Newtonsoft.Json.dll
+C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Release\net8.0\Sendbird.dll

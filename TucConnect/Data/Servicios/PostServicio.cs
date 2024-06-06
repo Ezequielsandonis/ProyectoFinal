@@ -293,12 +293,139 @@ namespace TucConnect.Data.Servicios
 
 
 
-        // COMENTARIOS POR ID  s4 
+        // COMENTARIOS POR ID  
 
-        // COMENTARIOS HIJOS s4
+        public List<Comentario> ObtenerComentariosPorPostId(int id)
+        {
+            var comments = new List<Comentario>();
+
+            using (var connection = new SqlConnection(_contexto.Conexion))
+            {
+                connection.Open();
+                using (var command = new SqlCommand("ObtenerComentariosPorPostId", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@PostId", id);
+                    using (var reader = command.ExecuteReader()) //ejecutar reader vacio
+                    {
+                        while (reader.Read())
+                        {
+                            var comment = new Comentario
+                            {    //cast/Conversiones a tipo de dato
+                                ComentarioId = (int)reader["ComentarioId"],
+                                Contenido = (string)reader["Contenido"],
+                                FechaCreacion = (DateTime)reader["FechaCreacion"],
+                                UsuarioId = (int)reader["UsuarioId"],
+                                PostId = (int)reader["PostId"],
+                                NombreUsuario = (string)reader["NombreUsuario"]
+                            };
+                            comments.Add(comment); // agregar los datos a la lista
+                        }
+                        reader.Close();
+                    }
+
+                }
+            }
+
+            return comments;
+        }
+
+        // COMENTARIOS HIJOS
+
+        public List<Comentario> ObtenerComentariosHijos(List<Comentario> comments)
+        {
+
+            using (var connection = new SqlConnection(_contexto.Conexion))
+            {
+                connection.Open();
+                foreach (var comment in comments) // recorrer la lista de comentarios 
+                {
+                    using (var command = new SqlCommand("ObtenerComentarioHijoPOComentarioId", connection))
+                    {
+
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@ComentarioId", comment.ComentarioId);
+                        using (var reader = command.ExecuteReader()) //ejecutar reader vacio
+                        {
+                            var comentariosHijos = new List<Comentario>();
+                            while (reader.Read())
+                            {
+                                var comentarioHijo = new Comentario
+                                {    //cast/Conversiones a tipo de dato
+                                    ComentarioId = (int)reader["ComentarioId"],
+                                    Contenido = (string)reader["Contenido"],
+                                    FechaCreacion = (DateTime)reader["FechaCreacion"],
+                                    UsuarioId = (int)reader["UsuarioId"],
+                                    PostId = (int)reader["PostId"],
+                                    NombreUsuario = (string)reader["NombreUsuario"],
+                                    ComentarioPadreId = comment.ComentarioId
+                                };
+                                comentariosHijos.Add(comentarioHijo); // agregar los datos a la lista
+                            }
+                            reader.Close();
+                            comment.ComentariosHijos = comentariosHijos;
 
 
-        //COMENTARIOS NIETOS s4
+                        }
+                    }
+                }
+            }
+
+            return comments;
+        }
+
+        //COMENTARIOS NIETOS
+
+        public List<Comentario> ObtenerComentariosNietos(List<Comentario> comments)
+        {
+
+            using (var connection = new SqlConnection(_contexto.Conexion))
+            {
+                connection.Open();
+                foreach (var comment in comments) // recorrer la lista de comentarios 
+                {
+                    if (comment.ComentariosHijos is not null) //validar que existan comentarios hijos
+                    {
+                        foreach (var comentariohijo in comment.ComentariosHijos)
+                        {
+                            using (var command = new SqlCommand("ObtenerComentarioHijoPOComentarioId", connection))
+                            {
+
+
+                                command.CommandType = CommandType.StoredProcedure;
+                                command.Parameters.AddWithValue("@ComentarioId", comentariohijo.ComentarioId);
+                                using (var reader = command.ExecuteReader()) //ejecutar reader vacio
+                                {
+                                    var comentariosnietos = new List<Comentario>();
+                                    while (reader.Read())
+                                    {
+                                        var comentarioNieto = new Comentario
+                                        {    //cast/Conversiones a tipo de dato
+                                            ComentarioId = (int)reader["ComentarioId"],
+                                            Contenido = (string)reader["Contenido"],
+                                            FechaCreacion = (DateTime)reader["FechaCreacion"],
+                                            UsuarioId = (int)reader["UsuarioId"],
+                                            PostId = (int)reader["PostId"],
+                                            NombreUsuario = (string)reader["NombreUsuario"],
+                                            ComentarioPadreId = comentariohijo.ComentarioId,
+                                            ComentarioAbueloId = comment.ComentarioId
+                                        };
+                                        comentariosnietos.Add(comentarioNieto); // agregar los datos a la lista
+                                    }
+                                    reader.Close();
+                                    comentariohijo.ComentariosHijos = comentariosnietos;
+
+
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            return comments; // retornar comentarios
+        }
 
 
 

@@ -7,7 +7,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAqDUn0LVW7kSARinZNNzRggAAAAACAAAAAAAQZgAAAAEAACAAAAANqnSo9z52XKYat5GWrRHNTjOGACRJY8gTq3+9za5gOQAAAAAOgAAAAAIAACAAAABWdZXmGPww14xS1yj+jh6Dxt5ct9yJCqNxBg5udHggvSAAAADGp3kFFBTOUjkuHIy07NOITSt0hUQ7obKSv9BqmtFkwkAAAABKYMsfXFhg6TdBsVod/Z6Zg6cJx6uGrQUZL86sobvH8KeXqEyrQjKdW5iW6yZy/muFpgmxi4Bk1SehTm23+D8m</EncryptedPassword>
     <_PublishTargetUrl>ftp://198.37.116.25/www.TucConnect.somee.com</_PublishTargetUrl>
-    <History>True|2024-05-09T01:28:20.8220994Z;False|2024-05-08T22:09:43.7020630-03:00;False|2024-05-08T21:48:15.4293068-03:00;False|2024-05-08T20:54:55.5760929-03:00;False|2024-05-08T20:28:10.9806520-03:00;False|2024-05-08T20:17:59.1515088-03:00;False|2024-05-08T19:50:24.7971923-03:00;False|2024-05-08T19:25:00.7205352-03:00;False|2024-05-06T19:17:16.3470838-03:00;True|2024-05-01T18:10:53.4016293-03:00;</History>
+    <History>True|2024-05-23T00:04:53.3002439Z;False|2024-05-22T20:48:24.9664938-03:00;False|2024-05-22T20:40:04.9396909-03:00;False|2024-05-22T19:34:36.9299120-03:00;True|2024-05-08T22:28:20.8220994-03:00;False|2024-05-08T22:09:43.7020630-03:00;False|2024-05-08T21:48:15.4293068-03:00;False|2024-05-08T20:54:55.5760929-03:00;False|2024-05-08T20:28:10.9806520-03:00;False|2024-05-08T20:17:59.1515088-03:00;False|2024-05-08T19:50:24.7971923-03:00;False|2024-05-08T19:25:00.7205352-03:00;False|2024-05-06T19:17:16.3470838-03:00;True|2024-05-01T18:10:53.4016293-03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -15,16 +15,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/01/2024 16:41:15</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>05/01/2024 16:51:04</publishTime>
+      <publishTime>05/09/2024 18:52:03</publishTime>
     </File>
     <File Include="appsettings.production.json">
-      <publishTime>05/08/2024 21:27:42</publishTime>
+      <publishTime>05/22/2024 20:48:34</publishTime>
     </File>
     <File Include="BCrypt.Net-Next.dll">
       <publishTime>03/03/2022 13:10:20</publishTime>
     </File>
     <File Include="JetBrains.Annotations.dll">
       <publishTime>11/07/2022 16:37:26</publishTime>
+    </File>
+    <File Include="Newtonsoft.Json.dll">
+      <publishTime>03/08/2023 04:09:54</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll">
       <publishTime>10/26/2023 20:34:06</publishTime>
@@ -41,26 +44,29 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll">
       <publishTime>10/26/2023 20:34:10</publishTime>
     </File>
+    <File Include="Sendbird.dll">
+      <publishTime>04/10/2024 06:35:18</publishTime>
+    </File>
     <File Include="System.Data.SqlClient.dll">
       <publishTime>10/26/2023 20:27:26</publishTime>
     </File>
     <File Include="TucConnect.deps.json">
-      <publishTime>05/08/2024 21:27:37</publishTime>
+      <publishTime>05/22/2024 20:48:34</publishTime>
     </File>
     <File Include="TucConnect.dll">
-      <publishTime>05/08/2024 21:27:36</publishTime>
+      <publishTime>05/22/2024 20:48:34</publishTime>
     </File>
     <File Include="TucConnect.exe">
-      <publishTime>05/08/2024 21:27:37</publishTime>
+      <publishTime>05/22/2024 20:48:34</publishTime>
     </File>
     <File Include="TucConnect.pdb">
-      <publishTime>05/08/2024 21:27:36</publishTime>
+      <publishTime>05/22/2024 20:48:34</publishTime>
     </File>
     <File Include="TucConnect.runtimeconfig.json">
-      <publishTime>05/01/2024 17:54:33</publishTime>
+      <publishTime>05/22/2024 19:31:57</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>05/08/2024 21:27:42</publishTime>
+      <publishTime>05/22/2024 20:48:34</publishTime>
     </File>
     <File Include="wwwroot/css/site.css">
       <publishTime>05/01/2024 16:41:15</publishTime>
@@ -245,6 +251,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="wwwroot/tinymce/icons/default/icons.min.js">
       <publishTime>03/07/2024 20:55:16</publishTime>
     </File>
+    <File Include="wwwroot/tinymce/langs/es.js">
+      <publishTime>05/22/2024 00:46:39</publishTime>
+    </File>
     <File Include="wwwroot/tinymce/langs/README.md">
       <publishTime>03/07/2024 20:55:11</publishTime>
     </File>
@@ -303,7 +312,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/07/2024 20:55:12</publishTime>
     </File>
     <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/ar.js">
-      <publishTime>07/03/2024 20:55:12</publishTime>
+      <publishTime>03/07/2024 20:55:12</publishTime>
     </File>
     <File Include="wwwroot/tinymce/plugins/help/js/i18n/keynav/bg_BG.js">
       <publishTime>03/07/2024 20:55:12</publishTime>

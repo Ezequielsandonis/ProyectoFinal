@@ -1,5 +1,6 @@
 ﻿@using TucConnect.Data;
 @using TucConnect.Data.Enums;
+
 @model Post;
 @{
     ViewData["Title"] = "Nueva Publicacion";
@@ -53,7 +54,7 @@
         <label for="content-input">Contenido</label>
         @*editor de texto:*@
         @if (Model != null)
-        {
+        {           
             @*si es distinto a nulo se carga el contenido*@
             <textarea id="content-editor" name="Contenido" class="form-control">@Html.Raw(Model.Contenido)</textarea>
         }

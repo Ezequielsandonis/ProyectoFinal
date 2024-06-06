@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IT0m9w7dPZ/EiMcNs891qIJQqmt2C9uqOr2B1zXmnJA=",
+  "Hash": "7ClQd6Kg9BE077sOOEnBUdJMuOYxclK7G782iQUFgP0=",
   "Source": "TucConnect",
   "BasePath": "_content/TucConnect",
   "Mode": "Default",
@@ -1212,6 +1212,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\tinymce\\icons\\default\\icons.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\NG By ROG\\Desktop\\Repositorios-Git\\TucConnect\\TucConnect\\wwwroot\\tinymce\\langs\\es.js",
+      "SourceId": "TucConnect",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\NG By ROG\\Desktop\\Repositorios-Git\\TucConnect\\TucConnect\\wwwroot\\",
+      "BasePath": "_content/TucConnect",
+      "RelativePath": "tinymce/langs/es.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\tinymce\\langs\\es.js"
     },
     {
       "Identity": "C:\\Users\\NG By ROG\\Desktop\\Repositorios-Git\\TucConnect\\TucConnect\\wwwroot\\tinymce\\langs\\README.md",
