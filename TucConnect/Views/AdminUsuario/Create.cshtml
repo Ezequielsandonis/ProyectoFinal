@@ -4,7 +4,7 @@
     ViewData["title"] = "Crear Usuario";
 }
 
-<h1>Agregar nuevo usuario</h1>
+
 @*Validar que no haya errores*@
 @if (ViewBag.Error != null)
 {
@@ -14,50 +14,57 @@
 }
 
 @*AGREGAR USUARIO-START*@
-<form method="post">
 
-    <div class="form-group">
-        <label>Nombre:</label>
-        <input asp-for="Nombre" class="form-control" />
-    </div>
+<div class="container py-5">
 
-    <div class="form-group">
-        <label>Apellido:</label>
-        <input asp-for="Apellido" class="form-control" />
-    </div>
+    <h1>Agregar nuevo usuario</h1>
 
-    <div class="form-group">
-        <label>Correo:</label>
-        <input asp-for="Correo" type="email" class="form-control" />
-    </div>
+    <form method="post">
 
-    <div class="form-group">
-        <label>Contraseña:</label>
-        <input asp-for="Contrasenia" type="password" class="form-control" />
-    </div>
+        <div class="form-group" style="color:black">
+            <label>Nombre:</label>
+            <input asp-for="Nombre" class="form-control" />
+        </div>
 
-    <div class="form-group">
-        <label>Rol:</label>
-        <select asp-for="RolId" asp-items="@ViewBag.Roles" class="form-control"></select>
-    </div>
+        <div class="form-group" style="color:black">
+            <label>Apellido:</label>
+            <input asp-for="Apellido" class="form-control" />
+        </div>
 
-    <div class="form-group">
-        <label>Nombre de usuario:</label>
-        <input asp-for="NombreUsuario" class="form-control" />
-    </div>
+        <div class="form-group" style="color:black">
+            <label>Correo:</label>
+            <input asp-for="Correo" type="email" class="form-control" />
+        </div>
 
-    <div class="form-group">
-        <label>Manetener activo?:</label>
-        <input asp-for="Estado" class="form-check-input" />
-    </div>
+        <div class="form-group" style="color:black">
+            <label>Contraseña:</label>
+            <input asp-for="Contrasenia" type="password" class="form-control" />
+        </div>
 
-   
+        <div class="form-group" style="color:black">
+            <label>Rol:</label>
+            <select asp-for="RolId" asp-items="@ViewBag.Roles" class="form-control"></select>
+        </div>
+
+        <div class="form-group" style="color:black">
+            <label>Nombre de usuario:</label>
+            <input asp-for="NombreUsuario" class="form-control" />
+        </div>
+
+        <div class="form-group" style="color:black">
+            <label>Manetener activo?:</label>
+            <input asp-for="Estado" class="form-check-input" />
+        </div>
 
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-success">Guardar</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-    </div>
-</form>
-@*AGREGAR USUARIO-END*@
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a asp-action="Index" class="btn btn-primary text-white">Cancelar</a>
+        </div>
+    </form>
+    @*AGREGAR USUARIO-END*@
+</div>
+
 

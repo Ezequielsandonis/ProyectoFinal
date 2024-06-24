@@ -123,12 +123,17 @@ update Usuarios set Nombre=@Nombre, Apellido=@Apellido, RolId=@RolId, Estado=@Es
 end
 
 --eliminar usuario
+CREATE PROCEDURE EliminarUsuario
+    @UsuarioId INT
+AS
+BEGIN
+    -- Eliminar posts asociados
+    DELETE FROM Post WHERE UsuarioId = @UsuarioId;
 
-create procedure EliminarUsuario
-@UsuarioId int
-as begin
-delete from Usuarios where  UsuarioId=@UsuarioId
-end
+    -- Eliminar usuario
+    DELETE FROM Usuarios WHERE UsuarioId = @UsuarioId;
+END;
+
 
 --Listar usuarios
 
@@ -150,8 +155,29 @@ CREATE TABLE Post (
     FOREIGN KEY (UsuarioId) REFERENCES Usuarios(UsuarioId)  
 );
 
+--Eliminar post de uysuarios 
+
+CREATE PROCEDURE EliminarPostsDeUsuario
+    @UsuarioId INT
+AS
+BEGIN
+    DELETE FROM Post WHERE UsuarioId = @UsuarioId;
+END;
 
 
+--trigger
+CREATE TRIGGER Tr_EliminarPostsDeUsuario
+ON Usuarios
+FOR DELETE
+AS
+BEGIN
+    DECLARE @UsuarioId INT;
+    SELECT @UsuarioId = UsuarioId FROM deleted;
+    EXEC EliminarPostsDeUsuario @UsuarioId;
+END;
+
+
+--INSEERTAR
 CREATE PROCEDURE InsertarPost
 @Titulo VARCHAR(500),
 @Contenido VARCHAR(MAX),
@@ -311,23 +337,4 @@ insert into Comentario values  (@Contenido,@FechaCreacion,@UsuarioId,@PostId,@Co
 end
 
 
--- --------------------------------------------------------------------- CHAT
-
-CREATE TABLE Chats (
-    ChatId INT IDENTITY (1,1) PRIMARY KEY NOT NULL,
-    UsuarioId INT FOREIGN KEY REFERENCES Usuarios(UsuarioId),
-    PostId INT FOREIGN KEY REFERENCES Post(PostId),
-    Nombre VARCHAR(100),
-    FechaCreacion DATETIME
-);
-
----------------------------------------------------------------------- MENSAJE
-CREATE TABLE Mensajes (
-    MensajeId INT IDENTITY (1,1) PRIMARY KEY NOT NULL,
-    ChatId INT FOREIGN KEY REFERENCES Chats(ChatId),
-    UsuarioId INT FOREIGN KEY REFERENCES Usuarios(UsuarioId),
-    Contenido VARCHAR(MAX),
-    FechaHora DATETIME,
-    Estado BIT
-);
 

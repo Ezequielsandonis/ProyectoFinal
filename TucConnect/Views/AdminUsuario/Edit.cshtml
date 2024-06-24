@@ -12,56 +12,55 @@
     </div>
 }
 
-<h1>Editar usuario</h1>
+
 @*Validar que no haya errores*@
-@if (ViewBag.Error != null)
-{
-    <div class="alert-danger" role="alert">
-        @ViewBag.Error
-    </div>
-}
 
-@*EDITAR USUARIO-START*@
-<form method="post" asp-action="Edit">
+<div class="container py-5">
+    <h1>Editar usuario</h1>
+    @*EDITAR USUARIO-START*@
+    <form method="post" asp-action="Edit">
 
-    <input type="hidden" asp-for="UsuarioId" />
+        <input type="hidden" asp-for="UsuarioId" />
 
-    <div class="form-group">
-        <label>Nombre:</label>
-        <input asp-for="Nombre" class="form-control" />
-    </div>
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input asp-for="Nombre" class="form-control" style="color:black" />
+        </div>
 
-    <div class="form-group">
-        <label>Apellido:</label>
-        <input asp-for="Apellido" class="form-control" />
-    </div>
+        <div class="form-group">
+            <label>Apellido:</label>
+            <input asp-for="Apellido" class="form-control" style="color:black" />
+        </div>
 
-    <div class="form-group">
-        <label>Correo:</label>
-        <input asp-for="Correo" disabled type="email" class="form-control" />
-    </div>
-
-    
-    <div class="form-group">
-        <label>Rol:</label>
-        <select asp-for="RolId" asp-items="@ViewBag.Roles" class="form-control"></select>
-    </div>
-
-    <div class="form-group">
-        <label>Nombre de usuario:</label>
-        <input asp-for="NombreUsuario" disabled class="form-control" />
-    </div>
-
-    <div class="form-group">
-        <label>Estado:</label>
-        <input asp-for="Estado" class="form-check-input" />
-    </div>
+        <div class="form-group">
+            <label>Correo:</label>
+            <input asp-for="Correo" disabled type="email" class="form-control" />
+        </div>
 
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-success">Guardar cambios</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-    </div>
-</form>
-@*EDITAR USUARIO-END*@
+        <div class="form-group">
+            <label>Rol:</label>
+            <select asp-for="RolId" asp-items="@ViewBag.Roles" class="form-control" style="color:black"></select>
+        </div>
+
+        <div class="form-group">
+            <label>Nombre de usuario:</label>
+            <input asp-for="NombreUsuario" disabled class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Estado:</label>
+            <input asp-for="Estado" class="form-check-input" />
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Guardar cambios</button>
+            <a asp-action="Index" class="btn btn-primary text-white">Cancelar</a>
+        </div>
+    </form>
+    @*EDITAR USUARIO-END*@
+</div>
+
+
 

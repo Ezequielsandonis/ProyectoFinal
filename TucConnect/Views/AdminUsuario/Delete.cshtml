@@ -11,42 +11,45 @@
         </div>
     }
 
-<h2>Eliminar Usuario</h2>
-<h4>¿Desea eliminar el usuario?</h4>
+<div class="container py-5">
+    <h2>Eliminar Usuario</h2>
+    <h4>¿Desea eliminar el usuario?</h4>
 
-@* ELIMINAR USUARIO - START *@
-<form method="post" asp-action="Delete">
+    @* ELIMINAR USUARIO - START *@
+    <form method="post" asp-action="Delete">
 
-    <input type="hidden" asp-for="UsuarioId" />
+        <input type="hidden" asp-for="UsuarioId" />
 
-    <div class="form-group">
-        <label>Nombre:</label>
-        <input asp-for="Nombre" class="form-control" disabled />
-    </div>
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input asp-for="Nombre" class="form-control" disabled />
+        </div>
 
-    <div class="form-group">
-        <label>Apellido:</label>
-        <input asp-for="Apellido" class="form-control" disabled />
-    </div>
+        <div class="form-group">
+            <label>Apellido:</label>
+            <input asp-for="Apellido" class="form-control" disabled />
+        </div>
 
-    <div class="form-group">
-        <label>Correo:</label>
-        <input asp-for="Correo" class="form-control" disabled />
-    </div>
+        <div class="form-group">
+            <label>Correo:</label>
+            <input asp-for="Correo" class="form-control" disabled />
+        </div>
 
-    <div class="form-group">
-        <label>Rol:</label>
-        <input asp-for="RolId" class="form-control" disabled />
-    </div>
+        <div class="form-group">
+            <label>Rol:</label>
+            <input asp-for="RolId" class="form-control" disabled />
+        </div>
 
-    <div class="form-group">
-        <label>Nombre de usuario:</label>
-        <input asp-for="NombreUsuario" class="form-control" disabled />
-    </div>
+        <div class="form-group">
+            <label>Nombre de usuario:</label>
+            <input asp-for="NombreUsuario" class="form-control" disabled />
+        </div>
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-danger">Eliminar usuario</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-    </div>
-</form>
-@* ELIMINAR USUARIO - END *@
+        <div class="form-group">
+            <button type="submit" class="btn btn-danger">Eliminar usuario</button>
+            <a asp-action="Index" class="btn btn-primary text-white">Cancelar</a>
+        </div>
+    </form>
+    @* ELIMINAR USUARIO - END *@
+</div>
+

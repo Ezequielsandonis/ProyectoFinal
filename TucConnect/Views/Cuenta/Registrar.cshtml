@@ -1,6 +1,4 @@
-﻿
-
-@model Usuario
+﻿@model Usuario
 @{
     ViewData["title"] = "Registro";
 }
@@ -11,8 +9,8 @@
             <div class="card mt-5">
 
                 @*Titulo*@
-                <div class="card-header bg-primary text-white">
-                    <h2 class="text-center">Registro de usuarios</h2>
+                <div class="card-header bg-primary">
+                    <h2 class="text-center text-white">Registro de usuarios</h2>
                 </div>
 
 
@@ -23,35 +21,35 @@
                         @Html.AntiForgeryToken()
                         <div class="form-group">
                             <label asp-for="Nombre">Nombre:</label>
-                            <input asp-for="Nombre" class="form-control" placeholder="Ingrese su nombre:" />
+                            <input asp-for="Nombre" class="form-control" style="color:black" placeholder="Ingrese su nombre:" />
                             @*Data Annotations*@
                             <span asp-validation-for="Nombre" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
                             <label asp-for="Apellido">Apellido:</label>
-                            <input asp-for="Apellido" class="form-control" placeholder="Ingrese su apellido:" />
+                            <input asp-for="Apellido" class="form-control" style="color:black" placeholder="Ingrese su apellido:" />
                             @*Data Annotations*@
                             <span asp-validation-for="Apellido" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
                             <label asp-for="NombreUsuario">Nombre de usuario:</label>
-                            <input asp-for="NombreUsuario" class="form-control" placeholder="Ingrese su nombre de usuario:" />
+                            <input asp-for="NombreUsuario" class="form-control" style="color:black" placeholder="Ingrese su nombre de usuario:" />
                             @*Data Annotations*@
                             <span asp-validation-for="NombreUsuario" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
                             <label asp-for="Correo">Correo:</label>
-                            <input asp-for="Correo" class="form-control" type="email" placeholder="Ingrese su correo:" />
+                            <input asp-for="Correo" class="form-control" type="email" style="color:black" placeholder="Ingrese su correo:" />
                             @*Data Annotations*@
                             <span asp-validation-for="Correo" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
                             <label asp-for="Contrasenia">Contraseña:</label>
-                            <input asp-for="Contrasenia" type="password" class="form-control" placeholder="Ingrese su contraseña:" />
+                            <input asp-for="Contrasenia" type="password" class="form-control" style="color:black" placeholder="Ingrese su contraseña:" />
                             @*Data Annotations*@
                             <span asp-validation-for="Contrasenia" class="text-danger"></span>
 
@@ -59,7 +57,7 @@
 
                         @*boton*@
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-secondary btn-block">Registrarse</button>
+                            <button type="submit" class="btn btn-secondary btn-block text-white">Registrarse</button>
                         </div>
 
 

@@ -4,20 +4,61 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Tuc Conectado</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/TucConnect.styles.css" asp-append-version="true" />
+    <!-- Cargando la hoja de estilo de Bootstrap original -->
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+
+    <!-- Cargando la hoja de estilo de Bootstrap renombrada -->
+    <link rel="stylesheet" href="~/css/bootstrap-custom.min.css" asp-append-version="true" />
+    <!-- Template Stylesheet -->
+    <link href="~/css/style.css" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/f03bd3c969.js" crossorigin="anonymous"></script>
 </head>
 
 
 <body>
+
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark px-5 d-none d-lg-block mb-1">
+        <div class="row gx-0 align-items-center" style="height: 45px;">
+            <div class="col-lg-8 text-center text-lg-start mb-lg-0">
+                <div class="d-flex flex-wrap">
+                </div>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end">
+                <div class="d-flex align-items-center justify-content-end">
+                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-0"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    @RenderSection("Carousel", required: false) <!-- Sección para el carousel -->
     @*Se implementaran las vistas Razor de C#*@
     @*Llamar a la vista principal*@
+
     @await Html.PartialAsync("~/Views/Shared/Partials/_Header.cshtml")
 
-    <div class="container py-5 d-flex flex-column min-vh-100">
+    <div class="container-fluid d-flex flex-column py-5 min-vh-100">
         <main role="main">
             <main>
                 @RenderBody()
@@ -25,48 +66,74 @@
         </main>
     </div>
 
-    <footer class="bg-dark text-light py-4 sticky-bottom mt-auto">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-4">
-                    <h5 class="mb-3">Redes Sociales</h5>
-                    <ul class="list-unstyled mb-0">
-                        <li><a href="#" class="text-light"><i class="fab fa-facebook me-2"></i>Facebook</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-twitter me-2"></i>Twitter</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-instagram me-2"></i>Instagram</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4">
-                    <h5 class="mb-3">Recursos</h5>
-                    <ul class="list-unstyled mb-0">
-                        <li><a href="#" class="text-light"></a>Politicas de privacidad</li>
-                        <li><a href="#" class="text-light"></a>Términos y condiciones</li>
-                        <li><a href="#" class="text-light"></a>Contacto</li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4">
-                    <h5 class="mb-3">Más información</h5>
-                    <form class="form-inline">
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Introduzca su correo:" />
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="text-white mb-4"><i class="me-3"></i>Tucumán Conectado</h4>
+                        <p>
+                           Esta plataforma es un medio de conexión entre los usuarios y personas orientada principalmente a Tucumán con el fin de encontrar soluciones mas rápidamente con lo que necesites.
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-share fa-2x text-white me-2"></i>
+                            <a class="btn-square btn btn-primary text-white rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            <a class="btn-square btn btn-primary text-white rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
                         </div>
-                    </form>
+                    </div>
                 </div>
-
+              
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Recuerda registrarte para acceder a las funciones</h4>
+                        <a asp-action="Login" asp-controller="Cuenta"><i class="fas fa-angle-right me-2"></i> Iniciar sesión</a>
+                        <a asp-action="Registrar" asp-controller="Cuenta"><i class="fas fa-angle-right me-2"></i> Registrarse</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Contexto</h4>
+                        <a href=""><i class="fa fa-map-marker-alt me-2"></i>Tucumám Argentina</a>
+                    </div>
+                </div>
             </div>
-
-            <hr class="my-4" />
-            <p class="text-center small mb-0">&copy;"2024 -Tucumán Conectado. Todos los derechos reservados."</p>
-
         </div>
-    </footer>
+    </div>
+    <!-- Footer End -->
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-white"><a href="#"><i class="fas fa-copyright text-light me-2"></i>www.TucConnect.soome.con</a>, All right reserved.</span>
+                </div>
+                <div class="col-md-6 text-center text-md-end text-white">
+                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/wow/wow.min.js"></script>
+    <script src="~/lib/easing/easing.min.js"></script>
+    <script src="~/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+
+
 </body>
 </html>

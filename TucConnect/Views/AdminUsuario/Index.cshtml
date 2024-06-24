@@ -2,7 +2,7 @@
 @using X.PagedList;
 @model IPagedList<Usuario>
 
-@*Esta vista usa paginacion*@
+@*Esta vista usa paginación*@
 @{
     ViewData["title"] = "Lista de usuarios";
 }
@@ -10,109 +10,95 @@
 @*Validar que no haya errores*@
 @if (ViewBag.Error != null)
 {
-    <div class="alert-danger" role="alert">
+    <div class="alert alert-danger" role="alert">
         @ViewBag.Error
     </div>
 }
 
+<div class="container py-5">
+    <h1>@ViewData["Title"]</h1>
+    <p>
+        <a asp-action="Create" class="btn btn-primary text-white">Crear nuevo usuario</a>
+    </p>
 
-<h1>@ViewData["Title"]</h1>
-<p>
-    <a asp-action="Create" class="btn btn-primary">Crear nuevo usuario</a>
-</p>
+    @*Formulario de cuadro de búsqueda*@
+    <form asp-controller="AdminUsuario" asp-action="Index" method="get">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar por correo o nombre de usuario:" name="buscar" />
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+            </div>
+        </div>
+    </form>
 
-@*Formulario de cuadro de busqueda*@
-<form asp-controller="AdminUsuario" asp-action="Index" method="get">
-
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Buscar por correo o nombre de usuario:" name="buscar" />
-
-        <div class="input-group-append">
-            <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+    @*Validar y evitar errores*@
+    @if (Model.Count > 0)
+    {
+        @*Mostrar usuarios en una tabla*@
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre de usuario</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var usuario in Model)
+                    {
+                        <tr>
+                            <td>@usuario.NombreUsuario</td>
+                            <td>@usuario.Correo</td>
+                            <td>
+                                @if (ViewBag.Roles != null)
+                                {
+                                    var rol = ((List<SelectListItem>)ViewBag.Roles).FirstOrDefault(r => r.Value == usuario.RolId.ToString());
+                                    @if (rol != null)
+                                    {
+                                        @rol.Value
+                                    }
+                                }
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@usuario.UsuarioId" class="btn btn-sm btn-warning">Editar</a>
+                                <a asp-action="Delete" asp-route-id="@usuario.UsuarioId" class="btn btn-sm btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
 
-    </div>
-
-</form>
-
-@*validar y evitar errores*@
-@if (Model.Count>0)
-{
-    @*mostrar usuarios en una tabla*@
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre de usuario</th>
-                <th>Correo</th>
-                <th>Rol</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var usuario in Model)
-            {
-                <tr>
-                    <td>@usuario.NombreUsuario</td>
-                    <td>@usuario.Correo</td>
-
-                    @*validar rol para mostrarlo*@
-                    <td>@if (ViewBag.Roles != null)
-                        {
-                            var rol = ((List<SelectListItem>)ViewBag.Roles).FirstOrDefault(r => r.Value == usuario.RolId.ToString());
-                                @if (rol!=null)
-                            {
-                                @rol.Value;
-                            }
-                        }
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@usuario.UsuarioId">Editar</a>
-                        <a asp-action="Delete" asp-route-id="@usuario.UsuarioId">Eliminar</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-    @*PAGINACION-START*@
-    <div class="row">
-        <div class="col-md-12">
-            @* @(Model.PageCount < Model.PageNumber) de @Model.PageCount*@
+        @*Paginación*@
+        <div class="d-flex justify-content-center mt-4">
             <nav>
-
                 <ul class="pagination">
-
-                    <li class="page-item @(Model.PageNumber == 1 ?"disabled" : "")">
-                        @*Boton para pasar a la pagina anterior*@
-                        <a  class="page-link" href="@Url.Action("Index", new{pagina=Model.PageNumber - 1 , buscar=ViewData["buscar"] })" aria-label="Previus">
+                    <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { pagina = Model.PageNumber - 1, buscar = ViewData["buscar"] })" aria-label="Previus">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
 
                     @for (int i = 1; i <= Model.PageCount; i++)
                     {
-                        @*generar los botones del medio(1,2,3,...)*@
                         <li class="page-item @(Model.PageNumber == i ? "active" : "")">
-                            <a class="page-link" href="@Url.Action("Index" , new{pagina = i , buscar=ViewData["buscar"] })">@i</a>
+                            <a class="page-link" href="@Url.Action("Index", new { pagina = i, buscar = ViewData["buscar"] })">@i</a>
                         </li>
                     }
 
                     <li class="page-item @(Model.PageNumber == Model.PageCount ? "disabled" : "")">
-                        @*Boton para pasar a la pagina siguiente*@
-                        <a class="page-link" href="@Url.Action("Index" , new{pagina = Model.PageNumber + 1 , buscar=ViewData["buscar"] })" aria-label="Next">
+                        <a class="page-link" href="@Url.Action("Index", new { pagina = Model.PageNumber + 1, buscar = ViewData["buscar"] })" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
-
                 </ul>
-
             </nav>
         </div>
-    </div>
-    @*PAGINACION-END*@
-
-}
-else
-{
-    <p>No se encontró un usuario</p>
-}
+    }
+    else
+    {
+        <p>No se encontró ningún usuario</p>
+    }
+</div>

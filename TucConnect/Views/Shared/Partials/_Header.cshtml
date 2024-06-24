@@ -6,79 +6,89 @@
 
 <header>
 
-    @* BARRA DE  NAVEGACION-START *@
-    <nav class="navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Tuc Conectado</a>
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
 
+       
 
-            @* categorias *@
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home")">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Noticias"})">Noticias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Trabajo"})">Trabajos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Productos"})">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Tutoriales"})">Tutoriales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Recursos"})">Recursos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Servicios"})">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Otro"})">Otros</a>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
+            <a href="#" class="navbar-brand p-0">
+                <h3 class="text-primary m-1">Tuc Connect</h3>
+                @*<img src="~/img/logo.png.jpg" alt="Logo">*@
+            </a>
 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav  py-0">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Home")">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Noticias"})">Noticias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Trabajo"})">Trabajos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Productos"})">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Tutoriales"})">Tutoriales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Recursos"})">Recursos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Servicios"})">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Otro"})">Otros</a>
+                        </li>
+                    </ul>
 
-                <div class="d-flex mx-auto">
-                    <!-- Barra de búsqueda -->
-                    <form class="d-flex" method="get" asp-controller="Home" asp-action="Index">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" />
-                        <button class="btn btn-outline-secondary" type="submit">Buscar</button>
-                    </form>
+                    <div class="d-flex mx-auto mb-2 mb-lg-0">
+                        <!-- Barra de búsqueda -->
+                        <form class="d-flex me-3" method="get" asp-controller="Home" asp-action="Index">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" />
+                            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                        </form>
 
-                    <!-- Barra de búsqueda por zona -->
-                    <div id="navbarSupportedContent" class="ms-auto">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                        <!-- Barra de búsqueda por zona -->
+                        <div id="navbarSupportedContent" class="ms-auto">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
 
-                        <!-- Navbar Collapse -->
-                        <ul class="navbar-nav">
-                            <!-- Dropdown Menu -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Zona
-                                </a>
-                                <!-- Dropdown Menu Content -->
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="@Url.Action("Index" , "Home", new{ zona="Centro"})">Centro</a></li>
-                                    <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="YerbaBuena"})">Yerba Buena</a></li>
-                                    <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="SM"})">San Miguel</a></li>
-                                    <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="TafiViejo"})">Tafi Viejo</a></li>
-                                    <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="ZonaSur"})">Sur</a></li>
-                                    <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{zona="Otros"})">Otro</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                            <!-- Navbar Collapse -->
+                            <ul class="navbar-nav">
+                                <!-- Dropdown Menu -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Zona
+                                    </a>
+                                    <!-- Dropdown Menu Content -->
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="@Url.Action("Index" , "Home", new{ zona="Centro"})">Centro</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="YerbaBuena"})">Yerba Buena</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="SM"})">San Miguel</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="TafiViejo"})">Tafi Viejo</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="ZonaSur"})">Sur</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{zona="Otros"})">Otro</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+
+
+
+
                 </div>
-
-
 
                 @* listado de opciones *@
                 <ul class="navbar-nav ms-auto">
@@ -87,22 +97,23 @@
                     {
                         @* mostrar opcion de registro e inicio de sesion *@
                         <li class="nav-item">
-                            <a class="nav-link" asp-action="Registrar" asp-controller="Cuenta">Registrarse</a>
+                            <a class="btn btn-secondary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0" asp-action="Registrar" asp-controller="Cuenta">Registrarse</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-action="Login" asp-controller="Cuenta">Iniciar Sesión</a>
+                            <a class="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0" asp-action="Login" asp-controller="Cuenta">Iniciar sesión</a>
                         </li>
                     }
                     else
                     {
                         @* Opciones disponibles solo para usuarios autenticados *@
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" id="UserDropdown" data-bs-toggle="dropdown">
+                            <a class="btn btn-secondary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0 dropdown-toggle"
+                               href="#" data-bs-toggle="dropdown">
                                 @* Cargar nombre del usuario *@
                                 @User.FindFirstValue(ClaimTypes.NameIdentifier)
                             </a>
                             @* menu opciones *@
-                            <ul class="dropdown-menu dropdown-menu-end">
+                            <ul class="dropdown-menu">
                                 <li>
                                     <a class="dropdown-item" asp-action="Perfil" asp-controller="Usuario">Mi perfil</a>
                                 </li>
@@ -129,8 +140,16 @@
                     }
                 </ul>
             </div>
-        </div>
-    </nav>
-    @* BARRA DE  NAVEGACION-END *@
+
+
+
+        </nav>
+
+
+    </div>
+
+
+
+    <!-- Navbar & Hero End -->
 
 </header>

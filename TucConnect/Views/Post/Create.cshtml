@@ -1,6 +1,5 @@
 ﻿@using TucConnect.Data;
 @using TucConnect.Data.Enums;
-
 @model Post;
 @{
     ViewData["Title"] = "Nueva Publicacion";
@@ -15,63 +14,67 @@
 }
 
 @**@
-<h2 class="md-4">Nueva publicación</h2>
 
-@*CREAR NUEVA PUBLICACION-START*@
-<form asp-action="Create" method="post">
+<div class="container py-5">
+    <h2 class="md-4">Nueva publicación</h2>
 
-    <div class="form-group mb-4">
-        <label for="title-input">Titulo</label>
-        <input id="title-input" asp-for="Titulo" class="form-control" />
-        <span asp-validation-for="Titulo" class="text-danger"></span>
-    </div>
+    @*CREAR NUEVA PUBLICACION-START*@
+    <form asp-action="Create" method="post">
 
-    <div class="form-group mb-4">
-        <label for="category-input">Categoria:</label>
-        <select id="category-input" asp-for="Categoria" class="form-control">
-            @*Recorrer nuestras categoriasenum para mostrarlas*@
-            @foreach (var categoria in CategoriaEnum.GetValues(typeof(CategoriaEnum)))
+        <div class="form-group mb-4">
+            <label for="title-input" >Titulo</label>
+            <input id="title-input" asp-for="Titulo" class="form-control" style="color:black" />
+            <span asp-validation-for="Titulo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="category-input">Categoria:</label>
+            <select id="category-input" asp-for="Categoria" class="form-control" style="color:black">
+                @*Recorrer nuestras categoriasenum para mostrarlas*@
+                @foreach (var categoria in CategoriaEnum.GetValues(typeof(CategoriaEnum)))
+                {
+                    <option value="@categoria">@categoria.ToString()</option>
+                }
+            </select>
+            <span asp-validation-for="Categoria" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="zone-input">Zona :</label>
+            <select id="zone-input" asp-for="Zona" class="form-control" style="color:black">
+                @*Recorrer nuestras zonaEnum para mostrarlas*@
+                @foreach (var zona in ZonaEnum.GetValues(typeof(ZonaEnum)))
+                {
+                    <option value="@zona">@zona.ToString()</option>
+                }
+            </select>
+            <span asp-validation-for="Zona" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-5">
+            <label for="content-input">Contenido</label>
+            @*editor de texto:*@
+            @if (Model != null)
             {
-                <option value="@categoria">@categoria.ToString()</option>
+                @*si es distinto a nulo se carga el contenido*@
+                <textarea id="content-editor" name="Contenido" class="form-control">@Html.Raw(Model.Contenido)</textarea>
             }
-        </select>
-        <span asp-validation-for="Categoria" class="text-danger"></span>
-    </div>
-
-    <div class="form-group mb-4">
-        <label for="zone-input">Zona :</label>
-        <select id="zone-input" asp-for="Zona" class="form-control">
-            @*Recorrer nuestras zonaEnum para mostrarlas*@
-            @foreach (var zona in ZonaEnum.GetValues(typeof(ZonaEnum)))
+            else
             {
-                <option value="@zona">@zona.ToString()</option>
+                @*si no se deja en blanco*@
+                <textarea id="content-editor" name="Contenido" class="form-control"></textarea>
             }
-        </select>
-        <span asp-validation-for="Zona" class="text-danger"></span>
-    </div>
+            <span asp-validation-for="Contenido" class="text-danger"></span>
+        </div>
 
-    <div class="form-group mb-5">
-        <label for="content-input">Contenido</label>
-        @*editor de texto:*@
-        @if (Model != null)
-        {           
-            @*si es distinto a nulo se carga el contenido*@
-            <textarea id="content-editor" name="Contenido" class="form-control">@Html.Raw(Model.Contenido)</textarea>
-        }
-        else
-        {
-            @*si no se deja en blanco*@
-            <textarea id="content-editor" name="Contenido" class="form-control"></textarea>
-        }
-        <span asp-validation-for="Contenido" class="text-danger"></span>
-    </div>
+        <div class="d-grid gap-2 col-md-2 mx-auto">
+            <button type="submit" class="btn btn-success btn-lg">Crear Publicación</button>
+        </div>
 
-    <div class="d-grid gap-2 col-md-2 mx-auto">
-        <button type="submit" class="btn btn-success btn-lg">Crear Publicación</button>
-    </div>
+    </form>
+    @*CREAR NUEVA PUBLICACION-END*@
+</div>
 
-</form>
-@*CREAR NUEVA PUBLICACION-END*@
 
 
 

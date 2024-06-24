@@ -8,6 +8,8 @@ C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8.0\TucConnect.pdb
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8.0\BCrypt.Net-Next.dll
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8.0\JetBrains.Annotations.dll
+C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8.0\Sendbird.dll
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8.0\System.Data.SqlClient.dll
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8.0\X.PagedList.dll
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
@@ -42,5 +44,3 @@ C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Debug\net8
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Debug\net8.0\TucConnect.pdb
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Debug\net8.0\TucConnect.genruntimeconfig.cache
 C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\obj\Debug\net8.0\ref\TucConnect.dll
-C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\Users\NG By ROG\Desktop\Repositorios-Git\TucConnect\TucConnect\bin\Debug\net8.0\Sendbird.dll

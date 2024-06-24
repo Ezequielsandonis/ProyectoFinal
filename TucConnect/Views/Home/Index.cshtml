@@ -12,53 +12,95 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="display-4 mb-4">Tucuman Conectado</h1>
-            <p class="lead">Ultimas publicaciones sobre @ViewBag.CategoriaDescripcion.</p>
-        </div>
-    </div>
-
-
-
-
-
-
-    @*MOSTRAR TARJETAS DE LOS POST-START*@
-    <div class="row">
-        @*validar que no haya errores*@
-        @if (ViewBag.Error != null)
-        {
-            <div class="alert alert-info" role="alert">
-                @ViewBag.Error
-            </div>
-        }
-
-        @*Crear multiples tarjetas con un bucle*@
-        @foreach (var post in Model)
-        {
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow">
-                    <div class="card-body">
-                        <h2 class="card-title">@post.Titulo</h2>
-                        <h4 class="card-subtitle">En:-@post.Zona-</h4>
-
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">@post.FechaCreacion.ToShortDateString()</small>
-                        <div class="float-right">
-                            <a asp-route-id="@post.PostId" asp-action="Details" asp-controller="Post"
-                               class="btn btn-sm btn-primary">Abrir publicación</a>
-                        </div>
-                    </div>
+<div class="container-fluid">
+    <!-- Carousel Start -->
+    <div class="header-carousel owl-carousel full-width-carousel">
+        <div class="header-carousel-item">
+            <img src="~/img/foto_2.jpg" class="img-fluid w-100" alt="Image">
+            <div class="carousel-caption">
+                <div class="carousel-caption-content p-3">
+                    <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Tucuman conectado</h5>
+                    <h4 class="display-1 text-capitalize text-white mb-4">Recuerda crear tu cuenta para publicar</h4>
+                    <p class="mb-5 fs-5">
+                        Con esta plataforma te conectarás con lo que busques. Y También podrás dar a conocerte a vos o a tu negocio, recuerda abrir una publicación para obtener mas detalles 
+                    </p>
+                  
                 </div>
             </div>
-        }
+        </div>
+        <div class="header-carousel-item">
+            <img src="~/img/foto_1.jpg" class="img-fluid w-100" alt="Image">
+            <div class="carousel-caption">
+                <div class="carousel-caption-content p-3">
+                    <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Tucuman conectado</h5>
+                    <h1 class="display-1 text-capitalize text-white mb-4">La mejor solución para vos</h1>
+                    <p class="mb-5 fs-5 animated slideInDown">
+                        Conectate con lo que desees de manera rápida y directa sin vueltas.
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
     </div>
-    @*MOSTRAR TARJETAS DE LOS POST-END*@
+    <!-- Carousel End -->
+</div>
+
+<div class="container py-5">
+
+
+   
+    <!-- Services Start -->
+    <div class="container-fluid service py-5">
+        <div class="container py-5">
+            <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="sub-style">
+                    <h4 class="sub-title px-3 mb-0">Tuc-Connect</h4>
+                </div>
+                <h1 class="display-3 mb-4">Todo lo que buscas al alance de un click</h1>
+                <p class="mb-0" style="font-size: 25px;">
+                    Últimas publicaciones sobre  <strong>@ViewBag.CategoriaDescripcion</strong> .En <strong>@ViewBag.DescripcionZona</strong>
+                </p> 
+
+            </div>
+            <div class="row g-4 justify-content-center">
+
+                <div class="row">
+                    @*validar que no haya errores*@
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-info" role="alert">
+                            @ViewBag.Error
+                        </div>
+                    }
+
+                </div>
+
+                @*Crear multiples tarjetas con un bucle*@
+                @foreach (var post in Model)
+                {
+                    <div class="col-md-4 mb-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="card h-100 shadow service-item rounded">
+                            <div class="card-body service-content-inner">
+                                <h2 class="card-title mb-4" style="font-family: 'Arial', sans-serif;color: #333;">@post.Titulo</h2>
+                                <p class="card-subtitle mb-4" style="font-size :22px">En <strong>@post.Zona </strong></p>
+
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">@post.FechaCreacion.ToString("dd/MM/yyyy")</small>
+                                <div class="float-right">
+                                    <a asp-route-id="@post.PostId" asp-action="Details" asp-controller="Post"
+                                       class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Leer mas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Services End -->
 
 
 

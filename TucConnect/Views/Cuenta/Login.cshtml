@@ -1,12 +1,12 @@
 ﻿@using TucConnect.Models.ViewModels;
-@model LoginViewModel; 
+@model LoginViewModel;
 @{
     ViewData["title"] = "Login";
 }
 @*contenedor principal:*@
 <div class="container">
-    
-    <div class="row justify-content-center mt-5" >
+
+    <div class="row justify-content-center mt-5">
 
 
         @*INICIO DE SESION-START*@
@@ -14,7 +14,7 @@
             <div class="card">
 
                 <div class="card-header bg-primary text-white text-center">
-                    <h2>Iniciar Sesión</h2>
+                    <h2 class="text-white">Iniciar Sesión</h2>
                 </div>
 
                 @*formulario-start*@
@@ -23,32 +23,32 @@
 
                         <div class="form-group">
                             <label for="Correo">Correo:</label>
-                            <input type="email" id="Correo" asp-for="Correo" class="form-control" placeholder="Ingrese su correo electrónico" />
+                            <input type="email" id="Correo" asp-for="Correo" class="form-control" style="color:black" placeholder="Ingrese su correo electrónico" />
                             @*span para mostrar los data anotations*@
                             <span asp-validation-for="Correo" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="Contrasenia">Contraseña:</label>
-                            <input type="password" id="Contrasenia" asp-for="Contrasenia" class="form-control" placeholder="Ingrese su contraseña" />
+                            <input type="password" id="Contrasenia" asp-for="Contrasenia" class="form-control" style="color:black"  placeholder="Ingrese su contraseña" />
                             @*span para mostrar los data anotations*@
                             <span asp-validation-for="Contrasenia" class="text-danger"></span>
                         </div>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" asp-for="MantenerActivo" class="form-check-input"/>
-                            <label asp-for="MantenerActivo" class="form-check-label">¿Mantener activo?</label>
+                            <input type="checkbox" asp-for="MantenerActivo" class="form-check-input" />
+                            <label asp-for="MantenerActivo" class="form-check-label" style="color:black">¿Mantener activo?</label>
                         </div>
 
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Ingresar</button>
+                            <button type="submit" class="btn btn-primary btn-lg text-white">Ingresar</button>
                         </div>
 
                     </form>
                     @*formulario-end*@
 
                     @*validar-error*@
-                    @if (ViewBag.Error!=null)
+                    @if (ViewBag.Error != null)
                     {
                         <div class="text-danger text-center">
                             @ViewBag.Error

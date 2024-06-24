@@ -1,8 +1,7 @@
-﻿
-@{
+﻿@{
 }
 
-@using TucConnect.Controllers;
+@using MyBlog.Controllers;
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
 @using X.PagedList.Web.Common;
@@ -17,18 +16,13 @@
 
 
 
-<div class="container">
+<div class="container py-5">
     <div class="row">
         <div class="col-md-12">
             <h1 class="display-4 mb-4">Tucuman Conectado</h1>
             <p class="lead"> Tus publicaciones:.</p>
         </div>
     </div>
-
-
-
-
-
 
 
     @*MOSTRAR TARJETAS DE LOS POST-START*@
@@ -47,15 +41,15 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow">
                     <div class="card-body">
-                        <h2 class="card-title">@post.Titulo</h2>
-                        <h4 class="card-subtitle">En:-@post.Zona-</h4>
+                        <h2 class="card-title mb-4" style="font-family: 'Arial', sans-serif;color: #333;">@post.Titulo</h2>
+                        <p class="card-subtitle mb-4" style="font-size :22px">En <strong>@post.Zona </strong></p>
 
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">@post.FechaCreacion.ToShortDateString()</small>
                         <div class="float-right">
                             <a asp-route-id="@post.PostId" asp-action="Details" asp-controller="Post"
-                               class="btn btn-sm btn-primary">Abrir publicación</a>
+                               class="btn btn-sm btn-primary text-white">Abrir publicación</a>
                         </div>
                     </div>
                 </div>

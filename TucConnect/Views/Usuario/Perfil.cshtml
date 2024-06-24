@@ -37,19 +37,19 @@
 
                             <div class="form-group">
                                 <label for="Nombre">Nombre:</label>
-                                <input type="text" id="Nombre" name="Nombre" class="form-control" value="@Model.Nombre" required />
+                                <input type="text" id="Nombre" name="Nombre" class="form-control" style="color:black" value="@Model.Nombre" required />
                             </div>
                             <div class="form-group">
                                 <label for="Apellido">Apellido:</label>
-                                <input type="text" id="Apellido" name="Apellido" class="form-control" value="@Model.Apellido" required />
+                                <input type="text" id="Apellido" name="Apellido" class="form-control" style="color:black" value="@Model.Apellido" required />
                             </div>
                             <div class="form-group">
                                 <label for="Correo">Correo:</label>
-                                <input type="email" id="Correo" name="Correo" class="form-control" value="@Model.Correo" disabled />
+                                <input type="email" id="Correo" name="Correo" class="form-control" style="color:black" value="@Model.Correo" required />
                             </div>
                             <div class="form-group">
                                 <label for="NombreUsuario">Nombre de usuario:</label>
-                                <input type="text" id="NombreUsuario" name="NombreUsuario" class="form-control" value="@Model.NombreUsuario" disabled />
+                                <input type="text" id="NombreUsuario" name="NombreUsuario" class="form-control" style="color:black" value="@Model.NombreUsuario" disabled />
                             </div>
 
                             <hr /> <br />
@@ -85,6 +85,6 @@
     </div>
 </div>
 
-                    @*MODAL PARA ELIMINAR LA CUENTA*@
-                    @*llamada a  la vista*@
-                    @await Html.PartialAsync("~/Views/Shared/Partials/_CerrarCuentaModal.cshtml" )
+@*MODAL PARA ELIMINAR LA CUENTA*@
+@*llamada a  la vista*@
+@await Html.PartialAsync("~/Views/Shared/Partials/_CerrarCuentaModal.cshtml")
