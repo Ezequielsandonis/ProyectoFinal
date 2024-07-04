@@ -236,6 +236,18 @@ BEGIN
     WHERE P.PostId = @PostId;
 END
 
+--Obtener Usuario por post para el chat
+
+CREATE PROCEDURE ObtenerUsuarioPorPostId
+    @PostId INT
+AS
+BEGIN
+    SELECT U.UsuarioId, U.NombreUsuario  
+    FROM Post P
+    INNER JOIN Usuarios U ON P.UsuarioId = U.UsuarioId
+    WHERE P.PostId = @PostId;
+END
+
 --ObtenerPostPorUsuarioId
 CREATE PROCEDURE ListarPostPorUsuarioId
     @UsuarioId INT

@@ -27,6 +27,10 @@ namespace MyBlog.Controllers
         }
 
 
+        public IActionResult Error()
+        {
+            return View();
+        }
 
         public IActionResult Index(string categoria, string buscar, string zona, int? pagina)
         {

@@ -16,7 +16,13 @@
     ViewData["Title"] = Model.Post.Titulo;
 
     <div class="container py-5">
-        @if (User.Identity.IsAuthenticated && Model.Post.UsuarioId == Convert.ToInt32(User.FindFirst("UsuarioId").Value))
+        @{
+            var isAuthenticated = User.Identity.IsAuthenticated;
+            var isOwner = isAuthenticated && Model.Post.UsuarioId == Convert.ToInt32(User.FindFirst("UsuarioId").Value);
+            var isAdmin = isAuthenticated && User.IsInRole("Administrador");
+        }
+
+        @if (isOwner)
         {
             <h2 style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.Titulo</h2>
             <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.Categoria.ToString()</h4>
@@ -27,26 +33,30 @@
         {
             <h2 style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.Titulo</h2>
             <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.Categoria.ToString()</h4>
-            <h4 style="font-family: 'Arial', sans-serif;color: #333;">Anunciante: <strong>@Model.UsuarioCreador / </strong>  <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Enviar mensaje directo</a></h4>
+            <h4 style="font-family: 'Arial', sans-serif;color: #333;">
+                Anunciante: <strong>@Model.UsuarioCreador / </strong>
+                @if (isAuthenticated)
+                {
+                    <a asp-action="IniciarChat" asp-controller="Chat" asp-route-postId="@Model.Post.PostId" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Enviar mensaje directo</a>
+                }
+               
+            </h4>
             <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.FechaCreacion.ToString("dd/MM/yyyy")</h4>
         }
 
-     
-
-        @*¿el usuario es administrador o dueño de un post?*@
-        @if (User.IsInRole("Administrador") || User.Identity.IsAuthenticated && Model.Post.UsuarioId == Convert.ToInt32(User.FindFirst("UsuarioId").Value))
+        @if (isAdmin || isOwner)
         {
-            @*OP ADMINISTRADOR-START*@
+            @* OP ADMINISTRADOR-START *@
             <form asp-action="Delete" asp-route-id="@Model.Post.PostId" method="post">
                 <a asp-action="Update" asp-route-id="@Model.Post.PostId" class="btn btn-warning">
                     <i class="fa-regular fa-edit"></i>
                 </a>
-                @*abrir el modal para eliminar post*@
+                @* abrir el modal para eliminar post *@
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal">
                     <i class="far fa-trash-alt"></i>
                 </button>
 
-                @*Modal-start*@
+                @* Modal-start *@
                 <div class="modal fade" id="confirm-delete-modal" tabindex="-1" aria-labelledby="confirm-delete-modal-label" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -59,17 +69,17 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary text-white" data-bs-dismiss="modal">Cerrar</button>
-                                @*boton tipo submit para ejecutar form.*@
+                                @* boton tipo submit para ejecutar form. *@
                                 <button type="submit" class="btn btn-danger">Eliminar publicación</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                @*Modal-end*@
-
+                @* Modal-end *@
             </form>
-            @*OP ADMINISTRADOR-END*@
+            @* OP ADMINISTRADOR-END *@
         }
+
         @*Usuario-no-administrador*@
         <br />
         <br />

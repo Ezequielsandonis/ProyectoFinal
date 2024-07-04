@@ -1,0 +1,144 @@
+﻿
+@using TucConnect.Models.Models
+@model IEnumerable<SendbirdChannel>
+
+@{
+    ViewData["Title"] = "Chats";
+}
+
+
+
+
+@*Validar que no haya errores*@
+@if (ViewBag.Error != null)
+{
+    <div class="alert-danger" role="alert">
+        @ViewBag.Error
+    </div>
+}
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info" role="alert">
+        No tienes chats disponibles actualmente.
+    </div>
+}
+else
+{
+
+    <div class="chat-container">
+        <div class="chat-list">
+            <ul>
+                @foreach (var channel in Model)
+                {
+                    <li>
+                        <a href="@Url.Action("VerChat", new { channelUrl = channel.ChannelUrl })" class="chat-item">
+                            <div class="chat-details">
+                                <h4>@string.Join(", ", channel.Members.Select(m => m.Nickname))</h4>
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="chat-view">
+            <div id="chat-messages">
+                <p>Select a chat to view messages</p>
+            </div>
+            <form id="send-message-form" method="post" asp-action="SendMessage" asp-controller="Chat" style="display:none;">
+                <input type="hidden" id="ChannelUrl" name="ChannelUrl" value="" />
+                <textarea id="Message" name="Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+}
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('.chat-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                const channelUrl = this.getAttribute('data-channel-url');
+                document.getElementById('ChannelUrl').value = channelUrl;
+                fetchMessages(channelUrl);
+            });
+        });
+
+        async function fetchMessages(channelUrl) {
+            const response = await fetch(`/Chat/GetChannelMessages?channelUrl=${channelUrl}`);
+            const messages = await response.json();
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML = '';
+            messages.forEach(message => {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+                messageElement.innerHTML = `<strong>${message.UserId}</strong>: ${message.Message} <span class="timestamp">${new Date(message.CreatedAt).toLocaleString()}</span>`;
+                chatMessages.appendChild(messageElement);
+            });
+            document.getElementById('send-message-form').style.display = 'block';
+        }
+    </script>
+}
+
+<style>
+    .chat-container {
+        display: flex;
+        height: 100vh;
+    }
+    .chat-list {
+        width: 30%;
+        border-right: 1px solid #ccc;
+        overflow-y: scroll;
+    }
+    .chat-view {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+    }
+    .chat-item {
+        display: block;
+        padding: 15px;
+        border-bottom: 1px solid #ccc;
+        text-decoration: none;
+        color: inherit;
+    }
+    .chat-details {
+        display: flex;
+        justify-content: space-between;
+    }
+    #chat-messages {
+        flex: 1;
+        padding: 20px;
+        overflow-y: scroll;
+    }
+    .message {
+        margin-bottom: 10px;
+    }
+    .timestamp {
+        font-size: 0.8em;
+        color: #888;
+    }
+    #send-message-form {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+    }
+    #send-message-form textarea {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none;
+    }
+    #send-message-form button {
+        margin-left: 10px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>

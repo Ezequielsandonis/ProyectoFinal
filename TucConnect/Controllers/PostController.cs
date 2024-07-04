@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using TucConnect.Data.Servicios;
 using TucConnect.Data;
 using Microsoft.AspNetCore.Authorization;
-using Sendbird.Entities;
 using System.Data.SqlClient;
 using System.Data;
 using TucConnect.Models;

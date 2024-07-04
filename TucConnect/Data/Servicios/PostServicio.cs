@@ -138,13 +138,42 @@ namespace TucConnect.Data.Servicios
             return nombreUsuario;
         }
 
-        //LISTAR POST POR USUARIO ID 
-        //obgtener id de usuario autenticado
+        //LISTAR USUARIO Y ID POR POST 
+
+        public Usuario ObtenerUsuarioPorPostId(int postId)
+        {
+            Usuario usuario = null;
+
+            using (var connection = new SqlConnection(_contexto.Conexion))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("ObtenerUsuarioPorPostId", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@PostId", postId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            usuario = new Usuario
+                            {
+                                UsuarioId = Convert.ToInt32(reader["UsuarioId"]),
+                                NombreUsuario = reader["NombreUsuario"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return usuario;
+        }
+
+            //LISTAR POST POR USUARIO ID 
 
 
-
-
-        public List<Post> ListarPostPorUsuarioId(int userId) // método de tipo lista
+            public List<Post> ListarPostPorUsuarioId(int userId) // método de tipo lista
         {
             var posts = new List<Post>();
 

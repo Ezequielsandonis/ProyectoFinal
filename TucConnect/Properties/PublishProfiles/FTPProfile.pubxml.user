@@ -7,7 +7,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAqDUn0LVW7kSARinZNNzRggAAAAACAAAAAAAQZgAAAAEAACAAAAANqnSo9z52XKYat5GWrRHNTjOGACRJY8gTq3+9za5gOQAAAAAOgAAAAAIAACAAAABWdZXmGPww14xS1yj+jh6Dxt5ct9yJCqNxBg5udHggvSAAAADGp3kFFBTOUjkuHIy07NOITSt0hUQ7obKSv9BqmtFkwkAAAABKYMsfXFhg6TdBsVod/Z6Zg6cJx6uGrQUZL86sobvH8KeXqEyrQjKdW5iW6yZy/muFpgmxi4Bk1SehTm23+D8m</EncryptedPassword>
     <_PublishTargetUrl>ftp://198.37.116.25/www.TucConnect.somee.com</_PublishTargetUrl>
-    <History>True|2024-06-08T04:52:47.6571673Z;False|2024-06-07T23:10:39.0671648-03:00;False|2024-06-07T21:46:50.3942729-03:00;True|2024-05-22T21:04:53.3002439-03:00;False|2024-05-22T20:48:24.9664938-03:00;False|2024-05-22T20:40:04.9396909-03:00;False|2024-05-22T19:34:36.9299120-03:00;True|2024-05-08T22:28:20.8220994-03:00;False|2024-05-08T22:09:43.7020630-03:00;False|2024-05-08T21:48:15.4293068-03:00;False|2024-05-08T20:54:55.5760929-03:00;False|2024-05-08T20:28:10.9806520-03:00;False|2024-05-08T20:17:59.1515088-03:00;False|2024-05-08T19:50:24.7971923-03:00;False|2024-05-08T19:25:00.7205352-03:00;False|2024-05-06T19:17:16.3470838-03:00;True|2024-05-01T18:10:53.4016293-03:00;</History>
+    <History>True|2024-06-25T03:53:42.8817979Z;False|2024-06-25T00:29:12.1733482-03:00;False|2024-06-25T00:24:04.1438156-03:00;True|2024-06-24T23:50:37.3329605-03:00;False|2024-06-24T23:16:11.6861240-03:00;True|2024-06-24T22:21:30.0749246-03:00;False|2024-06-24T21:18:31.1712466-03:00;False|2024-06-24T21:10:23.6896232-03:00;False|2024-06-24T21:02:01.0047728-03:00;False|2024-06-24T20:48:30.2310207-03:00;False|2024-06-24T20:14:23.4666072-03:00;True|2024-06-24T19:41:15.5398765-03:00;True|2024-06-24T19:15:33.4195429-03:00;True|2024-06-08T01:52:47.6571673-03:00;False|2024-06-07T23:10:39.0671648-03:00;False|2024-06-07T21:46:50.3942729-03:00;True|2024-05-22T21:04:53.3002439-03:00;False|2024-05-22T20:48:24.9664938-03:00;False|2024-05-22T20:40:04.9396909-03:00;False|2024-05-22T19:34:36.9299120-03:00;True|2024-05-08T22:28:20.8220994-03:00;False|2024-05-08T22:09:43.7020630-03:00;False|2024-05-08T21:48:15.4293068-03:00;False|2024-05-08T20:54:55.5760929-03:00;False|2024-05-08T20:28:10.9806520-03:00;False|2024-05-08T20:17:59.1515088-03:00;False|2024-05-08T19:50:24.7971923-03:00;False|2024-05-08T19:25:00.7205352-03:00;False|2024-05-06T19:17:16.3470838-03:00;True|2024-05-01T18:10:53.4016293-03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -18,16 +18,85 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/05/2024 22:38:11</publishTime>
     </File>
     <File Include="appsettings.production.json">
-      <publishTime>06/08/2024 01:37:11</publishTime>
+      <publishTime>06/25/2024 02:11:22</publishTime>
     </File>
     <File Include="BCrypt.Net-Next.dll">
       <publishTime>03/03/2022 13:10:20</publishTime>
     </File>
+    <File Include="Controllers/AdminUsuarioController.cs">
+      <publishTime>05/06/2024 19:12:04</publishTime>
+    </File>
+    <File Include="Controllers/CuentaController.cs">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Controllers/HomeController.cs">
+      <publishTime>01/05/2024 17:25:26</publishTime>
+    </File>
+    <File Include="Controllers/PostController.cs">
+      <publishTime>05/06/2024 18:43:50</publishTime>
+    </File>
+    <File Include="Controllers/UsuarioController.cs">
+      <publishTime>05/06/2024 19:12:04</publishTime>
+    </File>
+    <File Include="Data/Contexto.cs">
+      <publishTime>01/05/2024 16:48:45</publishTime>
+    </File>
+    <File Include="Data/Email.cs">
+      <publishTime>08/05/2024 19:11:49</publishTime>
+    </File>
+    <File Include="Data/Enums/CategoriaEnum.cs">
+      <publishTime>01/05/2024 16:48:45</publishTime>
+    </File>
+    <File Include="Data/Enums/CategoriaEnumHelper.cs">
+      <publishTime>01/05/2024 16:48:45</publishTime>
+    </File>
+    <File Include="Data/Enums/ZonaEnum.cs">
+      <publishTime>01/05/2024 16:48:45</publishTime>
+    </File>
+    <File Include="Data/Enums/ZonaEnumHelper.cs">
+      <publishTime>01/05/2024 16:48:45</publishTime>
+    </File>
+    <File Include="Data/Interfaces/ISendbirdService.cs">
+      <publishTime>05/06/2024 22:37:05</publishTime>
+    </File>
+    <File Include="Data/Interfaces/SendbirdService.cs">
+      <publishTime>09/05/2024 19:15:30</publishTime>
+    </File>
+    <File Include="Data/Servicios/PostServicio.cs">
+      <publishTime>05/06/2024 18:56:11</publishTime>
+    </File>
+    <File Include="Data/Servicios/UsuarioServicio.cs">
+      <publishTime>05/06/2024 19:08:11</publishTime>
+    </File>
     <File Include="JetBrains.Annotations.dll">
       <publishTime>11/07/2022 16:37:26</publishTime>
     </File>
+    <File Include="Models/ErrorViewModel.cs">
+      <publishTime>01/05/2024 16:41:19</publishTime>
+    </File>
+    <File Include="Models/Models/Comentario.cs">
+      <publishTime>01/05/2024 16:46:11</publishTime>
+    </File>
+    <File Include="Models/Models/Post.cs">
+      <publishTime>01/05/2024 16:48:04</publishTime>
+    </File>
+    <File Include="Models/Models/Rol.cs">
+      <publishTime>01/05/2024 16:49:22</publishTime>
+    </File>
+    <File Include="Models/Models/Usuario.cs">
+      <publishTime>01/05/2024 16:49:42</publishTime>
+    </File>
+    <File Include="Models/Models/ViewModels/LoginViewModel.cs">
+      <publishTime>01/05/2024 16:49:55</publishTime>
+    </File>
+    <File Include="Models/Models/ViewModels/PostDetallesViewModel.cs">
+      <publishTime>01/05/2024 16:50:01</publishTime>
+    </File>
     <File Include="Newtonsoft.Json.dll">
       <publishTime>03/08/2023 04:09:54</publishTime>
+    </File>
+    <File Include="Program.cs">
+      <publishTime>06/25/2024 01:52:40</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll">
       <publishTime>10/26/2023 20:34:06</publishTime>
@@ -51,31 +120,361 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/26/2023 20:27:26</publishTime>
     </File>
     <File Include="TucConnect.deps.json">
-      <publishTime>06/08/2024 01:37:10</publishTime>
+      <publishTime>06/25/2024 02:11:21</publishTime>
     </File>
     <File Include="TucConnect.dll">
-      <publishTime>06/08/2024 01:37:10</publishTime>
+      <publishTime>06/25/2024 02:11:21</publishTime>
     </File>
     <File Include="TucConnect.exe">
-      <publishTime>06/08/2024 01:37:10</publishTime>
+      <publishTime>06/25/2024 02:11:21</publishTime>
     </File>
     <File Include="TucConnect.pdb">
-      <publishTime>06/08/2024 01:37:10</publishTime>
+      <publishTime>06/25/2024 02:11:21</publishTime>
     </File>
     <File Include="TucConnect.runtimeconfig.json">
       <publishTime>05/22/2024 19:31:57</publishTime>
     </File>
+    <File Include="Views/AdminUsuario/Create.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/AdminUsuario/Delete.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/AdminUsuario/Edit.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/AdminUsuario/Index.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Cuenta/Login.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Cuenta/Registrar.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Cuenta/Token.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Post/Create.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Post/Details.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Post/Update.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>01/05/2024 16:41:15</publishTime>
+    </File>
+    <File Include="Views/Shared/Partials/_CerrarCuentaModal.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/Partials/_GrandChildComment.cshtml">
+      <publishTime>04/03/2024 22:03:33</publishTime>
+    </File>
+    <File Include="Views/Shared/Partials/_Header.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml.css">
+      <publishTime>01/05/2024 16:41:15</publishTime>
+    </File>
+    <File Include="Views/Shared/_ValidationScriptsPartial.cshtml">
+      <publishTime>01/05/2024 16:41:15</publishTime>
+    </File>
+    <File Include="Views/Usuario/MisPost.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Usuario/Perfil.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/_ViewImports.cshtml">
+      <publishTime>01/05/2024 16:41:15</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>01/05/2024 16:41:15</publishTime>
+    </File>
     <File Include="web.config">
-      <publishTime>06/08/2024 01:37:11</publishTime>
+      <publishTime>06/25/2024 02:11:22</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap.scss">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/bootstrap-grid.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/bootstrap-reboot.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/bootstrap-utilities.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/bootstrap.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/forms/_floating-labels.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/forms/_form-check.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/forms/_form-control.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/forms/_form-range.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/forms/_form-select.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/forms/_form-text.scss">
+      <publishTime>06/13/2024 19:19:45</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/forms/_input-group.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/forms/_labels.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/forms/_validation.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/helpers/_clearfix.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/helpers/_colored-links.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/helpers/_position.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/helpers/_ratio.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/helpers/_stretched-link.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/helpers/_text-truncation.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/helpers/_visually-hidden.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_alert.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_border-radius.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_box-shadow.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_breakpoints.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_buttons.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_caret.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_clearfix.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_color-scheme.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_container.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_deprecate.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_forms.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_gradients.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_grid.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_image.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_list-group.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_lists.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_pagination.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_reset-text.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_resize.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_table-variants.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_text-truncate.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_transition.scss">
+      <publishTime>05/29/2024 19:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_utilities.scss">
+      <publishTime>05/29/2024 19:00:32</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/mixins/_visually-hidden.scss">
+      <publishTime>05/29/2024 19:00:32</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/utilities/_api.scss">
+      <publishTime>05/29/2024 19:00:32</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/vendor/_rfs.scss">
+      <publishTime>05/29/2024 19:00:32</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_accordion.scss">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_alert.scss">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_badge.scss">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_breadcrumb.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_button-group.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_buttons.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_card.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_carousel.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_close.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_containers.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_dropdown.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_forms.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_functions.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_grid.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_helpers.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_images.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_list-group.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_mixins.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_modal.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_nav.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_navbar.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_offcanvas.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_pagination.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_popover.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_progress.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_reboot.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_root.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_spinners.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_tables.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_toasts.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_tooltip.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_transitions.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_type.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_utilities.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/bootstrap/scss/_variables.scss">
+      <publishTime>05/29/2024 19:00:30</publishTime>
+    </File>
+    <File Include="wwwroot/css/bootstrap-custom.min.css">
+      <publishTime>05/29/2024 19:00:28</publishTime>
     </File>
     <File Include="wwwroot/css/site.css">
       <publishTime>05/01/2024 16:41:15</publishTime>
     </File>
+    <File Include="wwwroot/css/style.css">
+      <publishTime>06/13/2024 20:29:28</publishTime>
+    </File>
     <File Include="wwwroot/favicon.ico">
       <publishTime>05/01/2024 16:41:15</publishTime>
     </File>
+    <File Include="wwwroot/img/foto_1.jpg">
+      <publishTime>06/13/2024 20:02:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/foto_2.jpg">
+      <publishTime>06/13/2024 20:05:36</publishTime>
+    </File>
     <File Include="wwwroot/js/site.js">
-      <publishTime>05/01/2024 16:41:15</publishTime>
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/animate/animate.css">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/animate/animate.min.css">
+      <publishTime>05/29/2024 19:00:29</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
       <publishTime>05/01/2024 16:41:15</publishTime>
@@ -212,6 +611,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="wwwroot/lib/bootstrap/LICENSE">
       <publishTime>05/01/2024 16:41:15</publishTime>
     </File>
+    <File Include="wwwroot/lib/easing/easing.js">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/easing/easing.min.js">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
     <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
       <publishTime>05/01/2024 16:41:15</publishTime>
     </File>
@@ -247,6 +652,51 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="wwwroot/lib/jquery/LICENSE.txt">
       <publishTime>05/01/2024 16:41:15</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/assets/ajax-loader.gif">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/assets/owl.carousel.css">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/assets/owl.carousel.min.css">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/assets/owl.theme.default.css">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/assets/owl.theme.default.min.css">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/assets/owl.theme.green.css">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/assets/owl.theme.green.min.css">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/assets/owl.video.play.png">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/LICENSE">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/owl.carousel.js">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/owlcarousel/owl.carousel.min.js">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/waypoints/links.php">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/waypoints/waypoints.min.js">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/wow/wow.js">
+      <publishTime>05/29/2024 19:00:29</publishTime>
+    </File>
+    <File Include="wwwroot/lib/wow/wow.min.js">
+      <publishTime>05/29/2024 19:00:29</publishTime>
     </File>
     <File Include="wwwroot/tinymce/icons/default/icons.min.js">
       <publishTime>03/07/2024 20:55:16</publishTime>

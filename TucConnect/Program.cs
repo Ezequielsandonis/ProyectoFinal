@@ -1,35 +1,44 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using TucConnect.Data;
-using TucConnect.Data.Interfaces;
+using TucConnect.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+// Configuración del servicio de contexto de base de datos
 builder.Services.AddSingleton(new Contexto(builder.Configuration.GetConnectionString("conexion")));
-//SENDBIRD
-builder.Services.Configure<SendBirdOptions>(builder.Configuration.GetSection("SendBird"));
-builder.Services.AddSingleton<ISendbirdService, SendbirdService>();
 
-
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
+// Configuración para Sendbird
+builder.Services.AddSingleton<ISendBirdServicio>(provider =>
 {
-    option.LoginPath = "/Cuenta/Login";
+    var config = provider.GetRequiredService<IConfiguration>();
+    var sendbirdAppId = config["Sendbird:AppId"];
+    var sendbirdApiToken = config["Sendbird:ApiToken"];
+
+    return new SendbirdService(sendbirdAppId, sendbirdApiToken);
 });
-//SignalIr para el chat
+
+// Configuración de autenticación
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Cuenta/Login";
+    });
+
+// Configuración de SignalR
 builder.Services.AddSignalR();
+
+// Configuración de controladores y vistas
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-
-// Configure the HTTP request pipeline.
+// Configuración del middleware
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("~/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
@@ -39,25 +48,17 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 
-app.UseStatusCodePagesWithRedirects("~/Home/Index");
+// Configuración de páginas de error para códigos de estado
+app.UseStatusCodePagesWithRedirects("/Home/Index");
 
+// Configuración de rutas de controlador
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-//ENDPOINTS
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-       name: "default",
-       pattern: "{controller=Home}/{action=Index}/{id?}");
-    //   endpoints.MapHub<ChatHub>("/chat");
-});
+// Configuración del endpoint de SignalR 
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();
-
-
-
-
-
-//contraseña de soome d$cxmv4TKBjf7#+

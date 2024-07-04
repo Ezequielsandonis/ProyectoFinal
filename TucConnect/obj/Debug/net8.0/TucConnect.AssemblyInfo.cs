@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TucConnect")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8922f0cae76a0c3f5790c0989ffde665a59ac7c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9638d1963eb5fcade885eb44bcb55084536f837")]
 [assembly: System.Reflection.AssemblyProductAttribute("TucConnect")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TucConnect")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
