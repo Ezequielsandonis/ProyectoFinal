@@ -1,44 +1,59 @@
 {
   "version": 2,
-  "dgSpecHash": "VClupqQMt6kIQ1Zz/7TxnPaHoGgbv+qm8Kg2VYpdFb7Z0taOd/d9qgr+CMJCDO0HN8ujUAxpFCYRP56WcATQqg==",
+  "dgSpecHash": "waeW1J/aPyjotKlZffVIWqPVpnkc0CgVv3KfGlXSKDbLmE51/VANUU9RTx/FS8ufoBRxeIe8C0KN//K/q0FsGg==",
   "success": true,
   "projectFilePath": "C:\\Users\\NG By ROG\\Desktop\\Repositorios-Git\\TucConnect\\TucConnect\\TucConnect.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\NG By ROG\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\jetbrains.annotations\\2022.3.1\\jetbrains.annotations.2022.3.1.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\jquery\\1.6.4\\jquery.1.6.4.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnet.signalr\\2.4.3\\microsoft.aspnet.signalr.2.4.3.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnet.signalr.core\\2.4.3\\microsoft.aspnet.signalr.core.2.4.3.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnet.signalr.js\\2.4.3\\microsoft.aspnet.signalr.js.2.4.3.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnet.signalr.systemweb\\2.4.3\\microsoft.aspnet.signalr.systemweb.2.4.3.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.1.1\\microsoft.aspnetcore.authentication.abstractions.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.1.1\\microsoft.aspnetcore.authorization.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.1.1\\microsoft.aspnetcore.authorization.policy.2.1.1.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\2.1.2\\microsoft.aspnetcore.connections.abstractions.2.1.2.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\8.0.7\\microsoft.aspnetcore.connections.abstractions.8.0.7.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.1.1\\microsoft.aspnetcore.hosting.abstractions.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.1.1\\microsoft.aspnetcore.hosting.server.abstractions.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.http\\2.1.1\\microsoft.aspnetcore.http.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.1.1\\microsoft.aspnetcore.http.abstractions.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.http.connections\\1.0.4\\microsoft.aspnetcore.http.connections.1.0.4.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.http.connections.common\\1.0.4\\microsoft.aspnetcore.http.connections.common.1.0.4.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\8.0.7\\microsoft.aspnetcore.http.connections.client.8.0.7.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.http.connections.common\\8.0.7\\microsoft.aspnetcore.http.connections.common.8.0.7.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.1.1\\microsoft.aspnetcore.http.extensions.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.1.1\\microsoft.aspnetcore.http.features.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.routing\\2.1.1\\microsoft.aspnetcore.routing.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.routing.abstractions\\2.1.1\\microsoft.aspnetcore.routing.abstractions.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.signalr\\1.0.4\\microsoft.aspnetcore.signalr.1.0.4.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.signalr.common\\1.0.4\\microsoft.aspnetcore.signalr.common.1.0.4.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.signalr.client\\8.0.7\\microsoft.aspnetcore.signalr.client.8.0.7.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.signalr.client.core\\8.0.7\\microsoft.aspnetcore.signalr.client.core.8.0.7.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.signalr.common\\8.0.7\\microsoft.aspnetcore.signalr.common.8.0.7.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.signalr.core\\1.0.4\\microsoft.aspnetcore.signalr.core.1.0.4.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.signalr.protocols.json\\1.0.4\\microsoft.aspnetcore.signalr.protocols.json.1.0.4.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.signalr.protocols.json\\8.0.7\\microsoft.aspnetcore.signalr.protocols.json.8.0.7.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.websockets\\2.1.1\\microsoft.aspnetcore.websockets.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.1.1\\microsoft.aspnetcore.webutilities.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.1.1\\microsoft.extensions.configuration.abstractions.2.1.1.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.1\\microsoft.extensions.dependencyinjection.abstractions.2.1.1.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.1\\microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.features\\8.0.7\\microsoft.extensions.features.8.0.7.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\2.1.1\\microsoft.extensions.fileproviders.abstractions.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\2.1.1\\microsoft.extensions.hosting.abstractions.2.1.1.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.1.1\\microsoft.extensions.logging.abstractions.2.1.1.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.logging\\8.0.0\\microsoft.extensions.logging.8.0.0.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.1\\microsoft.extensions.logging.abstractions.8.0.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.objectpool\\2.1.1\\microsoft.extensions.objectpool.2.1.1.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.options\\2.1.1\\microsoft.extensions.options.2.1.1.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.primitives\\2.1.1\\microsoft.extensions.primitives.2.1.1.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.net.http.headers\\2.1.1\\microsoft.net.http.headers.2.1.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.owin\\2.1.0\\microsoft.owin.2.1.0.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.owin.host.systemweb\\2.1.0\\microsoft.owin.host.systemweb.2.1.0.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.owin.security\\2.1.0\\microsoft.owin.security.2.1.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\owin\\1.0.0\\owin.1.0.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
@@ -46,23 +61,82 @@
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.data.sqlclient\\4.8.6\\system.data.sqlclient.4.8.6.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\system.io.pipelines\\4.5.0\\system.io.pipelines.4.5.0.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.net.websockets.websocketprotocol\\4.5.1\\system.net.websockets.websocketprotocol.4.5.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
-    "C:\\Users\\NG By ROG\\.nuget\\packages\\system.threading.channels\\4.5.0\\system.threading.channels.4.5.0.nupkg.sha512",
+    "C:\\Users\\NG By ROG\\.nuget\\packages\\system.threading.channels\\8.0.0\\system.threading.channels.8.0.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\x.pagedlist\\8.4.7\\x.pagedlist.8.4.7.nupkg.sha512",
     "C:\\Users\\NG By ROG\\.nuget\\packages\\x.pagedlist.mvc.core\\8.4.7\\x.pagedlist.mvc.core.8.4.7.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"Microsoft.AspNet.SignalR.Core 2.4.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "Microsoft.AspNet.SignalR.Core",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"Microsoft.AspNet.SignalR.SystemWeb 2.4.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "Microsoft.AspNet.SignalR.SystemWeb",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"Microsoft.Owin 2.1.0\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "Microsoft.Owin",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"Microsoft.Owin.Host.SystemWeb 2.1.0\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "Microsoft.Owin.Host.SystemWeb",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"Microsoft.Owin.Security 2.1.0\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "Microsoft.Owin.Security",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"Owin 1.0.0\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "Owin",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

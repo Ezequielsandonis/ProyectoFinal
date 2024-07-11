@@ -66,6 +66,10 @@
         </main>
     </div>
 
+    <div id="alert-container">
+        <!-- Aquí se mostrará la alerta de nuevos mensajes -->
+    </div>
+
     <!-- Footer Start -->
     <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
         <div class="container py-5">
@@ -94,7 +98,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="mb-4 text-white">Contexto</h4>
-                        <a href=""><i class="fa fa-map-marker-alt me-2"></i>Tucumám Argentina</a>
+                        <a href=""><i class="fa fa-map-marker-alt me-2"></i>Tucumán Argentina</a>
                     </div>
                 </div>
             </div>
@@ -121,6 +125,7 @@
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.9/signalr.min.js"></script> <!-- Incluye SignalR desde el CDN -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/wow/wow.min.js"></script>
     <script src="~/lib/easing/easing.min.js"></script>
@@ -129,11 +134,22 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>
 
+    @if (!(User?.Identity?.IsAuthenticated ?? false))
+    {
 
+    }
+    else
+    {
+        <a href="@Url.Action("Index", "Chat")" class="btn btn-primary btn-lg-square back-to-top">
+            <i class="fa fa-comments"></i>
+            <span id="new-messages-indicator" class="new-messages-indicator"></span>
+        </a>
+    }
 
 
 </body>
 </html>
+
+
+

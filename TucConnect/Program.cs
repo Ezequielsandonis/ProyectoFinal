@@ -53,12 +53,13 @@ app.UseAuthorization();
 // Configuración de páginas de error para códigos de estado
 app.UseStatusCodePagesWithRedirects("/Home/Index");
 
-// Configuración de rutas de controlador
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Configuración del endpoint de SignalR 
-app.MapHub<ChatHub>("/chatHub");
-
+    // Configuración del endpoint de SignalR
+    endpoints.MapHub<ChatHub>("/chatHub");
+});
 app.Run();

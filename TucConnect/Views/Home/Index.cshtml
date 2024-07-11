@@ -22,7 +22,7 @@
                     <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Tucuman conectado</h5>
                     <h4 class="display-1 text-capitalize text-white mb-4">Recuerda crear tu cuenta para publicar</h4>
                     <p class="mb-5 fs-5">
-                        Con esta plataforma te conectarás con lo que busques. Y También podrás dar a conocerte a vos o a tu negocio, recuerda abrir una publicación para obtener mas detalles 
+                        Con esta plataforma te conectarás con lo que busques. Y También podrás dar a conocerte a vos o a tu negocio, recuerda abrir una publicación para obtener mas detalles e inicia sesión para chatear
                     </p>
                   
                 </div>
@@ -47,8 +47,6 @@
 
 <div class="container py-5">
 
-
-   
     <!-- Services Start -->
     <div class="container-fluid service py-5">
         <div class="container py-5">
@@ -59,7 +57,7 @@
                 <h1 class="display-3 mb-4">Todo lo que buscas al alance de un click</h1>
                 <p class="mb-0" style="font-size: 25px;">
                     Últimas publicaciones sobre  <strong>@ViewBag.CategoriaDescripcion</strong> .En <strong>@ViewBag.DescripcionZona</strong>
-                </p> 
+                </p>
 
             </div>
             <div class="row g-4 justify-content-center">
@@ -97,28 +95,27 @@
                 }
             </div>
 
-            </div>
         </div>
     </div>
-    <!-- Services End -->
-
-
-
-    @*PAGINACION-START*@
-    <div class="row">
-        @*programar para usar el X.PagedList -generado automaticamente-*@
-        <div class="col-md-12">
-            @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }), new PagedListRenderOptions()
-       {
-           LiElementClasses = new string[] { "page-item" },
-           PageClasses = new string[] { "page-link" },
-           ContainerDivClasses = new string[] { "pagination justify-content-center" },
-           UlElementClasses = new string[] { "pagination" }
-       })
-        </div>
-    </div>
-    @*PAGINACION-END*@
 
 </div>
+<!-- Services End -->
+@*PAGINACION-START*@
+<div class="row">
+    @*programar para usar el X.PagedList -generado automaticamente-*@
+    <div class="col-md-12">
+        @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }), new PagedListRenderOptions()
+   {
+       LiElementClasses = new string[] { "page-item" },
+       PageClasses = new string[] { "page-link" },
+       ContainerDivClasses = new string[] { "pagination justify-content-center" },
+       UlElementClasses = new string[] { "pagination" }
+   })
+    </div>
+</div>
+@*PAGINACION-END*@
+
+
+
 
 

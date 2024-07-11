@@ -4,16 +4,37 @@ using System.Text.Json.Serialization;
 
 namespace TucConnect.Models.Models
 {
+
+    public class SendbirdMessageEvent
+    {
+        public string SendPushNotification { get; set; }
+        public bool UpdateUnreadCount { get; set; }
+        public bool UpdateMentionCount { get; set; }
+        public bool UpdateLastMessage { get; set; }
+    }
+
+    public class SendbirdResponse
+    {
+        [JsonPropertyName("messages")]
+        public List<SendbirdMensaje> Messages { get; set; }
+    }
+
     public class SendbirdMensaje
     {
-        [JsonPropertyName("user_id")]
-        public string? UserId { get; set; }
+        [JsonPropertyName("message_id")]
+        public long MessageId { get; set; }
 
         [JsonPropertyName("message")]
-        public string? Message { get; set; }
+        public string Message { get; set; }
+
+        [JsonPropertyName("user")]
+        public SendbirdMember User { get; set; }
+
+        [JsonPropertyName("channel_url")]
+        public string ChannelUrl { get; set; }
 
         [JsonPropertyName("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public long CreatedAt { get; set; }
     }
 
     public class SendbirdMember
@@ -66,6 +87,8 @@ namespace TucConnect.Models.Models
 
         [JsonPropertyName("last_message")]
         public SendbirdLastMessage? LastMessage { get; set; }
+
+
 
         // Agrega cualquier otra propiedad necesaria
     }

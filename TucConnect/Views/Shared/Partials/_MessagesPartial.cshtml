@@ -1,0 +1,46 @@
+﻿@using TucConnect.Models.Models
+@model IEnumerable<SendbirdMensaje>
+
+@if (Model != null && Model.Any())
+{
+    foreach (var message in Model)
+    {
+       
+        var isCurrentUserMessage = User.Identity.IsAuthenticated && message.User?.Nickname == User.Identity.Name;
+
+
+        <div class="message @(isCurrentUserMessage ? "current-user" : "other-user")">
+            <div class="message-content">
+                @if (!string.IsNullOrWhiteSpace(message.User?.Nickname))
+                {
+                    <strong>@message.User.Nickname:</strong> @message.Message
+                }
+                else
+                {
+                    <strong>@message.Message</strong>
+                }
+            </div>
+            <span class="timestamp">@FormatTimestamp(message.CreatedAt)</span>
+        </div>
+    }
+}
+else 
+{
+    <div class="no-messages">
+        No tienes mensajes en este chat.
+    </div>
+}
+
+@functions {
+    public string FormatTimestamp(long timestamp)
+    {
+        if (timestamp <= 0)
+        {
+            return string.Empty;
+        }
+
+        var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        var date = epoch.AddMilliseconds(timestamp).ToLocalTime();
+        return date.ToString("HH:mm tt");
+    }
+}
