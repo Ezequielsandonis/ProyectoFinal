@@ -616,3 +616,18 @@
     background: var(--bs-dark) !important;
 }
 /*** copyright end ***/
+
+
+
+/*CHAT*/
+.new-messages-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border-radius: 50%;
+    display: none; /* Ocultar inicialmente */
+}
+

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using X.PagedList;
 using System.Data;
 using System.Reflection;
+using X.PagedList.Extensions;
 
 namespace MyBlog.Controllers
 {

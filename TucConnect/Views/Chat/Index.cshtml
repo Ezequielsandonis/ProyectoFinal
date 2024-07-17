@@ -60,22 +60,7 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            // Establecer la conexión con SignalR
-            var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-
-            connection.on("NotifyNewMessage", function (channelUrl) {
-                alert("Tienes un nuevo mensaje en el canal: " + channelUrl);
-                // Aquí puedes añadir lógica adicional para cambiar el color del chat con nuevos mensajes
-            });
-
-            connection.on("ReceiveMessage", function (user, message) {
-                // Lógica para recibir y mostrar el mensaje
-                $('#chat-messages').append('<div><strong>' + user + ':</strong> ' + message + '</div>');
-            });
-
-            connection.start().catch(function (err) {
-                return console.error(err.toString());
-            });
+         
 
             // Función para enviar mensajes
             $(document).on("submit", "#send-message-form", function (e) {
@@ -138,38 +123,14 @@
                 });
             }
 
-               // Función para obtener nuevos mensajes
-            function obtenerNuevosMensajes(channelUrl, ultimoMensajeTimestamp) {
-                $.ajax({
-                    type: "GET",
-                    url: "@Url.Action("ObtenerNuevosMensajes", "Chat")",
-                    data: { channelUrl: channelUrl, ultimoMensajeTimestamp: ultimoMensajeTimestamp },
-                    success: function (data) {
-                        // Actualizar la interfaz de usuario con nuevos mensajes si los hay
-                        if (data > 0) {
-                            actualizarMensajes(); // Actualizar mensajes si hay nuevos
-                        }
-                    },
-                    error: function () {
-                        console.error("Error al obtener nuevos mensajes.");
-                    }
-                });
-            }
-
-            // Intervalo para verificar nuevos mensajes cada cierto tiempo (ejemplo: cada 5 segundos)
-            setInterval(function () {
-                var channelUrl = $("#ChannelUrl").val(); // Obtener el canal actual
-                var ultimoMensajeTimestamp = new Date().getTime(); // Último timestamp de mensaje recibido
-
-                obtenerNuevosMensajes(channelUrl, ultimoMensajeTimestamp);
-            }, 5000); // Intervalo en milisegundos (ejemplo: cada 5 segundos)
+    
         });
           
     </script>
 }
 
 
-   <style>
+<style>
 
     body {
         font-family: Arial, sans-serif;
@@ -179,7 +140,7 @@
     }
 
     .container {
-        height: 100vh;
+     
         display: flex;
         flex-direction: column;
     }
@@ -190,7 +151,7 @@
     }
 
     .chat-list-container {
-        height: 100vh;
+    
         background-color:#fff;
         border-right: 1px solid #ccc;
         overflow-y: auto;
@@ -200,7 +161,7 @@
     .chat-view-container {
         background-color: #fff;
         display: flex;
-        height: 100vh;
+     
         flex-direction: column;
     }
 

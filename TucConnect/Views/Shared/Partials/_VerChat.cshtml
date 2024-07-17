@@ -4,7 +4,7 @@
 @using TucConnect.Models.Models.ViewModels
 @model ChatViewModel
 
-<div class="chat-container py-5">
+<div class="chat-container">
     <div class="chat-view">
         <div id="chat-messages">
             @Html.Partial("~/Views/Shared/Partials/_MessagesPartial.cshtml", Model.Messages)
@@ -17,47 +17,6 @@
     </div>
 </div>
 
-
-@section Scripts {
- 
-    <script>
-        $(document).ready(function () {
-            var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-
-            connection.start().then(function () {
-                console.log("Conexión establecida con el servidor SignalR.");
-            }).catch(function (err) {
-                return console.error(err.toString());
-            });
-
-            connection.on("ReceiveMessage", function (user, message) {
-                $('#chat-messages').append('<div><strong>' + user + ':</strong> ' + message + '</div>');
-            });
-
-            // Función para enviar mensajes
-            $("#send-message-form").submit(function (event) {
-                event.preventDefault(); // Evitar la acción de envío estándar
-
-                var formData = $(this).serialize();
-
-                $.ajax({
-                    type: "POST",
-                    url: "@Url.Action("SendMessage", "Chat")",
-                    data: formData,
-                    success: function (response) {
-                        // Aquí puedes manejar la respuesta si es necesario
-                    },
-                    error: function () {
-                        alert("Error al enviar el mensaje.");
-                    }
-                });
-
-                // Limpiar el campo de mensaje después de enviar
-                $("#Message").val("");
-            });
-        });
-    </script>
-}
 
 
 

@@ -5,6 +5,7 @@ using TucConnect.Data.Enums;
 using TucConnect.Data.Servicios;
 using TucConnect.Data;
 using TucConnect.Models;
+using X.PagedList.Extensions;
 
 
 

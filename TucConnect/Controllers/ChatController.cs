@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+
+using System.Reflection;
 using System.Text.Json;
 using TucConnect.Data;
 using TucConnect.Data.Servicios;
@@ -43,6 +45,8 @@ namespace TucConnect.Controllers
                     return RedirectToAction("Error", "Home");
                 }
 
+                
+
                 // Verificar si el propietario del post ya existe como usuario en Sendbird
                 if (!await _sendbirdService.UserExists(ownerUser.UsuarioId.ToString()))
                 {
@@ -58,6 +62,14 @@ namespace TucConnect.Controllers
                     {
                         return RedirectToAction("Error", "Home");
                     }
+
+                    // Obtener el correo del propietario del post
+                    var ownerUserDetails = _usuarioServicio.ObtenerUsuarioPorId(ownerUser.UsuarioId);
+                    if (ownerUserDetails == null || string.IsNullOrEmpty(ownerUserDetails.Correo))
+                    {
+                        return RedirectToAction("Error", "Home");
+                    }
+
 
                     // Verificar si el usuario actual ya existe como usuario en Sendbird
                     if (!await _sendbirdService.UserExists(userId.ToString()))
@@ -106,6 +118,14 @@ namespace TucConnect.Controllers
                                 // Enviar mensaje automático de administrador
                                 await _sendbirdService.SendAdminMessage(channelUrl, "Se inició un nuevo chat");
                                 await _sendbirdService.SendMessage(channelUrl, userId.ToString(), "¡Comienza a chatear!");
+                                // Envío de correo electrónico al propietario del post
+                                
+                                Email email = new();
+                                //validar
+                            
+                                if (ownerUser != null)
+                                     email.EnviarNotificacion(ownerUserDetails.Correo, channelUrl);
+
 
                                 return RedirectToAction("Index");
                             }

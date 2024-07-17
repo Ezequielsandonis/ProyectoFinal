@@ -9,9 +9,8 @@
       "TucConnect/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
-          "Sendbird": "2.0.0",
           "System.Data.SqlClient": "4.8.6",
-          "X.PagedList.Mvc.Core": "8.4.7"
+          "X.PagedList.Mvc.Core": "10.0.3"
         },
         "runtime": {
           "TucConnect.dll": {}
@@ -25,27 +24,11 @@
           }
         }
       },
-      "JetBrains.Annotations/2022.3.1": {
-        "runtime": {
-          "lib/netstandard2.0/JetBrains.Annotations.dll": {
-            "assemblyVersion": "4242.42.42.42",
-            "fileVersion": "2022.3.1.0"
-          }
-        }
-      },
       "Microsoft.NETCore.Platforms/3.1.0": {},
       "Microsoft.Win32.Registry/4.7.0": {
         "dependencies": {
           "System.Security.AccessControl": "4.7.0",
           "System.Security.Principal.Windows": "4.7.0"
-        }
-      },
-      "Newtonsoft.Json/13.0.3": {
-        "runtime": {
-          "lib/net6.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "13.0.0.0",
-            "fileVersion": "13.0.3.27908"
-          }
         }
       },
       "runtime.native.System.Data.SqlClient.sni/4.7.0": {
@@ -79,17 +62,6 @@
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "4.6.25512.1"
-          }
-        }
-      },
-      "Sendbird/2.0.0": {
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Sendbird.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.0"
           }
         }
       },
@@ -127,25 +99,22 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
-      "X.PagedList/8.4.7": {
-        "dependencies": {
-          "JetBrains.Annotations": "2022.3.1"
-        },
+      "X.PagedList/10.0.3": {
         "runtime": {
-          "lib/net7.0/X.PagedList.dll": {
-            "assemblyVersion": "8.4.7.0",
-            "fileVersion": "8.4.7.0"
+          "lib/net8.0/X.PagedList.dll": {
+            "assemblyVersion": "10.0.3.0",
+            "fileVersion": "10.0.3.0"
           }
         }
       },
-      "X.PagedList.Mvc.Core/8.4.7": {
+      "X.PagedList.Mvc.Core/10.0.3": {
         "dependencies": {
-          "X.PagedList": "8.4.7"
+          "X.PagedList": "10.0.3"
         },
         "runtime": {
-          "lib/net7.0/X.PagedList.Mvc.Core.dll": {
-            "assemblyVersion": "8.4.7.0",
-            "fileVersion": "8.4.7.0"
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {
+            "assemblyVersion": "10.0.3.0",
+            "fileVersion": "10.0.3.0"
           }
         }
       }
@@ -164,13 +133,6 @@
       "path": "bcrypt.net-next/4.0.3",
       "hashPath": "bcrypt.net-next.4.0.3.nupkg.sha512"
     },
-    "JetBrains.Annotations/2022.3.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-11nsS3+lFICGkztVs9PP2NRItxf9fF+qD6xEW/T0YGto52zj07wseUeBdMAU1ah9HNVTDZyRC1u4NWdtJScwhw==",
-      "path": "jetbrains.annotations/2022.3.1",
-      "hashPath": "jetbrains.annotations.2022.3.1.nupkg.sha512"
-    },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",
       "serviceable": true,
@@ -184,13 +146,6 @@
       "sha512": "sha512-KSrRMb5vNi0CWSGG1++id2ZOs/1QhRqROt+qgbEAdQuGjGrFcl4AOl4/exGPUYz2wUnU42nvJqon1T3U0kPXLA==",
       "path": "microsoft.win32.registry/4.7.0",
       "hashPath": "microsoft.win32.registry.4.7.0.nupkg.sha512"
-    },
-    "Newtonsoft.Json/13.0.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
-      "path": "newtonsoft.json/13.0.3",
-      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "type": "package",
@@ -220,13 +175,6 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
-    "Sendbird/2.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-o0DCvONGKjQfcYBW9o0xHMV/85NhbPWEQ1Y+brTqUe5rrZYjxdW0taiOk6cCG3LxRzS5qV2Qq0fVTV96iyVT9g==",
-      "path": "sendbird/2.0.0",
-      "hashPath": "sendbird.2.0.0.nupkg.sha512"
-    },
     "System.Data.SqlClient/4.8.6": {
       "type": "package",
       "serviceable": true,
@@ -248,19 +196,19 @@
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
-    "X.PagedList/8.4.7": {
+    "X.PagedList/10.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZA1WcyNviMUhivCgwKAm/5/YsNP3Yf/n81SzrPaHSJOcFzavA9MrXTT8M+ZX4fvHwLCL1bY6BPXvwZF5pRtgTg==",
-      "path": "x.pagedlist/8.4.7",
-      "hashPath": "x.pagedlist.8.4.7.nupkg.sha512"
+      "sha512": "sha512-HIYIXYlqIWrhedP1ext7bG1Bj3LS8X7zgNrZlrPdcQBbXCjns+QXudVbadzZq9tLrfQJmVowJirwCM1pONyeBg==",
+      "path": "x.pagedlist/10.0.3",
+      "hashPath": "x.pagedlist.10.0.3.nupkg.sha512"
     },
-    "X.PagedList.Mvc.Core/8.4.7": {
+    "X.PagedList.Mvc.Core/10.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dS8sJr/aT3AoV9ePaqmF4wijh/2vqS9rxpOvzjPPStkQcR8rUaGPVezPgY/kJwWCZ2hdgKNralbU08So0otNxw==",
-      "path": "x.pagedlist.mvc.core/8.4.7",
-      "hashPath": "x.pagedlist.mvc.core.8.4.7.nupkg.sha512"
+      "sha512": "sha512-awvBpTZDO4owGOhcejD0NzSGftsogBq5yRBMhQn8LNjoUaCcubYifOQQLSYVZlrPeiiJjJxU5BcMRDALmaA6UQ==",
+      "path": "x.pagedlist.mvc.core/10.0.3",
+      "hashPath": "x.pagedlist.mvc.core.10.0.3.nupkg.sha512"
     }
   }
 }

@@ -54,5 +54,53 @@ namespace TucConnect.Data
                 throw;
             }
         }
+
+        public void EnviarNotificacion(string correo, string channelUrl)
+        {
+            EnviarCorreoPropietario(correo, channelUrl);
+        }
+
+         void EnviarCorreoPropietario(string correo, string channelUrl)
+        {
+            // Construir el cuerpo del correo con el link del canal de chat
+            string correo_emisor = "tucconectado@gmail.com";
+            string clave_emisor = "hkdc nypf npbf yooj";
+
+            MailAddress receptor = new(correo);
+            MailAddress emisor = new(correo_emisor);
+
+            MailMessage email = new(emisor, receptor);
+            email.Subject = "Tienes un nuevo chat esperandote";
+            email.Body = @" <!DOCTYPE html>
+                    <html> 
+                      <head> https://www.tucconnect.somee.com/
+                        <title>Nuevo chat iniciado</title>
+                      </head>
+                      <body><h2>Se ha iniciado un nuevo chat en la plataforma. Revisa tus chats para encontrarlo.</h2>";
+            email.IsBodyHtml = true; // Definir que el cuerpo tiene estructura HTML para darle un diseño
+
+            SmtpClient smtp = new();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587; //465
+            smtp.Credentials = new NetworkCredential(correo_emisor, clave_emisor);
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.EnableSsl = true;
+
+            try
+            {
+                // Enviar el correo
+                smtp.Send(email);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores si falla el envío del correo
+                throw new Exception("Error al enviar el correo electrónico al propietario del post.", ex);
+            }
+        }
+
     }
+
+
+
+
 }
