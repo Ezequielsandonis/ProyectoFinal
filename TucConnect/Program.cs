@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Configuración del servicio de contexto de base de datos
 builder.Services.AddSingleton(new Contexto(builder.Configuration.GetConnectionString("conexion")));
 
+
+
 // Configuración para Sendbird
 builder.Services.AddSingleton<ISendBirdServicio>(provider =>
 {
