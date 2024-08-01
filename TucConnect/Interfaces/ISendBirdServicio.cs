@@ -5,10 +5,10 @@ namespace TucConnect.Interfaces
 {
     public interface ISendBirdServicio
     {
-         Task<string> CreateUser( string userId, string nickname);
-        Task<string> CreateChatChannel( string userId1, string userId2);
+        Task<string> CreateUser(string userId, string nickname);
+        Task<string> CreateChatChannel(string userId1, string userId2);
         Task<string> SendMessage(string channelUrl, string userId, string message);
-        Task<string> GetUserChannels( string userId);
+        Task<string> GetUserChannels(string userId);
 
         Task<SendbirdMensaje> GetLastSentMessage(string channelUrl);
         Task<IEnumerable<SendbirdMensaje>> GetChannelMessages(string channelUrl, string channelType = "group_channels", long? messageTs = null);

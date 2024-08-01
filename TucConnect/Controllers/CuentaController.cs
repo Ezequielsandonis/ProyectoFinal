@@ -1,14 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using TucConnect.Data.Servicios;
-using TucConnect.Data;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using System.Data.SqlClient;
 using System.Security.Claims;
-using TucConnect.Models.ViewModels;
+using TucConnect.Data;
+using TucConnect.Data.Servicios;
 using TucConnect.Models;
-using System.Diagnostics.Eventing.Reader;
+using TucConnect.Models.ViewModels;
 
 namespace TucConnect.Controllers
 {
@@ -178,7 +177,7 @@ namespace TucConnect.Controllers
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         //parametros
-                        cmd.Parameters.AddWithValue("@Correo", model.Correo); 
+                        cmd.Parameters.AddWithValue("@Correo", model.Correo);
                         con.Open(); //abrir conexion
                         try
                         {
@@ -246,12 +245,12 @@ namespace TucConnect.Controllers
                                         // Contraseña incorrecta
                                         ViewBag.Error = "Contraseña incorrecta";
                                     }
-                                  
+
                                 }
                                 //correo incorrecto
                                 else { ViewBag.Error = "Correo no registrado"; }
-                                
-                           
+
+
 
                                 dr.Close(); //cerrar datareader
                             }

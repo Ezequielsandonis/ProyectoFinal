@@ -56,9 +56,11 @@
     @*Se implementaran las vistas Razor de C#*@
     @*Llamar a la vista principal*@
 
+
+
     @await Html.PartialAsync("~/Views/Shared/Partials/_Header.cshtml")
 
-    <div class="container-fluid d-flex flex-column py-5 min-vh-100">
+    <div class="container-fluid d-flex flex-column py-0 min-vh-100">
         <main role="main">
             <main>
                 @RenderBody()

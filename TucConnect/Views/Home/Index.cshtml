@@ -12,37 +12,42 @@
 }
 
 <div class="container-fluid">
-    <!-- Carousel Start -->
-    <div class="header-carousel owl-carousel full-width-carousel">
-        <div class="header-carousel-item">
-            <img src="~/img/foto_2.jpg" class="img-fluid w-100" alt="Image">
-            <div class="carousel-caption">
-                <div class="carousel-caption-content p-3">
-                    <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Tucuman conectado</h5>
-                    <h4 class="display-1 text-capitalize text-white mb-4">Recuerda crear tu cuenta para publicar</h4>
-                    <p class="mb-5 fs-5">
-                        Con esta plataforma te conectarás con lo que busques. Y También podrás dar a conocerte a vos o a tu negocio, recuerda abrir una publicación para obtener mas detalles e inicia sesión para chatear
-                    </p>
-                  
+    @if (ViewBag.MostrarCarrusel)
+    {
+        <!-- Carousel Start -->
+        <div class="header-carousel owl-carousel full-width-carousel">
+            <div class="header-carousel-item">
+                <img src="~/img/foto_2.jpg" class="img-fluid w-100" alt="Image">
+                <div class="carousel-caption">
+                    <div class="carousel-caption-content p-3">
+                        <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Tucuman conectado</h5>
+                        <h4 class="display-1 text-capitalize text-white mb-4">Recuerda crear tu cuenta para publicar</h4>
+                        <p class="mb-5 fs-5">
+                            Con esta plataforma te conectarás con lo que busques. Y También podrás dar a conocerte a vos o a tu negocio, recuerda abrir una publicación para obtener mas detalles e inicia sesión para chatear
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="header-carousel-item">
+                <img src="~/img/foto_1.jpg" class="img-fluid w-100" alt="Image">
+                <div class="carousel-caption">
+                    <div class="carousel-caption-content p-3">
+                        <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Tucuman conectado</h5>
+                        <h1 class="display-1 text-capitalize text-white mb-4">La mejor solución para vos</h1>
+                        <p class="mb-5 fs-5 animated slideInDown">
+                            Conectate con lo que desees de manera rápida y directa sin vueltas.
+                        </p>
+
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="header-carousel-item">
-            <img src="~/img/foto_1.jpg" class="img-fluid w-100" alt="Image">
-            <div class="carousel-caption">
-                <div class="carousel-caption-content p-3">
-                    <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Tucuman conectado</h5>
-                    <h1 class="display-1 text-capitalize text-white mb-4">La mejor solución para vos</h1>
-                    <p class="mb-5 fs-5 animated slideInDown">
-                        Conectate con lo que desees de manera rápida y directa sin vueltas.
-                    </p>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Carousel End -->
+        <!-- Carousel End -->
+    }
 </div>
+
+
 
 <div class="container py-5">
 
@@ -53,7 +58,7 @@
                 <div class="sub-style">
                     <h4 class="sub-title px-3 mb-0">Tuc-Connect</h4>
                 </div>
-                <h1 class="display-3 mb-4">Todo lo que buscas al alance de un click</h1>
+                <h1 class="display-3 mb-4">Todo lo que buscas al alcance de un click</h1>
                 <p class="mb-0" style="font-size: 25px;">
                     Últimas publicaciones sobre  <strong>@ViewBag.CategoriaDescripcion</strong> .En <strong>@ViewBag.DescripcionZona</strong>
                 </p>

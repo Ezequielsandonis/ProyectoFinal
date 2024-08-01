@@ -16,7 +16,7 @@ namespace TucConnect.Data.Enums //En los enums se definen constantes que se usan
         Tutoriales,
         [Description("Recursos útiles")]
         Recursos,
-        [Description("El servicio que necesites lo encontraras aquí")]
+        [Description("Servicios")]
         Servicios,
         [Description("Otros")]
         Otro,

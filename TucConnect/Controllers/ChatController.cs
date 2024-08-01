@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-
-using System.Reflection;
 using System.Text.Json;
 using TucConnect.Data;
 using TucConnect.Data.Servicios;
 using TucConnect.Interfaces;
-using TucConnect.Models;
 using TucConnect.Models.Models;
 using TucConnect.Models.Models.ViewModels;
 
@@ -45,7 +42,7 @@ namespace TucConnect.Controllers
                     return RedirectToAction("Error", "Home");
                 }
 
-                
+
 
                 // Verificar si el propietario del post ya existe como usuario en Sendbird
                 if (!await _sendbirdService.UserExists(ownerUser.UsuarioId.ToString()))
@@ -119,12 +116,12 @@ namespace TucConnect.Controllers
                                 await _sendbirdService.SendAdminMessage(channelUrl, "Se inició un nuevo chat");
                                 await _sendbirdService.SendMessage(channelUrl, userId.ToString(), "¡Comienza a chatear!");
                                 // Envío de correo electrónico al propietario del post
-                                
+
                                 Email email = new();
                                 //validar
-                            
+
                                 if (ownerUser != null)
-                                     email.EnviarNotificacion(ownerUserDetails.Correo, channelUrl);
+                                    email.EnviarNotificacion(ownerUserDetails.Correo, channelUrl);
 
 
                                 return RedirectToAction("Index");
@@ -203,7 +200,12 @@ namespace TucConnect.Controllers
 
                 // Obtener canales de chat del usuario desde Sendbird
                 var channelsJson = await _sendbirdService.GetUserChannels(userId.ToString());
-                Console.WriteLine("Channels JSON: " + channelsJson); // Debugging
+                // Manejar el caso donde el usuario no existe en Sendbird
+                if (channelsJson == null)
+                {
+                    return View("Index");
+                }
+
 
                 // Deserializar la respuesta JSON a una instancia de SendbirdChannelsResponse
                 var options = new JsonSerializerOptions
@@ -331,9 +333,9 @@ namespace TucConnect.Controllers
             // Redirigir a la vista del chat en caso de error
             return PartialView("~/Views/Shared/Partials/_MessagesPartial.cshtml", Enumerable.Empty<SendbirdMensaje>()); ;
         }
-    
 
-       
+
+
 
 
 
@@ -352,7 +354,7 @@ namespace TucConnect.Controllers
                 // Filtrar los nuevos mensajes basados en el timestamp del último mensaje recibido
                 var nuevosMensajes = mensajes.Where(m => m.CreatedAt > ultimoMensajeTimestamp).ToList();
 
-            
+
 
 
                 // Devolver el número de mensajes nuevos como JSON

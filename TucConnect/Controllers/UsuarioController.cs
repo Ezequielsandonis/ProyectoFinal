@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TucConnect.Data;
-using TucConnect.Data.Enums;
-using TucConnect.Data.Servicios;
-using TucConnect.Models;
 using System.Data;
 using System.Data.SqlClient;
-using X.PagedList;
+using TucConnect.Data;
+using TucConnect.Data.Servicios;
+using TucConnect.Models;
 using X.PagedList.Extensions;
 
 namespace TucConnect.Controllers
@@ -21,7 +18,7 @@ namespace TucConnect.Controllers
         private readonly PostServicio _postServicio;
 
         //constructor con los servicios 
-        public UsuarioController( Contexto contexto)
+        public UsuarioController(Contexto contexto)
         {
             _contexto = contexto;
             _usuarioServicio = new UsuarioServicio(contexto);
@@ -52,7 +49,7 @@ namespace TucConnect.Controllers
                 return View();
             }
 
-          
+
         }
 
         //Mostrar post de usuarios
@@ -127,7 +124,7 @@ namespace TucConnect.Controllers
                 ViewBag.Error = ex.Message;
                 return View("Perfil");
             }
-          
+
         }
 
 
@@ -166,11 +163,10 @@ namespace TucConnect.Controllers
                 ViewBag.Error = ex.Message;
                 return RedirectToAction("Perfil");
             }
-          
+
         }
 
-       
+
     }
 }
- 
- 
+

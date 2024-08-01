@@ -11,75 +11,13 @@
 }
 
 @*Validar que exista post y un usuario*@
-@if (Model.Post != null && User.Identity != null)
+<div class="container py-5">
+    @if (Model.Post != null && User.Identity != null)
 {
     ViewData["Title"] = Model.Post.Titulo;
 
     <div class="container py-5">
-        @{
-            var isAuthenticated = User.Identity.IsAuthenticated;
-            var isOwner = isAuthenticated && Model.Post.UsuarioId == Convert.ToInt32(User.FindFirst("UsuarioId").Value);
-            var isAdmin = isAuthenticated && User.IsInRole("Administrador");
-        }
-
-        @if (isOwner)
-        {
-            <h2 style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.Titulo</h2>
-            <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.Categoria.ToString()</h4>
-            <h4 style="font-family: 'Arial', sans-serif;color: #333;">Anunciante: <strong>@Model.UsuarioCreador</strong></h4>
-            <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.FechaCreacion.ToString("dd/MM/yyyy")</h4>
-        }
-        else
-        {
-            <h2 style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.Titulo</h2>
-            <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.Categoria.ToString()</h4>
-            <h4 style="font-family: 'Arial', sans-serif;color: #333;">
-                Anunciante: <strong>@Model.UsuarioCreador / </strong>
-                @if (isAuthenticated)
-                {
-                    <a asp-action="IniciarChat" asp-controller="Chat" asp-route-postId="@Model.Post.PostId" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Enviar mensaje directo</a>
-                }
-               
-            </h4>
-            <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.FechaCreacion.ToString("dd/MM/yyyy")</h4>
-        }
-
-        @if (isAdmin || isOwner)
-        {
-            @* OP ADMINISTRADOR-START *@
-            <form asp-action="Delete" asp-route-id="@Model.Post.PostId" method="post">
-                <a asp-action="Update" asp-route-id="@Model.Post.PostId" class="btn btn-warning">
-                    <i class="fa-regular fa-edit"></i>
-                </a>
-                @* abrir el modal para eliminar post *@
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal">
-                    <i class="far fa-trash-alt"></i>
-                </button>
-
-                @* Modal-start *@
-                <div class="modal fade" id="confirm-delete-modal" tabindex="-1" aria-labelledby="confirm-delete-modal-label" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="confirm-delete-modal-title">Confirmar eliminación</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ¿Seguro desea eliminar la publicación?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary text-white" data-bs-dismiss="modal">Cerrar</button>
-                                @* boton tipo submit para ejecutar form. *@
-                                <button type="submit" class="btn btn-danger">Eliminar publicación</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @* Modal-end *@
-            </form>
-            @* OP ADMINISTRADOR-END *@
-        }
-
+       
         @*Usuario-no-administrador*@
         <br />
         <br />
@@ -87,6 +25,10 @@
         <hr />
 
         @*contenedor-contenidos*@
+
+        <h1>DETALLES DE PUBLICACION</h1>
+        <br />
+        <hr />
         <div class="container">
             <div class="row g-7">
                 <div class="col-md-8">
@@ -276,23 +218,111 @@
                 <div class="col-md-4 mb-5">
                     @*mostrar arriba a la derecha*@
                     <div class="position-sticky sticky-top mt-5" style="top:6rem">
-                        <h4 class="mb-3">Últimos posteos</h4>
-                        <div class="list-group mb-3">
-                            @*¿hay 10 post?*@
-                            @if (Model.PostRecientes != null)
-                            {
-                                foreach (var post in Model.PostRecientes)
-                                {
-                                    @*mostrar*@
-                                    <a class="list-group-item list-group-item-action" href="@Url.Action("Details", "Post", new { id = post.PostId })">@post.Titulo</a>
-                                }
+                        <h4 class="mb-3"></h4>
+                            @{
+                                var isAuthenticated = User.Identity.IsAuthenticated;
+                                var isOwner = isAuthenticated && Model.Post.UsuarioId == Convert.ToInt32(User.FindFirst("UsuarioId").Value);
+                                var isAdmin = isAuthenticated && User.IsInRole("Administrador");
                             }
+
+                            @if (isOwner)
+                            {
+                                <h2 style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.Titulo</h2>
+
+                                <h4 style="font-family: 'Arial', sans-serif;color: #333;">Anunciante: <strong>@Model.UsuarioCreador</strong></h4>
+                                <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">Categoría: <strong>@Model.Post.Categoria</strong></h4>
+                                <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.FechaCreacion.ToString("dd/MM/yyyy")</h4>
+                            }
+                            else
+                            {
+                                <h2 style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.Titulo</h2>
+
+                                <h4 style="font-family: 'Arial', sans-serif;color: #333;">
+                                    Anunciante: <strong>@Model.UsuarioCreador  </strong>
+
+                                    @if (isAuthenticated)
+                                    {
+                                        <a asp-action="IniciarChat" asp-controller="Chat" asp-route-postId="@Model.Post.PostId" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Me interesa</a>
+                                    }
+
+                                </h4>
+                                <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">Categoría:  <strong>@Model.Post.Categoria</strong></h4>
+                                <h4 class="text-muted" style="font-family: 'Arial', sans-serif;color: #333;">@Model.Post.FechaCreacion.ToString("dd/MM/yyyy")</h4>
+                            }
+
+                            @if (isAdmin || isOwner)
+                            {
+                                @* OP ADMINISTRADOR-START *@
+                                <form asp-action="Delete" asp-route-id="@Model.Post.PostId" method="post">
+                                    <a asp-action="Update" asp-route-id="@Model.Post.PostId" class="btn btn-warning">
+                                        <i class="fa-regular fa-edit"></i>
+                                    </a>
+                                    @* abrir el modal para eliminar post *@
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+
+                                    @* Modal-start *@
+                                    <div class="modal fade" id="confirm-delete-modal" tabindex="-1" aria-labelledby="confirm-delete-modal-label" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="confirm-delete-modal-title">Confirmar eliminación</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ¿Seguro desea eliminar la publicación?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary text-white" data-bs-dismiss="modal">Cerrar</button>
+                                                    @* boton tipo submit para ejecutar form. *@
+                                                    <button type="submit" class="btn btn-danger">Eliminar publicación</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @* Modal-end *@
+                                </form>
+                                @* OP ADMINISTRADOR-END *@
+
+
+                            }
+
+                          
+                          
+
+                    </div>
+
+                    
+                      
+
+                </div>
+
+                <br />
+                <hr />
+
+                @*POST RECIENTES-END*@
+                    <div class="position-sticky sticky-top mt-5" style="top:6rem">
+                        <div class="col-md-4 mb-5">
+                            @*mostrar arriba a la derecha*@
+                            <div class="position-sticky sticky-top mt-5" style="top:6rem">
+                                <h4 class="mb-3">Últimos posteos</h4>
+                                <div class="list-group mb-3">
+                                    @*¿hay 10 post?*@
+                                    @if (Model.PostRecientes != null)
+                                    {
+                                        foreach (var post in Model.PostRecientes)
+                                        {
+                                            @*mostrar*@
+                                            <a class="list-group-item list-group-item-action" href="@Url.Action("Details", "Post", new { id = post.PostId })">@post.Titulo</a>
+                                        }
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                @*POST RECIENTES-END*@
-
             </div>
         </div>
     </div>
 }
+</div>

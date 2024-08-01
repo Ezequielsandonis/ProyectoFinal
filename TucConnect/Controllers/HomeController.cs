@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using X.PagedList;
-using Microsoft.Extensions.Hosting;
+using System.Diagnostics;
+using TucConnect.Data;
 using TucConnect.Data.Enums;
 using TucConnect.Data.Servicios;
-using TucConnect.Data;
 using TucConnect.Models;
 using X.PagedList.Extensions;
 
@@ -30,16 +29,15 @@ namespace MyBlog.Controllers
 
         public IActionResult Error()
         {
-            return View();
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
         public IActionResult Index(string categoria, string buscar, string zona, int? pagina)
         {
             //control de errores
             try
             {
                 var post = new List<Post>();
-
+                bool mostrarCarrusel = string.IsNullOrEmpty(categoria) && string.IsNullOrEmpty(buscar) && string.IsNullOrEmpty(zona);
                 //validar que no se haya filtrado ni buscado nada
                 if (string.IsNullOrEmpty(categoria) && string.IsNullOrEmpty(buscar) && string.IsNullOrEmpty(zona))
 
@@ -105,6 +103,8 @@ namespace MyBlog.Controllers
                 // Crear el objeto JSON con la descripción de la categoría
                 ViewBag.DescripcionZona = descripcionZona;
 
+
+                ViewBag.MostrarCarrusel = mostrarCarrusel;
                 //paginar resultados con un limite de paginas (6) usando el metodo "ToPagedList" de (X.PagedList;)
                 return View(post.ToPagedList(pageNumber, pageSize));
 

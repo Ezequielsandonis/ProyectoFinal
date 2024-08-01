@@ -2,18 +2,12 @@
 @using System.Security.Claims;
 @using Microsoft.AspNetCore.Mvc;
 
-
-
 <header>
-
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
-
-       
-
         <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
-            <a href="#" class="navbar-brand p-0">
-                <h3 class="text-primary m-1">Tuc Connect</h3>
+            <a asp-action="Index" asp-controller="Home" class="navbar-brand p-0">
+                <h1 class="text-primary m-1">Tuc Connect</h1>
                 @*<img src="~/img/logo.png.jpg" alt="Logo">*@
             </a>
 
@@ -22,97 +16,71 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav  py-0">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","Home")">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Noticias"})">Noticias</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Trabajo"})">Trabajos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Productos"})">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Tutoriales"})">Tutoriales</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Recursos"})">Recursos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Servicios"})">Servicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","Home", new{ categoria="Otro"})">Otros</a>
-                        </li>
-                    </ul>
-
-                    <div class="d-flex mx-auto mb-2 mb-lg-0">
-                        <!-- Barra de búsqueda -->
-                        <form class="d-flex me-3" method="get" asp-controller="Home" asp-action="Index">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" />
-                            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
-                        </form>
-
-                        <!-- Barra de búsqueda por zona -->
-                        <div id="navbarSupportedContent" class="ms-auto">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-
-                            <!-- Navbar Collapse -->
-                            <ul class="navbar-nav">
-                                <!-- Dropdown Menu -->
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Zona
-                                    </a>
-                                    <!-- Dropdown Menu Content -->
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="@Url.Action("Index" , "Home", new{ zona="Centro"})">Centro</a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="YerbaBuena"})">Yerba Buena</a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="SM"})">San Miguel</a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="TafiViejo"})">Tafi Viejo</a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{ zona="ZonaSur"})">Sur</a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("Index","Home", new{zona="Otros"})">Otro</a></li>
-                                    </ul>
-                                </li>
+                <div class="navbar-nav w-100 d-flex justify-content-between">
+                    <!-- Enlace Inicio a la izquierda -->
+                    <!-- Zona, Categorías y Buscar centrados -->
+                    <div class="d-flex align-items-center mx-auto">
+                        <!-- Dropdown Menu for Zonas -->
+                        <li class="nav-item dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" id="zonaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Zonas
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="zonaDropdown">
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { zona = "Centro" })">Centro</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { zona = "YerbaBuena" })">Yerba Buena</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { zona = "SM" })">San Miguel</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { zona = "TafiViejo" })">Tafi Viejo</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { zona = "ZonaSur" })">Sur</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { zona = "Otros" })">Otro</a></li>
                             </ul>
-                        </div>
+                        </li>
+
+                        <!-- Categorías Dropdown -->
+                        <li class="nav-item dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" id="categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categorías
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="categoriasDropdown">
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { categoria = "Noticias" })">Noticias</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { categoria = "Trabajo" })">Trabajos</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { categoria = "Productos" })">Productos</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { categoria = "Tutoriales" })">Tutoriales</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { categoria = "Recursos" })">Recursos</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { categoria = "Servicios" })">Servicios</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Home", new { categoria = "Otro" })">Otros</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Barra de búsqueda -->
+                        <form class="d-flex me-3">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" style="font-size: 1rem; padding: .5rem .75rem;" />
+                            <button class="btn btn-outline-secondary" type="submit" style="font-size: 1rem;">Buscar</button>
+                        </form>
                     </div>
-
-
-
-
                 </div>
 
                 @* listado de opciones *@
                 <ul class="navbar-nav ms-auto">
-                    @* Si el usuario no esta autenticado(activado) *@
+                    @* Si el usuario no está autenticado (activado) *@
                     @if (!(User?.Identity?.IsAuthenticated ?? false))
                     {
-                        @* mostrar opcion de registro e inicio de sesion *@
+                        @* mostrar opción de registro e inicio de sesión *@
                         <li class="nav-item">
-                            <a class="btn btn-secondary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0" asp-action="Registrar" asp-controller="Cuenta">Registrarse</a>
+                            <a class="btn btn-secondary rounded-pill text-white py-2 px-4 me-2" asp-action="Registrar" asp-controller="Cuenta">Registrarse</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0" asp-action="Login" asp-controller="Cuenta">Iniciar sesión</a>
+                            <a class="btn btn-primary rounded-pill text-white py-2 px-4" asp-action="Login" asp-controller="Cuenta">Ingresar</a>
                         </li>
                     }
                     else
                     {
                         @* Opciones disponibles solo para usuarios autenticados *@
                         <li class="nav-item dropdown">
-                            <a class="btn btn-secondary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0 dropdown-toggle"
-                               href="#" data-bs-toggle="dropdown">
+                            <a class="btn btn-secondary rounded-pill text-white py-2 px-4 dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 @* Cargar nombre del usuario *@
                                 @User.FindFirstValue(ClaimTypes.NameIdentifier)
                             </a>
-                            @* menu opciones *@
+                            @* menú de opciones *@
                             <ul class="dropdown-menu">
                                 <li>
                                     <a class="dropdown-item" asp-action="Perfil" asp-controller="Usuario">Mi perfil</a>
@@ -126,12 +94,10 @@
                                 @* Opciones solo para administradores *@
                                 @if (User.IsInRole("Administrador"))
                                 {
-
                                     <li>
                                         <a class="dropdown-item" asp-action="Index" asp-controller="AdminUsuario">Administrar Usuarios</a>
                                     </li>
                                 }
-
                                 <li>
                                     <a class="dropdown-item" asp-action="CerrarSesion" asp-controller="Cuenta">Cerrar Sesión</a>
                                 </li>
@@ -140,18 +106,7 @@
                     }
                 </ul>
             </div>
-
-
-
         </nav>
-
-
     </div>
-
-   
-
     <!-- Navbar & Hero End -->
-
 </header>
-
-

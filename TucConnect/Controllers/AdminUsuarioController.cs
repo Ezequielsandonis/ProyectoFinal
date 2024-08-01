@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Data;
+using System.Data.SqlClient;
 using TucConnect.Data;
 using TucConnect.Data.Servicios;
 using TucConnect.Models;
-using System.Data.SqlClient;
-using X.PagedList;
-using System.Data;
-using System.Reflection;
 using X.PagedList.Extensions;
 
 namespace MyBlog.Controllers
@@ -21,8 +18,8 @@ namespace MyBlog.Controllers
         //constructor
         public AdminUsuarioController(Contexto contexto)
         {
-                _contexto = contexto;
-                _usuarioServicio = new UsuarioServicio(contexto);
+            _contexto = contexto;
+            _usuarioServicio = new UsuarioServicio(contexto);
         }
 
         //METODO INDEX-LISTAR USUARIOS
@@ -66,10 +63,10 @@ namespace MyBlog.Controllers
             catch (Exception ex)
             {
 
-                ViewBag.Error=ex.Message;
+                ViewBag.Error = ex.Message;
                 return View();
             }
-           
+
         }
 
 
@@ -116,7 +113,7 @@ namespace MyBlog.Controllers
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         //parametros 
-                        cmd.Parameters.AddWithValue("@Nombre",usuario.Nombre);
+                        cmd.Parameters.AddWithValue("@Nombre", usuario.Nombre);
                         cmd.Parameters.AddWithValue("@Apellido", usuario.Apellido);
                         cmd.Parameters.AddWithValue("@Correo", usuario.Correo);
                         //encriptar contraseña con Bcrypt
@@ -127,11 +124,11 @@ namespace MyBlog.Controllers
                         cmd.Parameters.AddWithValue("@Estado", usuario.Estado);
                         //Generar token
                         var token = Guid.NewGuid();
-                        cmd.Parameters.AddWithValue("@Token ",token);
+                        cmd.Parameters.AddWithValue("@Token ", token);
                         //expiracion
                         DateTime fechaExpiracion = DateTime.UtcNow.AddMinutes(5);
                         cmd.Parameters.AddWithValue("@FechaExpiracion", fechaExpiracion);
-                         
+
                         con.Open();
                         cmd.ExecuteNonQuery();
                     }
@@ -172,9 +169,9 @@ namespace MyBlog.Controllers
             {
 
                 ViewBag.Error = ex.Message;
-                return View();  
+                return View();
             }
-         
+
         }
 
 
@@ -185,13 +182,13 @@ namespace MyBlog.Controllers
         public IActionResult Edit(int id, Usuario usuario)
         {
             //validar que coincidan los id
-            if(id!=usuario.UsuarioId) return NotFound();
+            if (id != usuario.UsuarioId) return NotFound();
 
             try
             {
-                using (SqlConnection con = new (_contexto.Conexion))
+                using (SqlConnection con = new(_contexto.Conexion))
                 {
-                    using (SqlCommand cmd = new("ActualizarUsuario",con))
+                    using (SqlCommand cmd = new("ActualizarUsuario", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         //parametros
@@ -203,7 +200,7 @@ namespace MyBlog.Controllers
 
                         con.Open();//abrir conexion
                         cmd.ExecuteNonQuery(); //ejecutar
-                        
+
 
                     }
                 }
@@ -239,7 +236,7 @@ namespace MyBlog.Controllers
                 ViewBag.Error = ex.Message;
                 return View();
             }
-           
+
         }
 
         //post -- confirmar eliminacion de datos
@@ -251,11 +248,11 @@ namespace MyBlog.Controllers
                 //eliminar usuario
                 using (SqlConnection con = new(_contexto.Conexion))
                 {
-                    using (SqlCommand cmd = new("EliminarUsuario",con))
+                    using (SqlCommand cmd = new("EliminarUsuario", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         //parametros
-                        cmd.Parameters.AddWithValue("@UsuarioId",id);
+                        cmd.Parameters.AddWithValue("@UsuarioId", id);
                         con.Open();//abrir conexion
                         cmd.ExecuteNonQuery(); // ejecutar el procedimiento
                     }

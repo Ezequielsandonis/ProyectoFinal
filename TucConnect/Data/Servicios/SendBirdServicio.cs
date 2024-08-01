@@ -1,10 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using TucConnect.Interfaces;
 using TucConnect.Models.Models;
 
@@ -153,9 +148,11 @@ public class SendbirdService : ISendBirdServicio
             }
             else
             {
-                var errorMessage = await response.Content.ReadAsStringAsync();
-                throw new HttpRequestException($"Failed to get Sendbird user's channels: {response.StatusCode}. Error message: {errorMessage}");
+
+                return null;
             }
+
+
         }
         catch (HttpRequestException ex)
         {

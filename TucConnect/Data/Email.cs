@@ -1,5 +1,5 @@
-﻿using System.Net.Mail;
-using System.Net;
+﻿using System.Net;
+using System.Net.Mail;
 
 namespace TucConnect.Data
 {
@@ -60,7 +60,7 @@ namespace TucConnect.Data
             EnviarCorreoPropietario(correo, channelUrl);
         }
 
-         void EnviarCorreoPropietario(string correo, string channelUrl)
+        void EnviarCorreoPropietario(string correo, string channelUrl)
         {
             // Construir el cuerpo del correo con el link del canal de chat
             string correo_emisor = "tucconectado@gmail.com";

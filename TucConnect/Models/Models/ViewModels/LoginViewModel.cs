@@ -4,15 +4,15 @@ namespace TucConnect.Models.ViewModels
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage ="El correo es obligatorio")]
-        [EmailAddress(ErrorMessage ="El correo debe ser valido")]
-        public string ? Correo { get; set; }
+        [Required(ErrorMessage = "El correo es obligatorio")]
+        [EmailAddress(ErrorMessage = "El correo debe ser valido")]
+        public string? Correo { get; set; }
 
-        [Required(ErrorMessage ="La contraseña es obligatoria")]
+        [Required(ErrorMessage = "La contraseña es obligatoria")]
         [DataType(DataType.Password)]
-        public string ? Contrasenia { get; set; }
+        public string? Contrasenia { get; set; }
 
         [Display(Name = "Mantener la sesion activa")]
-        public bool  MantenerActivo {get; set; }
+        public bool MantenerActivo { get; set; }
     }
 }

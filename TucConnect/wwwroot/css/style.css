@@ -631,3 +631,24 @@
     display: none; /* Ocultar inicialmente */
 }
 
+
+
+.navbar-nav.ms-auto {
+    margin-left: auto; /* Asegura que los elementos están alineados a la derecha */
+}
+
+    .navbar-nav.ms-auto .nav-item {
+        margin-right: 1rem; /* Ajusta el margen derecho de cada ítem de la lista */
+    }
+
+/* Para mover los ítems hacia la izquierda */
+.navbar-nav.ms-auto {
+    margin-left: 0; /* Ajusta el margen izquierdo del contenedor */
+}
+/* Estilo para los botones de la barra de navegación */
+.nav-item .btn {
+    margin-left: 0.5rem; /* Espaciado entre botones */
+    font-size: 0.875rem; /* Tamaño de fuente más pequeño */
+    padding: 0.5rem 1rem; /* Ajusta el relleno de los botones */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}

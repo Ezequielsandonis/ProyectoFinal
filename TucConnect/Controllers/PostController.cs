@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TucConnect.Data.Servicios;
-using TucConnect.Data;
-using Microsoft.AspNetCore.Authorization;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
+using TucConnect.Data;
+using TucConnect.Data.Servicios;
 using TucConnect.Models;
 using TucConnect.Models.ViewModels;
 
@@ -24,11 +23,11 @@ namespace TucConnect.Controllers
             _postServicio = new PostServicio(con);
             _usuarioServicio = new UsuarioServicio(con);
         }
-    
-    
+
+
         //METODO CREATE
 
-      [Authorize] // Restricciones de vistas
+        [Authorize] // Restricciones de vistas
         //get
         public IActionResult Create() // vista para crear un nuevo post
         {
@@ -40,7 +39,7 @@ namespace TucConnect.Controllers
         public IActionResult Create(Post post)
         {
 
-       
+
 
             // control de errores
             try

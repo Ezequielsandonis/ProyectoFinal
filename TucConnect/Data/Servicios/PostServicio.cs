@@ -1,15 +1,7 @@
 ﻿
 
-using System.Data.SqlClient;
 using System.Data;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
-using TucConnect.Data;
+using System.Data.SqlClient;
 using TucConnect.Data.Enums;
 using TucConnect.Models;
 
@@ -110,7 +102,7 @@ namespace TucConnect.Data.Servicios
 
 
         // OBTENER NOMBRE DEL CREADOR DEL POST
-       
+
 
         public string ObtenerNombreUsuarioPorPostId(int postId)
         {
@@ -170,10 +162,10 @@ namespace TucConnect.Data.Servicios
             return usuario;
         }
 
-            //LISTAR POST POR USUARIO ID 
+        //LISTAR POST POR USUARIO ID 
 
 
-            public List<Post> ListarPostPorUsuarioId(int userId) // método de tipo lista
+        public List<Post> ListarPostPorUsuarioId(int userId) // método de tipo lista
         {
             var posts = new List<Post>();
 
@@ -317,7 +309,7 @@ namespace TucConnect.Data.Servicios
             }
             using (var connection = new SqlConnection(_contexto.Conexion))
 
-            return posts;
+                return posts;
         }
 
 
