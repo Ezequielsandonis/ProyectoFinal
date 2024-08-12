@@ -185,27 +185,33 @@ namespace TucConnect.Controllers
             }
         }
 
-        //LISTAR MIS CHATS
         public async Task<IActionResult> Index()
         {
             try
             {
-                // Obtener usuario autenticado
+                // Obtener el ID del usuario autenticado
                 var userIdClaim = User.FindFirst("UsuarioId");
                 if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
                 {
-                    // Manejar el caso donde el usuario no está autenticado o el id no es válido
+                    // Manejar el caso donde el usuario no está autenticado o el ID no es válido
                     return RedirectToAction("Error", "Home");
                 }
 
+                // Obtener datos del usuario autenticado
+                var usuario = _usuarioServicio.ObtenerUsuarioPorId(userId);
+                var authenticatedUserName = usuario?.NombreUsuario; // Usar el NombreUsuario para la vista
+
+                // Configurar el ViewBag para la vista
+                ViewBag.AuthenticatedUserName = authenticatedUserName;
+
                 // Obtener canales de chat del usuario desde Sendbird
                 var channelsJson = await _sendbirdService.GetUserChannels(userId.ToString());
+
                 // Manejar el caso donde el usuario no existe en Sendbird
                 if (channelsJson == null)
                 {
                     return View("Index");
                 }
-
 
                 // Deserializar la respuesta JSON a una instancia de SendbirdChannelsResponse
                 var options = new JsonSerializerOptions
@@ -222,19 +228,22 @@ namespace TucConnect.Controllers
                     return View("Index");
                 }
 
-
+                // Obtener la cantidad de mensajes no leídos para cada canal
+                foreach (var channel in channelsResponse.Channels)
+                {
+                    var unreadCount = await _sendbirdService.GetUnreadMessageCount(channel.ChannelUrl, userId.ToString());
+                    if (unreadCount != null && unreadCount.TryGetValue(userId.ToString(), out int count))
+                    {
+                        channel.UnreadMessageCount = count;
+                    }
+                }
 
                 return View(channelsResponse.Channels);
             }
-            catch (JsonException jsonEx)
-            {
-                ViewBag.Error = $"Error de JSON al deserializar los canales: {jsonEx.Message}";
-                return View("Error");
-            }
             catch (Exception ex)
             {
-                // Manejar el error según sea necesario
-                ViewBag.Error = $"Error al obtener los canales de chat: {ex.Message}";
+                // Manejar cualquier error inesperado
+                ViewBag.Error = ex.Message;
                 return View("Error");
             }
         }
@@ -255,15 +264,19 @@ namespace TucConnect.Controllers
                 // Obtener mensajes del canal desde Sendbird
                 var messages = await _sendbirdService.GetChannelMessages(channelUrl, "group_channels", messageTs: DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
 
-                // Crear un ViewModel para pasar la información necesaria a la vista
+                // Marcar los mensajes como leídos
+                await _sendbirdService.MarkMessagesAsRead(channelUrl, userId.ToString());
                 var viewModel = new ChatViewModel
                 {
                     ChannelUrl = channelUrl,
                     Messages = messages,
-                    UserId = userId
+                    UserId = userId,
+                    AuthenticatedUserId = userId // Asignar el UserId aquí
                 };
 
 
+                // Pasar el ID del usuario autenticado al ViewBag
+                ViewBag.AuthenticatedUserId = userId;
 
                 return PartialView("~/Views/Shared/Partials/_VerChat.cshtml", viewModel);
             }
@@ -275,16 +288,25 @@ namespace TucConnect.Controllers
             }
         }
 
-        //ACTUALIZAR MENSAJE
+   
+        // ACTUALIZAR MENSAJE
         [HttpGet]
         public async Task<IActionResult> ActualizarMensajes(string channelUrl)
         {
             try
             {
-                // Aquí deberías implementar la lógica para obtener los mensajes actualizados del canal específico
+                // Obtener el ID del usuario autenticado
+                var userIdClaim = User.FindFirst("UsuarioId");
+                if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+                {
+                    return BadRequest("Usuario no autenticado");
+                }
+
+                // Obtener los mensajes actualizados del canal
                 var messages = await _sendbirdService.GetChannelMessages(channelUrl, "group_channels", messageTs: DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
 
-                // Devolver la vista parcial o los datos de mensajes actualizados
+                // Devolver la vista parcial con los mensajes actualizados
+                ViewData["AuthenticatedUserId"] = userId.ToString();
                 return PartialView("~/Views/Shared/Partials/_MessagesPartial.cshtml", messages);
             }
             catch (Exception ex)
@@ -293,6 +315,8 @@ namespace TucConnect.Controllers
                 return BadRequest($"Error al actualizar los mensajes: {ex.Message}");
             }
         }
+
+
 
         //ENVIAR MENSAJES
 
@@ -336,6 +360,32 @@ namespace TucConnect.Controllers
 
 
 
+        //MARCAR COMO LEIDO 
+     
+      public async Task<IActionResult> MarcarComoLeido(string channelUrl)
+        {
+            try
+            {
+                var userIdClaim = User.FindFirst("UsuarioId");
+                if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+                {
+                    return Json(new { success = false, message = "Usuario no autenticado" });
+                }
+
+                // Marcar los mensajes como leídos
+                await _sendbirdService.MarkMessagesAsRead(channelUrl, userId.ToString());
+
+                // Obtener la cantidad de mensajes no leídos actualizada
+                var unreadCount = await _sendbirdService.GetUnreadMessageCount(channelUrl, userId.ToString());
+
+                return Json(new { success = true, unreadCount = unreadCount });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
 
 
 
@@ -365,5 +415,70 @@ namespace TucConnect.Controllers
                 return BadRequest($"Error al obtener nuevos mensajes: {ex.Message}");
             }
         }
+
+        //verificar si hay chats no leídos 
+        [HttpGet]
+        public async Task<IActionResult> CheckUnreadMessages()
+        {
+            try
+            {
+                var userIdClaim = User.FindFirst("UsuarioId");
+                if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+                {
+                    return Json(new { hasUnreadMessages = false });
+                }
+
+                // Obtener los canales del usuario desde Sendbird
+                var channelsJson = await _sendbirdService.GetUserChannels(userId.ToString());
+
+                if (channelsJson == null)
+                {
+                    return Json(new { hasUnreadMessages = false });
+                }
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var channelsResponse = JsonSerializer.Deserialize<SendbirdChannelsResponse>(channelsJson, options);
+      
+
+                bool hasUnreadMessages = false;
+
+                foreach (var channel in channelsResponse.Channels)
+                {
+                   
+                    if (channel.UnreadMessageCount == 0)
+                    {
+                        var unreadCountResponse = await _sendbirdService.GetUnreadMessageCount(channel.ChannelUrl, userId.ToString());
+                        if (unreadCountResponse != null && unreadCountResponse.ContainsKey(userId.ToString()))
+                        {
+                            if (unreadCountResponse[userId.ToString()] > 0)
+                            {
+                                hasUnreadMessages = true;
+                                break;
+                            }
+                        }
+                    }
+                    else if (channel.UnreadMessageCount > 0)
+                    {
+                        hasUnreadMessages = true;
+                        break;
+                    }
+                }
+
+                return Json(new { hasUnreadMessages });
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier error inesperado
+                Console.WriteLine("CheckUnreadMessages Exception: " + ex.Message); // Línea de depuración
+                return Json(new { hasUnreadMessages = false });
+            }
+        }
+
+
+
     }
 }

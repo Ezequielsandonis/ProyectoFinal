@@ -12,6 +12,10 @@
 }
 
 <div class="container-fluid">
+
+
+
+
     @if (ViewBag.MostrarCarrusel)
     {
         <!-- Carousel Start -->
@@ -83,7 +87,20 @@
                     <div class="col-md-4 mb-4 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="card h-100 shadow service-item rounded">
                             <div class="card-body service-content-inner">
-                                <h2 class="card-title mb-4" style="font-family: 'Arial', sans-serif;color: #333;">@post.Titulo</h2>
+                                <a asp-route-id ="@post.PostId" asp-action="Details" asp-controller="Post"
+                                   class="hover-highlight">
+                                    <h2 class="card-title mb-4 " style="font-family: 'Arial', sans-serif;color: #333;">@post.Titulo</h2>
+                                </a>
+
+                                <style>
+                                    .hover-highlight:hover {
+                                        font-weight: bold; /* Hace que el texto sea más grueso */
+                                        text-decoration: underline; /* Añade subrayado */
+                                        color:black; /* Cambia el color del texto */
+                                        text-shadow:initial;
+                                    }
+                                </style>
+
                                 <p class="card-subtitle mb-4" style="font-size :22px">En <strong>@post.Zona </strong></p>
 
                             </div>

@@ -1,19 +1,22 @@
 ﻿@using TucConnect.Models.Models
 @model IEnumerable<SendbirdMensaje>
 
+@{
+    var authenticatedUserId = ViewData["AuthenticatedUserId"]?.ToString() ?? string.Empty;
+}
+
 @if (Model != null && Model.Any())
 {
     foreach (var message in Model)
     {
-       
-        var isCurrentUserMessage = User.Identity.IsAuthenticated && message.User?.Nickname == User.Identity.Name;
-
+        // Determina si el mensaje es del usuario autenticado
+        var isCurrentUserMessage = message.User != null && message.User.UserId == authenticatedUserId;
 
         <div class="message @(isCurrentUserMessage ? "current-user" : "other-user")">
             <div class="message-content">
                 @if (!string.IsNullOrWhiteSpace(message.User?.Nickname))
                 {
-                    <strong>@message.User.Nickname:</strong> @message.Message
+                  @message.Message
                 }
                 else
                 {
@@ -24,7 +27,7 @@
         </div>
     }
 }
-else 
+else
 {
     <div class="no-messages">
         No tienes mensajes en este chat.
@@ -40,7 +43,10 @@ else
         }
 
         var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-        var date = epoch.AddMilliseconds(timestamp).ToLocalTime();
-        return date.ToString("HH:mm tt");
+        var utcDate = epoch.AddMilliseconds(timestamp);
+        var argentinaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Argentina Standard Time");
+        var localDate = TimeZoneInfo.ConvertTimeFromUtc(utcDate, argentinaTimeZone);
+
+        return localDate.ToString("HH:mm tt");
     }
 }

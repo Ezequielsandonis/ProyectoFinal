@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using TucConnect.Interfaces;
 using TucConnect.Models.Models;
 
@@ -93,7 +94,72 @@ public class SendbirdService : ISendBirdServicio
     }
 
 
+    //MENSAJES NO LEIDOS
+    public async Task<Dictionary<string, int>> GetUnreadMessageCount(string channelUrl, string userIds)
+    {
+        string encodedUserIds = Uri.EscapeDataString(userIds);
 
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("Api-Token", _sendbirdApiToken);
+
+            var response = await client.GetAsync($"https://api-{_sendbirdAppId}.sendbird.com/v3/group_channels/{channelUrl}/messages/unread_count?user_ids={encodedUserIds}");
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("API Response: " + jsonResponse); // Debug line
+
+            if (response.IsSuccessStatusCode)
+            {
+                try
+                {
+                    var unreadCountResponse = JsonSerializer.Deserialize<UnreadCountResponse>(jsonResponse);
+                    return unreadCountResponse.UnreadMessageCountByUser;
+                }
+                catch (JsonException ex)
+                {
+                    // Log JSON deserialization error
+                    Console.WriteLine("Deserialization Error: " + ex.Message);
+                    return null;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error: " + response.StatusCode);
+                return null;
+            }
+        }
+    }
+
+
+
+    //
+    public class UnreadCountResponse
+    {
+        [JsonPropertyName("unread")]
+        public Dictionary<string, int> UnreadMessageCountByUser { get; set; }
+    }
+
+    //MARCAR COMO LEIDO 
+    public async Task MarkMessagesAsRead(string channelUrl, string userId)
+    {
+        var apiUrl = $"https://api-{_sendbirdAppId}.sendbird.com/v3/group_channels/{channelUrl}/messages/mark_as_read";
+        var jsonBody = new { user_id = userId };
+        var content = new StringContent(JsonSerializer.Serialize(jsonBody), Encoding.UTF8, "application/json");
+
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("Api-Token", _sendbirdApiToken);
+
+            var response = await client.PutAsync(apiUrl, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException($"Failed to mark messages as read: {response.StatusCode}");
+            }
+        }
+    }
+
+    //ENVIAR mesanej
 
     public async Task<string> SendMessage(string channelUrl, string userId, string message)
     {
@@ -105,7 +171,8 @@ public class SendbirdService : ISendBirdServicio
             {
                 message_type = "MESG",
                 user_id = userId,
-                message
+                message,
+                mark_as_read = false // Agregar el parámetro mark_as_read
             };
 
             var content = new StringContent(JsonSerializer.Serialize(jsonBody), Encoding.UTF8, "application/json");

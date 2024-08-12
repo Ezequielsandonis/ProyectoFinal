@@ -24,16 +24,15 @@
 <style>
     .chat-container {
         display: flex;
+        flex-direction: column;
         height: 100%;
         border: 1px solid #ccc;
         border-radius: 5px;
         overflow: hidden;
-        overflow-y: auto;
     }
 
     .chat-view {
-        width: 100%;
-        background-color: #f5f5f5; /* Cambio el color de fondo para una apariencia más suave */
+        background-color: #f5f5f5; /* Fondo más suave para la vista del chat */
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -43,6 +42,8 @@
         flex: 1;
         padding: 20px;
         overflow-y: auto;
+        display: flex;
+        flex-direction: column;
     }
 
     .message {
@@ -51,28 +52,36 @@
         border-radius: 10px;
         max-width: 70%;
         word-wrap: break-word; /* Permite romper palabras largas */
+        color:black;
     }
 
-    .current-user {
-        align-self: flex-start;
-        background-color: #DCF8C6; /* Color de fondo para mensajes del usuario actual */
-        color: #333; /* Color de texto más oscuro para mejor legibilidad */
-    }
+        .message.current-user {
+            background-color: #d0e6ff; /* Azul claro para el mensaje del usuario autenticado */
+            align-self: flex-end; /* Alinea los mensajes del usuario autenticado a la derecha */
+            text-align: right;
+        }
 
-    .other-user {
-        align-self: flex-end;
-        background-color: #E6E6E6; /* Color de fondo para mensajes de otros usuarios */
-        color: #333; /* Color de texto más oscuro para mejor legibilidad */
-    }
+        .message.other-user {
+            background-color: #ffffff; /* Blanco para los mensajes de otros usuarios */
+            align-self: flex-start; /* Alinea los mensajes de otros usuarios a la izquierda */
+            text-align: left;
+        }
 
     .message-content {
         padding: 5px;
+         font-size: 19px; /* Ajusta el tamaño de la letra aquí */
     }
+
+        .message-content strong {
+            font-weight: bold;
+            color: #333; /* Color del nombre del usuario */
+        }
 
     .timestamp {
         font-size: 0.8em;
         color: #888;
-        margin-left: 10px;
+        display: block;
+        margin-top: 5px;
     }
 
     .no-messages {
@@ -88,24 +97,25 @@
         background-color: #f9f9f9;
     }
 
-    #send-message-form textarea {
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        resize: none;
-        margin-right: 10px;
-        font-family: Arial, sans-serif; /* Asegura la consistencia en la fuente del texto */
-        font-size: 14px; /* Tamaño de fuente ligeramente más grande para mejor legibilidad */
-    }
+        #send-message-form textarea {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            margin-right: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
 
-    #send-message-form button {
-        padding: 10px 20px;
-        border: none;
-        background-color: #4CAF50;
-        color: white;
-        cursor: pointer;
-        border-radius: 5px;
-        font-size: 14px; /* Tamaño de fuente ligeramente más grande para mejor legibilidad */
-    }
+        #send-message-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
 </style>

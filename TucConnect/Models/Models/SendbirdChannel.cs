@@ -87,7 +87,9 @@ namespace TucConnect.Models.Models
         public SendbirdLastMessage? LastMessage { get; set; }
 
 
+        public int UnreadMessageCount { get; set; }
 
+      
         // Agrega cualquier otra propiedad necesaria
     }
 
@@ -102,4 +104,6 @@ namespace TucConnect.Models.Models
         [JsonPropertyName("ts")]
         public long Ts { get; set; }
     }
+
+   
 }

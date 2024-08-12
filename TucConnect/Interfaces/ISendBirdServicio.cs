@@ -15,5 +15,8 @@ namespace TucConnect.Interfaces
         Task<bool> UserExists(string v);
 
         Task<string> SendAdminMessage(string channelUrl, string message);
+
+        Task<Dictionary<string,int>> GetUnreadMessageCount(string channelUrl, string userIds);
+        Task MarkMessagesAsRead(string channelUrl, string userId);
     }
 }

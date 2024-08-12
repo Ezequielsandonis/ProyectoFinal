@@ -3,65 +3,98 @@
 
 @{
     ViewData["Title"] = "Chats";
+    var authenticatedUser = ViewBag.AuthenticatedUserName;
 }
 
 <div class="container py-5">
-    <div class="row">
-        <div class="col-md-4 chat-list-container">
-          
-            @if (ViewBag.Error != null)
-            {
-                <div class="alert alert-danger" role="alert">
-                    @ViewBag.Error
-                </div>
-            }
-
-            @if (Model == null || !Model.Any())
-            {
-                <div class="alert alert-info" role="alert">
-                    No tienes chats disponibles actualmente.
-                </div>
-            }
-            else
-            {
-                <ul class="chat-list">
-                    @foreach (var channel in Model)
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-10 chat-container">
+            <div class="row">
+                <div class="col-md-4 chat-list-container">
+                    @if (ViewBag.Error != null)
                     {
-                        <li class="chat-item">
-                            @if (!string.IsNullOrEmpty(channel.ChannelUrl) && channel.Members != null)
-                            {
-                                <a href="#" class="chat-link" data-channel-url="@channel.ChannelUrl">
-                                    <div class="chat-details">
-                                        <h4>@string.Join(" y ", channel.Members.Select(m => m.Nickname))</h4>
-                                    </div>
-                                </a>
-                            }
-                            else
-                            {
-                                <span>Error: Datos del canal no válidos</span>
-                            }
-                        </li>
+                        <div class="alert alert-danger" role="alert">
+                            @ViewBag.Error
+                        </div>
                     }
-                </ul>
-            }
-        </div>
-        <div class="col-md-8 chat-view-container" style="height: 100vh;">
-            <div id="chat-view" style="height: 90%; overflow-y: auto; border: 1px solid #ddd; padding: 10px;">
-                <p>Selecciona un chat para ver los mensajes</p>
-            </div>
-            <div id="send-message-form-container" style="height: 10%;">
-                <!-- Este contenedor se rellenará con el formulario cuando se seleccione un chat -->
+
+                    @if (Model == null || !Model.Any())
+                    {
+                        <div class="alert alert-info" role="alert">
+                            No tienes chats disponibles actualmente.
+                        </div>
+                    }
+                    else
+                    {
+                        <ul class="chat-list">
+                            @foreach (var channel in Model)
+                            {
+                                // Filtrar los miembros para obtener solo el otro usuario
+                                var otherMembers = channel.Members
+                                .Where(m => m.Nickname != authenticatedUser)
+                                .Select(m => m.Nickname)
+                                .ToList();
+
+                                // Asegurarse de que haya al menos un otro miembro
+                                if (!otherMembers.Any())
+                                {
+                                    otherMembers.Add("Remitente desconocido");
+                                }
+
+                                <li class="chat-item @(channel.UnreadMessageCount > 0 ? "unread-chat" : "")">
+                                    @if (!string.IsNullOrEmpty(channel.ChannelUrl))
+                                    {
+                                        <a href="#" class="chat-link" data-channel-url="@channel.ChannelUrl">
+                                            <div class="chat-details">
+                                                <!-- Solo mostrar el nombre del otro usuario -->
+                                                <h4>@otherMembers.FirstOrDefault()</h4>
+                                                @if (channel.UnreadMessageCount > 0)
+                                                {
+                                                    <span class="unread-count">@channel.UnreadMessageCount</span>
+                                                }
+                                            </div>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <span>Error: Datos del canal no válidos</span>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+
+                <!-- Aquí va el contenido del chat y formulario -->
+                <div class="col-md-8 chat-view-container">
+                    <div id="chat-view" class="chat-view-content">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-comments" style="font-size: 5rem; color: #007bff;"></i>
+                        </div>
+                        <div class="text-center mb-3">
+                            <h2>Tucumán Conectado InApp Chat</h2>
+                        </div>
+                        <div class="text-center mb-4">
+                            <p>Estamos trabajando para mejorar continuamente las características de nuestra plataforma. ¡Gracias por su paciencia!</p>
+                        </div>
+                        <div class="text-center">
+                            <p>Selecciona un chat para ver los mensajes</p>
+                        </div>
+                    </div>
+                    <div id="send-message-form-container" class="send-message-form-container">
+                        <!-- Este contenedor se rellenará con el formulario cuando se seleccione un chat -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+           
 
 @section Scripts {
     <script>
         $(document).ready(function () {
-         
-
             // Función para enviar mensajes
             $(document).on("submit", "#send-message-form", function (e) {
                 e.preventDefault(); // Evitar la acción de envío estándar
@@ -87,45 +120,67 @@
             });
 
             // Función para cargar la vista de un chat al hacer clic en un enlace
-            $(".chat-link").click(function (e) {
+            $(document).on("click", ".chat-link", function (e) {
                 e.preventDefault();
                 var channelUrl = $(this).data("channel-url");
+                var $chatItem = $(this).closest(".chat-item");
 
-                // Cargar la vista de chat utilizando AJAX
+                // Marcar el chat como leído antes de cargar la vista
                 $.ajax({
-                    type: "GET",
-                    url: "@Url.Action("VerChat", "Chat")",
+                    type: "POST",
+                    url: "@Url.Action("MarcarComoLeido", "Chat")",
                     data: { channelUrl: channelUrl },
-                    success: function (data) {
-                        $("#chat-view").html(data);
+                    success: function (response) {
+                        if (response.success) {
+                            // Actualizar el número de mensajes no leídos en la interfaz
+                            if (response.unreadCount > 0) {
+                                $chatItem.find(".unread-count").text(response.unreadCount).show();
+                            } else {
+                                $chatItem.find(".unread-count").hide();
+                                // Eliminar la clase unread-chat si no hay mensajes no leídos
+                                $chatItem.removeClass("unread-chat");
+                            }
+
+                            // Cargar la vista de chat utilizando AJAX
+                            $.ajax({
+                                type: "GET",
+                                url: "@Url.Action("VerChat", "Chat")",
+                                data: { channelUrl: channelUrl },
+                                success: function (data) {
+                                    $("#chat-view").html(data);
+                                },
+                                error: function () {
+                                    alert("Error al cargar el chat.");
+                                }
+                            });
+                        } else {
+                            alert("Error al marcar el chat como leído: " + response.message);
+                        }
                     },
                     error: function () {
-                        alert("Error al cargar el chat.");
+                        alert("Error al marcar el chat como leído.");
                     }
                 });
             });
-
             // Función para actualizar los mensajes del canal
-            function actualizarMensajes() {
-                var channelUrl = $("#ChannelUrl").val(); // Asegúrate de tener el valor del canal aquí
+          function actualizarMensajes() {
+    var channelUrl = $("#ChannelUrl").val(); // Asegúrate de tener el valor del canal aquí
 
-                $.ajax({
-                    type: "GET",
-                    url: "@Url.Action("ActualizarMensajes", "Chat")",
-                    data: { channelUrl: channelUrl },
-                    success: function (response) {
-                        // Actualizar solo la sección de mensajes en la vista
-                        $("#chat-messages").html(response);
-                    },
-                    error: function () {
-                        console.error("Error al actualizar los mensajes.");
-                    }
-                });
-            }
+    $.ajax({
+        type: "GET",
+        url: "@Url.Action("ActualizarMensajes", "Chat")",
+        data: { channelUrl: channelUrl },
+        success: function (response) {
+            // Actualizar solo la sección de mensajes en la vista
+            $("#chat-messages").html(response);
+        },
+        error: function () {
+            console.error("Error al actualizar los mensajes.");
+        }
+    });
+}
 
-    
         });
-          
     </script>
 }
 
@@ -135,12 +190,9 @@
     body {
         font-family: Arial, sans-serif;
         background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
     }
 
     .container {
-     
         display: flex;
         flex-direction: column;
     }
@@ -150,19 +202,42 @@
         flex: 1;
     }
 
+    .chat-container {
+        max-width: 1200px;
+        margin-top: 70px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
     .chat-list-container {
-    
-        background-color:#fff;
+        background-color: #fff;
         border-right: 1px solid #ccc;
         overflow-y: auto;
+        height: 80vh; /* Adjust as necessary */
         padding: 0;
     }
 
     .chat-view-container {
         background-color: #fff;
         display: flex;
-     
         flex-direction: column;
+        height: 80vh; /* Adjust as necessary */
+        padding: 0;
+    }
+
+    .chat-view-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+    }
+
+    .send-message-form-container {
+        padding: 10px;
+        border-top: 1px solid #ddd;
     }
 
     .chat-list {
@@ -192,38 +267,9 @@
             margin: 0;
         }
 
-    .chat-view-container {
-        padding: 20px;
-        overflow-y: auto;
-    }
-
-    #send-message-form {
-        display: flex;
-        padding: 10px;
-        border-top: 1px solid #ccc;
-        background-color: #f9f9f9;
-    }
-
-        #send-message-form textarea {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            resize: none;
-            margin-right: 10px;
-        }
-
-        #send-message-form button {
-            padding: 10px 20px;
-            border: none;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
     .unread-chat {
         background-color: #ffe6e6; /* Color de fondo para chats con mensajes no leídos */
     }
+
 
 </style>
